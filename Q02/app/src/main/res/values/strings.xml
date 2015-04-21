@@ -34,5 +34,7 @@
     <string name="title_activity_choose_num_of_players">ChooseNumOfPlayers</string>
     <string name="title_activity_init_teams">InitTeams</string>
     <string name="title_activity_main_game">MainGame</string>
+    <string name="title_activity_question_screen">QuestionScreen</string>
+    <string name="title_activity_winner">Winner</string>
 
 </resources>

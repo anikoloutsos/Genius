@@ -58,6 +58,7 @@ public class ChooseNumOfPlayers extends ActionBarActivity {
         number_of_teams=Integer.parseInt(rb.getText().toString());
         nextClick.putExtra("n_team_message",number_of_teams);
         startActivity(nextClick);
+        finish();
     }
     ///////////////////////
     @Override

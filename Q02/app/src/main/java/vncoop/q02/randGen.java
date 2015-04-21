@@ -27,18 +27,18 @@ public class randGen {
 
         // Declarations
         String[] CategoryArray = new String[60]; //Array Declaration
-        String g1 = "geo1";
-        String g2 = "geo2";
-        String c1 = "cim1";
-        String c2 = "cim2";
-        String h1 = "his1";
-        String h2 ="his2";
-        String a1 = "art1";
-        String a2 = "art2";
-        String sc1 = "sci1";
-        String sc2 = "sci2";
-        String sp1 = "spo1";
-        String sp2 = "spo2";
+        String g1 = "geo_b";
+        String g2 = "geo_b";
+        String c1 = "cim_b";
+        String c2 = "cim_b";
+        String h1 = "his_b";
+        String h2 ="his_b";
+        String a1 = "art_b";
+        String a2 = "art_b";
+        String sc1 = "sci_b";
+        String sc2 = "sci_b";
+        String sp1 = "spo_b";
+        String sp2 = "spo_b";
 
         //Initialization
 
@@ -176,12 +176,12 @@ public class randGen {
     //ΔΗΜΙΟΥΡΓΙΑ ΠΙΝΑΚΑ ΔΙΑΜΑΝΤΙΩΝ\\
     private String[] createDiamondArray() {
         String[] da = new String[6];
-        da[0] = "diamondgeo";
-        da[1] = "diamondcim";
-        da[2] = "diamondhis";
-        da[3] = "diamondart";
-        da[4] = "diamondsci";
-        da[5] = "diamondspo";
+        da[0] = "geo";
+        da[1] = "cim";
+        da[2] = "his";
+        da[3] = "art";
+        da[4] = "sci";
+        da[5] = "spo";
         return da;
     }
 

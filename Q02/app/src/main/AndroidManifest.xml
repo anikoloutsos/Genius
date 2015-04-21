@@ -32,6 +32,14 @@
             android:name=".MainGame"
             android:label="@string/title_activity_main_game" >
         </activity>
+        <activity
+            android:name=".QuestionScreen"
+            android:label="@string/title_activity_question_screen" >
+        </activity>
+        <activity
+            android:name=".Winner"
+            android:label="@string/title_activity_winner" >
+        </activity>
     </application>
 
 </manifest>
