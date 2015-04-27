@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="vncoop.q02" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".mainMenu"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Rules"
+            android:label="@string/title_activity_rules" >
+        </activity>
+        <activity
+            android:name=".ChooseNumOfPlayers"
+            android:label="@string/title_activity_choose_num_of_players" >
+        </activity>
+        <activity
+            android:name=".InitTeams"
+            android:label="@string/title_activity_init_teams" >
+        </activity>
+        <activity
+            android:name=".MainGame"
+            android:label="@string/title_activity_main_game" >
+        </activity>
+        <activity
+            android:name=".QuestionScreen"
+            android:label="@string/title_activity_question_screen" >
+        </activity>
+        <activity
+            android:name=".Winner"
+            android:label="@string/title_activity_winner" >
+        </activity>
+    </application>
+
+</manifest>
