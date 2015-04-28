@@ -22,25 +22,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:id="@+id/RadioGroup_id">
-
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/one"
-            android:id="@+id/button1"
-            android:layout_below="@+id/txtTeamNumb"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            />
+        android:id="@+id/RadioGroup_id"
+        android:layout_below="@id/txtTeamNumb">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/two"
             android:id="@+id/button2"
-            android:layout_below="@+id/button1"
+            android:layout_below="@+id/txtTeamNumb"
             android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true" />
 
@@ -61,25 +51,6 @@
             android:layout_below="@+id/button3"
             android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/five"
-            android:id="@+id/button5"
-            android:layout_below="@+id/button4"
-            android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/six"
-            android:id="@+id/button6"
-            android:layout_below="@+id/button5"
-            android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"
-            />
 
     </RadioGroup>
 

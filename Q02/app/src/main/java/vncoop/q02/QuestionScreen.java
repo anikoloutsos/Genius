@@ -59,6 +59,9 @@ public class QuestionScreen extends ActionBarActivity {
 
     public void onCorrect(View view){
 
+        teams[current_team].set_stats_category_correct(category-1);
+
+
         Intent intent1 = new Intent(this,Winner.class);
         boolean WeDontHaveAWinner= true;
         //an itan erwtisi gia diamanti kane true to sigkekrimeno diamanti
@@ -100,6 +103,8 @@ public class QuestionScreen extends ActionBarActivity {
     }
 
     public void onWrong(View view){
+        teams[current_team].set_stats_category_wrong(category-1);
+
         current_team++;
         current_team = current_team%number_of_teams;
 

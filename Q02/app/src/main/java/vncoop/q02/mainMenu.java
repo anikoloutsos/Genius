@@ -32,12 +32,22 @@ public class mainMenu extends ActionBarActivity {
             throw new Error("Mpoulo");
         }
 
-        String[] result = dbCreator.randFromCat(1);
-        Log.d(result[0],result[1]);
 
     }
 
     ////////////BUTTONS\\\\\\\\\\\\\\
+
+
+    public void NGClick(View view) {
+        Intent new_game = new Intent(this, ChooseNumOfPlayers.class);
+        startActivity(new_game);
+    }
+
+    public void GoOnClick(View view){
+        Intent goOn = new Intent(this,MainGame.class);
+        //todo vale ta parcelables (teams current klp)
+        startActivity(goOn);
+    }
 
     public void rulesClick(View view){
         Intent rules = new Intent(this, Rules.class);
@@ -45,10 +55,7 @@ public class mainMenu extends ActionBarActivity {
 
     }
 
-    public void NGClick(View view) {
-        Intent new_game = new Intent(this, ChooseNumOfPlayers.class);
-        startActivity(new_game);
-    }
+
 
     /////////END OF BUTTONS\\\\\\\\\\\
 

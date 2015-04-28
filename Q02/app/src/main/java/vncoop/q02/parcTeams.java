@@ -5,13 +5,16 @@ import android.os.Parcelable;
 
 /**
  * Created by Alexandros on 20/4/2015.
+ * Parcelable teams class
  */
+
 public class parcTeams implements Parcelable{
 
     //WHATS INSIDE THE PARCEL\\
     private int color = 0;
     private String name;
     private boolean[] diamonds = new boolean[6];
+    private int[] stats = new int[12];      //διατήρηση στατιστικών για εμφάνιση στο τέλος του παιχνιδιού
 
     //MANDATORY\\
     @Override
@@ -26,6 +29,7 @@ public class parcTeams implements Parcelable{
         dest.writeBooleanArray(diamonds);   //first diamonds
         dest.writeString(name);             //seconde name
         dest.writeInt(color);               //third color
+        dest.writeIntArray(stats);
     }
 
 
@@ -52,10 +56,10 @@ public class parcTeams implements Parcelable{
     // example constructor that takes a Parcel and gives you an object populated with it's values
     private parcTeams(Parcel in) {
 
-        in.readBooleanArray(diamonds);
+        diamonds = in.createBooleanArray();
         name = in.readString();
         color = in.readInt();
-
+        stats = in.createIntArray();
         //diamonds = in.readBooleanArray();
     }
     public parcTeams(){
@@ -65,12 +69,18 @@ public class parcTeams implements Parcelable{
         for(int i=0;i<6; i++) {
             diamonds[i] = false;
         }
+        for (int i=0;i<12;i++){
+            stats[i]=0;
+        }
     }
     public parcTeams(String n, int c) {
         name = n;
         color = c;
         for(int i=0;i<6; i++) {
             diamonds[i] = true;
+        }
+        for (int i=0;i<12;i++){
+            stats[i]=0;
         }
         //for(int i=0;i<12; i++) {
          //   stats[i] = 0;
@@ -91,7 +101,9 @@ public class parcTeams implements Parcelable{
         return color;
     }
 
-
+    public int[] getStats(){
+        return stats;
+    }
 
     //Set Data\\
     public void set_name(String s){
@@ -106,6 +118,12 @@ public class parcTeams implements Parcelable{
         diamonds[a] = b;
     }
 
-
+    public void set_stats_category_wrong(int categoryNum){
+        stats[categoryNum]++;
+    }
+    public void set_stats_category_correct(int categoryNum){
+        stats[categoryNum]++;
+        stats[categoryNum+6]++;
+    }
 
 }

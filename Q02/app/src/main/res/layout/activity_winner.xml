@@ -33,4 +33,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="68dp"
         android:onClick="telos"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/statsid"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/winningTeamTextId"
+        android:layout_alignEnd="@+id/winningTeamTextId" />
 </RelativeLayout>

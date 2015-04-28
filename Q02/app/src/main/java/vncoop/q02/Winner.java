@@ -28,6 +28,10 @@ public class Winner extends ActionBarActivity {
 
         TextView tv1 = (TextView) findViewById(R.id.winningTeamTextId);
         tv1.setText(teams[current_team].get_name());
+        TextView statistics = (TextView) findViewById(R.id.statsid);
+        float geoStats = ((float) teams[current_team].getStats()[6]/(float) teams[current_team].getStats()[0])*100;
+        statistics.setText(teams[current_team].get_name()+" Γεωγραφία: " +geoStats +"%   "+teams[current_team].getStats()[6]+" στα "+teams[current_team].getStats()[0]);
+
     }
 
 

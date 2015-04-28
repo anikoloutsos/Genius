@@ -16,49 +16,53 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Γύρνα τον τροχό της τύχης"
-        android:id="@+id/bt2"
-        android:onClick = "getCatOrD"
-        android:layout_below="@+id/textViewOmada"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnCat1Id"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/btnSpin"
+        android:background="#00000000"
+        android:onClick = "getCatOrD"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="154dp"
+        android:src="@drawable/spo_b"
+        android:scaleType="fitCenter"
+        android:visibility="visible" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/btnCat1Id"
         android:background="#00000000"
         android:visibility="gone"
         android:onClick="choicebtn1"
-        android:layout_below="@+id/textViewOmada" />
-
+        android:layout_marginTop="131dp"
+        android:layout_below="@+id/textViewOmada"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="37dp"
+        android:layout_marginStart="37dp" />
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnCat2Id"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@+id/btnCat1Id"
-        android:layout_alignTop="@+id/btnCat1Id"
         android:background="#00000000"
         android:visibility="gone"
-        android:onClick="choicebtn2"/>
+        android:onClick="choicebtn2"
+        android:layout_alignTop="@+id/btnCat1Id"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="34dp"
+        android:layout_marginEnd="34dp" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:id="@+id/btnDiaId"
         android:background="#00000000"
         android:visibility="gone"
         android:onClick="diamondbtn"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"/>
+
 </RelativeLayout>

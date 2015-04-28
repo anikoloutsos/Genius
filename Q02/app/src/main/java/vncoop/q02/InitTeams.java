@@ -159,8 +159,6 @@ public class InitTeams extends ActionBarActivity {
                 teams[i].set_name(b[i].getHint().toString());   //πάρε το hint (Ομάδα i) για όνομα ομάδας
             }
 
-            Log.d("-------+--------", teams[i].get_name());
-            Log.d("-------)(--------", Integer.toString(teams[i].get_color()));
 
             if(teams[i].get_color()!=0) {
                 counter++;                                       //για έλεγχο αν κάποιος δεν διάλεξε χρώμα
