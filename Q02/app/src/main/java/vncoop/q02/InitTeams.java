@@ -22,8 +22,8 @@ public class InitTeams extends ActionBarActivity {
     private RadioGroup radioGroup;
 
 
-    EditText[] b = new EditText[6];
-    parcTeams[] teams = new parcTeams[6];
+    EditText[] b;
+    parcTeams[] teams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,8 @@ public class InitTeams extends ActionBarActivity {
         Intent intent = getIntent();
 
         number_of_players = intent.getIntExtra("n_team_message", 1);
-
+        b = new EditText[number_of_players];
+        teams = new parcTeams[number_of_players];
         final int[] lastChecked = new int[number_of_players];
 
         for (int i = 0; i < number_of_players; i++) {
@@ -103,12 +104,28 @@ public class InitTeams extends ActionBarActivity {
                         if (lastChecked[team_int - 1] != 0) {
 
                             for (int i = 1; i <= number_of_players; i++) {
-
-                                String aa = "color" + i + "_" + lastChecked[team_int - 1];
+                                int ls = lastChecked[team_int-1];
+                                String aa = "color" + i + "_" + ls;
                                 int ID = getResources().getIdentifier(aa, "id", getPackageName());
                                 View btn = findViewById(ID);
                                 btn.setEnabled(true);
-
+                                int Last_ID = getResources().getIdentifier(aa, "id", getPackageName());
+                                RadioButton last_btn = (RadioButton) findViewById(Last_ID);
+                                last_btn.setEnabled(true);
+                                last_btn.setButtonDrawable(R.drawable.yellow_selector);
+                                if (ls == 1) {
+                                    last_btn.setButtonDrawable(R.drawable.yellow_selector);
+                                } else if (ls == 2) {
+                                    last_btn.setButtonDrawable(R.drawable.blue_selector);
+                                } else if (ls == 3) {
+                                    last_btn.setButtonDrawable(R.drawable.green_selector);
+                                } else if (ls == 4) {
+                                    last_btn.setButtonDrawable(R.drawable.pink_selector);
+                                } else if (ls == 5) {
+                                    last_btn.setButtonDrawable(R.drawable.purple_selector);
+                                } else {
+                                    last_btn.setButtonDrawable(R.drawable.red_selector);
+                                }
                             }
                         }
 
@@ -116,10 +133,27 @@ public class InitTeams extends ActionBarActivity {
 
                             String num_of_color = "color" + i + "_" + color_string;
                             int colorID = getResources().getIdentifier(num_of_color, "id", getPackageName());
-                            View btn = findViewById(colorID);
+                            RadioButton btn =(RadioButton) findViewById(colorID);
                             btn.setEnabled(false);
+                            if(!btn.equals(rb)) {
+                                if (color_int == 1) {
+                                        btn.setButtonDrawable(R.drawable.yellow3);
+                                    } else if (color_int == 2) {
+                                        btn.setButtonDrawable(R.drawable.blue3);
+                                    } else if (color_int == 3) {
+                                        btn.setButtonDrawable(R.drawable.green3);
+                                    } else if (color_int == 4) {
+                                        btn.setButtonDrawable(R.drawable.pink3);
+                                    } else if (color_int == 5) {
+                                        btn.setButtonDrawable(R.drawable.purple3);
+                                    } else {
+                                        btn.setButtonDrawable(R.drawable.red3);
+                                    }
 
-                        }
+                                }
+                            }
+
+
 
                         lastChecked[team_int - 1] = color_int;
                         teams[team_int - 1].set_color(lastChecked[team_int - 1]);
