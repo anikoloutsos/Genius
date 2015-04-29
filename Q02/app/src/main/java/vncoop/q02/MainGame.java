@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -28,6 +29,10 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     ImageButton secondbtn;
     ImageButton diamondbtn;
     ImageButton spinbtn;
+    ImageView[] diamond_images;
+    ImageView diamond_table;
+    boolean[] current_diamonds;
+    int teamColor;
 
     Animation MoveRightFAdeIn;
     Animation MoveLeftFAdeIn;
@@ -40,6 +45,20 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         setContentView(R.layout.activity_main_game);
 
 
+
+
+        diamond_images= new ImageView[6];
+
+        diamond_images[0] = (ImageView) findViewById(R.id.blueDiamId);
+        diamond_images[1] = (ImageView) findViewById(R.id.pinkDiamId);
+        diamond_images[2] = (ImageView) findViewById(R.id.redDiamId);
+        diamond_images[3] = (ImageView) findViewById(R.id.purpleDiamId);
+        diamond_images[4] = (ImageView) findViewById(R.id.greenDiamId);
+        diamond_images[5] = (ImageView) findViewById(R.id.yellowDiamId);
+
+
+
+
         //INTENTS FROM INITIALIZE
         Intent intent = getIntent();
         current_team = intent.getIntExtra("current_message", 1);
@@ -48,35 +67,49 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         for (int i = 0; i < number_of_teams; i++) {
             teams[i] = (parcTeams) intent.getParcelableExtra("team" + i);
         }
+        current_diamonds = teams[current_team].get_diamonds();
 
         //Τυχαία επιλογή κατηγοριών ή διαμαντιών\\
         randGen rg = new randGen();
-        epiloges = rg.getRandomCategories(teams[current_team].get_diamonds());
+        epiloges = rg.getRandomCategories(current_diamonds);
+        //
+
+        teamColor=teams[current_team].get_color();
+
+        int TableDrawableId = getResources().getIdentifier(intColorToString(teamColor) + "_table", "drawable", getPackageName());
+        diamond_table=(ImageView)findViewById(R.id.TableId);
+        diamond_table.setImageResource(TableDrawableId);
+
+        for (int i = 0; i < 6; i++) {
+            if (current_diamonds[i]) {
+                diamond_images[i].setVisibility(View.VISIBLE);
+            }
+        }
+
+            //Εμφάνιση ονόματος ομάδας\\
+            TextView Omada = (TextView) findViewById(R.id.textViewOmada);
+            Omada.setText(teams[current_team].get_name());
 
 
-        //Εμφάνιση ονόματος ομάδας\\
-        TextView Omada = (TextView) findViewById(R.id.textViewOmada);
-        Omada.setText(teams[current_team].get_name());
+            //FOrtwse ta animation
+
+            MoveRightFAdeIn = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.move_fade2);
 
 
-        //FOrtwse ta animation
+            MoveRightFAdeIn.setAnimationListener(this);
 
-        MoveRightFAdeIn = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.move_fade2);
-
-
-        MoveRightFAdeIn.setAnimationListener(this);
-
-        MoveLeftFAdeIn = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.move_fade1);
+            MoveLeftFAdeIn = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.move_fade1);
 
 
-        MoveLeftFAdeIn.setAnimationListener(this);
+            MoveLeftFAdeIn.setAnimationListener(this);
 
-        ScaleFade = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.scale_fade);
+            ScaleFade = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.scale_fade);
 
-        ScaleFade.setAnimationListener(this);
+            ScaleFade.setAnimationListener(this);
+
 
 
 
@@ -278,6 +311,22 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         public void onAnimationStart(Animation animation) {
             // TODO Auto-generated method stub
 
+        }
+
+        public String intColorToString(int col){
+            if(col==1){
+                return "yellow";
+            }else if(col==2){
+                return "blue";
+            }else if(col==3){
+                return "green";
+            }else if(col==4){
+                return "pink";
+            }else if(col==5){
+                return "purple";
+            }else{
+                return "red";
+            }
         }
 
 }
