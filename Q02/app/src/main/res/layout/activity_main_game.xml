@@ -25,7 +25,7 @@
         android:onClick = "getCatOrD"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="154dp"
-        android:src="@drawable/spo_b"
+        android:src="@drawable/zari"
         android:scaleType="fitCenter"
         android:visibility="visible" />
 
