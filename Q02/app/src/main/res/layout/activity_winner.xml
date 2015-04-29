@@ -3,7 +3,8 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="vncoop.q02.Winner">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="vncoop.q02.Winner"
+    android:background="@drawable/background">
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,8 +39,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/statsid"
+        android:id="@+id/statsT1id"
         android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/winningTeamTextId"
+        android:layout_alignEnd="@+id/winningTeamTextId" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/statsT2id"
+        android:layout_below="@+id/statsT1id"
         android:layout_alignRight="@+id/winningTeamTextId"
         android:layout_alignEnd="@+id/winningTeamTextId" />
 </RelativeLayout>

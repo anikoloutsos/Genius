@@ -28,9 +28,24 @@ public class Winner extends ActionBarActivity {
 
         TextView tv1 = (TextView) findViewById(R.id.winningTeamTextId);
         tv1.setText(teams[current_team].get_name());
-        TextView statistics = (TextView) findViewById(R.id.statsid);
-        float geoStats = ((float) teams[current_team].getStats()[6]/(float) teams[current_team].getStats()[0])*100;
-        statistics.setText(teams[current_team].get_name()+" Γεωγραφία: " +geoStats +"%   "+teams[current_team].getStats()[6]+" στα "+teams[current_team].getStats()[0]);
+
+        TextView statistics_team1 = (TextView) findViewById(R.id.statsT1id);
+        TextView statistics_team2 = (TextView) findViewById(R.id.statsT2id);
+
+        //Statistics
+        for(int i=0;i<number_of_teams;i++){
+            float[] percentStats = new float[6];
+            for(int j=0;j<6;j++){
+                percentStats[j] = 100*teams[i].get_category_stats(6+j)/teams[i].get_category_stats(j);
+
+            } //eikonitsa dipla se kathe statistiko???
+            if(i==0) {
+                statistics_team1.setText(teams[i].get_name() + "\nΓεωγραφία:" + percentStats[0] + "\nΣινεμά/Μουσική:" + percentStats[1]);
+            }
+            else if(i==1){
+                statistics_team2.setText(teams[i].get_name() + "\nΓεωγραφία:" + percentStats[0] + "\nΣινεμά/Μουσική:" + percentStats[1]);
+            }
+        }
 
     }
 
