@@ -105,6 +105,9 @@ public class parcTeams implements Parcelable{
         return stats;
     }
 
+    public float get_category_stats(int i){
+        return (float) stats[i];
+    }
     //Set Data\\
     public void set_name(String s){
         name = s;
