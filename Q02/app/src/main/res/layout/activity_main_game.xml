@@ -15,7 +15,11 @@
         android:id="@+id/textViewOmada"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:textColor="#ffffffff"
+        android:textSize="60dp"
+
+        />
 
 
     <ImageButton
@@ -70,58 +74,63 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/TableId"
-        android:src="@drawable/blue_table"
-        android:layout_below="@+id/textViewOmada"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:src="@drawable/diam_table"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/blueDiamId"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textViewOmada"
         android:src="@drawable/blue_diam"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/redDiamId"
         android:src="@drawable/red_diam"
         android:visibility="gone"
-        android:layout_below="@+id/textViewOmada"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/yellowDiamId"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textViewOmada"
         android:src="@drawable/yellow_diam"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/purpleDiamId"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textViewOmada"
         android:src="@drawable/purple_diam"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pinkDiamId"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textViewOmada"
         android:src="@drawable/pink_diam"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/greenDiamId"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textViewOmada"
         android:src="@drawable/green_diam"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />/>
 
 </RelativeLayout>

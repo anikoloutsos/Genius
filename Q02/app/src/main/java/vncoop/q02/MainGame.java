@@ -2,10 +2,12 @@ package vncoop.q02;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -76,10 +79,10 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
         teamColor=teams[current_team].get_color();
 
-        int TableDrawableId = getResources().getIdentifier(intColorToString(teamColor) + "_table", "drawable", getPackageName());
-        diamond_table=(ImageView)findViewById(R.id.TableId);
-        diamond_table.setImageResource(TableDrawableId);
 
+        int backId= getResources().getIdentifier(intColorToString(teamColor) + "_back", "drawable", getPackageName());
+        RelativeLayout Layoutc= (RelativeLayout)findViewById(R.id.something);
+        Layoutc.setBackgroundResource(backId);
         for (int i = 0; i < 6; i++) {
             if (current_diamonds[i]) {
                 diamond_images[i].setVisibility(View.VISIBLE);
@@ -87,8 +90,10 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         }
 
             //Εμφάνιση ονόματος ομάδας\\
-            TextView Omada = (TextView) findViewById(R.id.textViewOmada);
-            Omada.setText(teams[current_team].get_name());
+            TextView OmadaTxt = (TextView) findViewById(R.id.textViewOmada);
+            Typeface font = Typeface.createFromAsset(getAssets(), "AC-Creepy_Unicode.ttf");
+            OmadaTxt.setTypeface(font);
+            OmadaTxt.setText(teams[current_team].get_name());
 
 
             //FOrtwse ta animation

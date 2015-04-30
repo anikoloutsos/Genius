@@ -27,17 +27,19 @@
                 android:id="@+id/textView"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:textColor="#ff000000" />
+                android:textColor="#ffffff"
+                android:textSize="50dp"/>
 
             <EditText
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="100dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/textView1"
                 android:visibility="visible"
                 android:hint="@string/team1"
-                style="@style/EditTextStyleWhite"
+                android:textSize="40dp"
+
                 />
             <RadioGroup
                 android:layout_marginTop="25dp"
@@ -119,7 +121,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
-                style="@style/EditTextStyleWhite"/>
+                android:textSize="40dp"
+                />
 
             <RadioGroup
                 android:layout_marginTop="25dp"
@@ -196,7 +199,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
-                style="@style/EditTextStyleWhite"/>
+                android:textSize="40dp"
+                />
             <RadioGroup
                 android:layout_marginTop="25dp"
                 android:id="@+id/radioGroup3"
@@ -271,7 +275,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
-                style="@style/EditTextStyleWhite"/>
+                android:textSize="40dp"
+                />
             <RadioGroup
                 android:layout_marginTop="25dp"
                 android:id="@+id/radioGroup4"
@@ -344,7 +349,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
-                style="@style/EditTextStyleWhite"/>
+                android:textSize="40dp"
+                />
             <RadioGroup
                 android:layout_marginTop="25dp"
                 android:id="@+id/radioGroup5"
@@ -418,7 +424,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
-                style="@style/EditTextStyleWhite"/>
+                android:textSize="40dp"
+                />
             <RadioGroup
                 android:layout_marginTop="25dp"
                 android:id="@+id/radioGroup6"

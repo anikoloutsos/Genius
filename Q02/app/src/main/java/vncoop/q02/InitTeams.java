@@ -1,6 +1,7 @@
 package vncoop.q02;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -51,6 +52,10 @@ public class InitTeams extends ActionBarActivity {
 
 
         ////////////////////////////////
+        TextView RithmiseisTxt = (TextView)findViewById(R.id.textView);
+        Typeface font = Typeface.createFromAsset(getAssets(), "AC-Creepy_Unicode.ttf");
+        RithmiseisTxt.setTypeface(font);
+
 
 
         //////////////SET EDIT TEXT VISIBLE//////////////
@@ -59,6 +64,7 @@ public class InitTeams extends ActionBarActivity {
             int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
             b[i - 1] = (EditText) findViewById(resID);
             b[i - 1].setVisibility(View.VISIBLE);
+            b[i-1].setTypeface(font);
             teams[i - 1].set_name(b[i - 1].getHint().toString());
             //Log.d("----------------",b.getHint().toString());
         }
