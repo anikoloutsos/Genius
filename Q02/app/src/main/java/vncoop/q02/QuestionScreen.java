@@ -1,6 +1,7 @@
 package vncoop.q02;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -39,6 +40,8 @@ public class QuestionScreen extends ActionBarActivity {
 
         TextView questiontext = (TextView) findViewById(R.id.questionId);
         questiontext.setText(questionAndAnswer[0]);
+        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+        questiontext.setTypeface(font);
 
     }
 
@@ -53,6 +56,9 @@ public class QuestionScreen extends ActionBarActivity {
         TextView answertext = (TextView) findViewById(R.id.answerid);
         answertext.setText(questionAndAnswer[1]);
         answertext.setVisibility(View.VISIBLE);
+        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+        answertext.setTypeface(font);
+
         Button answerbtn = (Button) findViewById(R.id.answerbtnid);
         answerbtn.setVisibility(View.GONE);
     }

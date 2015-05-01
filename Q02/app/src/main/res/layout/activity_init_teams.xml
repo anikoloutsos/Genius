@@ -28,7 +28,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:textColor="#ffffff"
-                android:textSize="50dp"/>
+                android:textSize="30dp"
+                android:visibility="gone" />
 
             <EditText
                 android:layout_marginTop="100dp"
@@ -38,7 +39,7 @@
                 android:id="@+id/textView1"
                 android:visibility="visible"
                 android:hint="@string/team1"
-                android:textSize="40dp"
+                android:textSize="30dp"
 
                 />
             <RadioGroup
@@ -121,7 +122,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
-                android:textSize="40dp"
+                android:textSize="30dp"
                 />
 
             <RadioGroup
@@ -199,7 +200,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
-                android:textSize="40dp"
+                android:textSize="30dp"
                 />
             <RadioGroup
                 android:layout_marginTop="25dp"
@@ -275,7 +276,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
-                android:textSize="40dp"
+                android:textSize="30dp"
                 />
             <RadioGroup
                 android:layout_marginTop="25dp"
@@ -349,7 +350,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
-                android:textSize="40dp"
+                android:textSize="30dp"
                 />
             <RadioGroup
                 android:layout_marginTop="25dp"
@@ -424,7 +425,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
-                android:textSize="40dp"
+                android:textSize="30dp"
                 />
             <RadioGroup
                 android:layout_marginTop="25dp"
@@ -488,6 +489,14 @@
 
             </RadioGroup>
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:src="@drawable/goon"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
 
         </RelativeLayout>

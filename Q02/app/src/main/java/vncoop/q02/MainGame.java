@@ -91,7 +91,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
             //Εμφάνιση ονόματος ομάδας\\
             TextView OmadaTxt = (TextView) findViewById(R.id.textViewOmada);
-            Typeface font = Typeface.createFromAsset(getAssets(), "AC-Creepy_Unicode.ttf");
+            Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
             OmadaTxt.setTypeface(font);
             OmadaTxt.setText(teams[current_team].get_name());
 

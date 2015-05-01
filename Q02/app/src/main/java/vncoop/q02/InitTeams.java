@@ -53,7 +53,7 @@ public class InitTeams extends ActionBarActivity {
 
         ////////////////////////////////
         TextView RithmiseisTxt = (TextView)findViewById(R.id.textView);
-        Typeface font = Typeface.createFromAsset(getAssets(), "AC-Creepy_Unicode.ttf");
+        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
         RithmiseisTxt.setTypeface(font);
 
 
