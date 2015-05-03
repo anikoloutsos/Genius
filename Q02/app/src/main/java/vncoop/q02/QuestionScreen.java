@@ -1,5 +1,6 @@
 package vncoop.q02;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
@@ -8,10 +9,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-public class QuestionScreen extends ActionBarActivity {
+public class QuestionScreen extends Activity {
 
     String[] questionAndAnswer = new String[2];
     int current_team;
@@ -43,12 +46,24 @@ public class QuestionScreen extends ActionBarActivity {
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
         questiontext.setTypeface(font);
 
+        int backId= getResources().getIdentifier(intCatToString(category) + "_back", "drawable", getPackageName());
+        RelativeLayout Layoutc= (RelativeLayout)findViewById(R.id.layout);
+        Layoutc.setBackgroundResource(backId);
+
+        int ansId= getResources().getIdentifier(intCatToString(category) + "_selector", "drawable", getPackageName());
+        ImageButton ans = (ImageButton)findViewById(R.id.answerbtnid);
+        ans.setImageResource(ansId);
+
+        TextView catTitle = (TextView)findViewById(R.id.categoryTitle);
+        catTitle.setTypeface(font);
+        catTitle.setText(intCatToText(category));
+
     }
 
 
     public void answerbtn(View view){
-        Button correct = (Button) findViewById(R.id.correctbtnid);
-        Button wrong = (Button) findViewById(R.id.wrongbtnid);
+        ImageButton correct = (ImageButton) findViewById(R.id.correctbtnid);
+        ImageButton wrong = (ImageButton) findViewById(R.id.wrongbtnid);
 
         correct.setVisibility(View.VISIBLE);
         wrong.setVisibility(View.VISIBLE);
@@ -59,8 +74,8 @@ public class QuestionScreen extends ActionBarActivity {
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
         answertext.setTypeface(font);
 
-        Button answerbtn = (Button) findViewById(R.id.answerbtnid);
-        answerbtn.setVisibility(View.GONE);
+        //Button answerbtn = (Button) findViewById(R.id.answerbtnid);
+        //answerbtn.setVisibility(View.GONE);
     }
 
     public void onCorrect(View view){
@@ -147,5 +162,37 @@ public class QuestionScreen extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public String intCatToString(int col){
+        if(col==1){
+            return "geo";
+        }else if(col==2){
+            return "cim";
+        }else if(col==3){
+            return "his";
+        }else if(col==4){
+            return "art";
+        }else if(col==5){
+            return "sci";
+        }else{
+            return "spo";
+        }
+    }
+
+    public String intCatToText(int col){
+        if(col==1){
+            return "Γεωγραφία";
+        }else if(col==2){
+            return "Ψυχαγωγία";
+        }else if(col==3){
+            return "Ιστορία";
+        }else if(col==4){
+            return "Τέχνες";
+        }else if(col==5){
+            return "Επιστήμη";
+        }else{
+            return "Χόμπυ";
+        }
     }
 }

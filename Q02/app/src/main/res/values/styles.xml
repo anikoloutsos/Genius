@@ -5,8 +5,11 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="EditTextStyleWhite" parent="android:style/Widget.EditText">
+    <style name="QuestionStyleWhite" parent="android:style/Widget.TextView">
         <item name="android:background">@drawable/color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">25dp</item>
+
     </style>
 
 </resources>

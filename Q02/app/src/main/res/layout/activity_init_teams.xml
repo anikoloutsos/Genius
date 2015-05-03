@@ -28,8 +28,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:textColor="#ffffff"
-                android:textSize="30dp"
-                android:visibility="gone" />
+                android:textSize="50dp"
+                />
 
             <EditText
                 android:layout_marginTop="100dp"
@@ -40,6 +40,7 @@
                 android:visibility="visible"
                 android:hint="@string/team1"
                 android:textSize="30dp"
+                style="@style/QuestionStyleWhite"
 
                 />
             <RadioGroup
@@ -49,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-
+                style="@style/QuestionStyleWhite"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView1"
                 android:visibility="visible">
@@ -123,6 +124,7 @@
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
                 android:textSize="30dp"
+                style="@style/QuestionStyleWhite"
                 />
 
             <RadioGroup
@@ -133,7 +135,8 @@
                 android:orientation="horizontal"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView2"
-                android:visibility="gone">
+                android:visibility="gone"
+                style="@style/QuestionStyleWhite">
 
                 <RadioButton
                     android:id="@+id/color2_1"
@@ -201,6 +204,7 @@
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
                 android:textSize="30dp"
+                style="@style/QuestionStyleWhite"
                 />
             <RadioGroup
                 android:layout_marginTop="25dp"
@@ -210,7 +214,8 @@
                 android:orientation="horizontal"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView3"
-                android:visibility="gone">
+                android:visibility="gone"
+                style="@style/QuestionStyleWhite">
 
                 <RadioButton
                     android:id="@+id/color3_1"
@@ -277,6 +282,7 @@
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
                 android:textSize="30dp"
+                style="@style/QuestionStyleWhite"
                 />
             <RadioGroup
                 android:layout_marginTop="25dp"
@@ -286,7 +292,8 @@
                 android:orientation="horizontal"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView4"
-                android:visibility="gone">
+                android:visibility="gone"
+                style="@style/QuestionStyleWhite">
 
                 <RadioButton
                     android:id="@+id/color4_1"
@@ -351,6 +358,7 @@
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
                 android:textSize="30dp"
+                style="@style/QuestionStyleWhite"
                 />
             <RadioGroup
                 android:layout_marginTop="25dp"
@@ -360,7 +368,8 @@
                 android:orientation="horizontal"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView5"
-                android:visibility="gone">
+                android:visibility="gone"
+                style="@style/QuestionStyleWhite">
 
                 <RadioButton
                     android:id="@+id/color5_1"
@@ -426,6 +435,7 @@
                 android:layout_marginTop="150dp"
                 android:visibility="gone"
                 android:textSize="30dp"
+                style="@style/QuestionStyleWhite"
                 />
             <RadioGroup
                 android:layout_marginTop="25dp"
@@ -435,7 +445,9 @@
                 android:orientation="horizontal"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView6"
-                android:visibility="gone">
+                android:visibility="gone"
+                style="@style/QuestionStyleWhite"
+                >
 
                 <RadioButton
                     android:id="@+id/color6_1"
@@ -489,14 +501,6 @@
 
             </RadioGroup>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView2"
-                android:src="@drawable/goon"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
 
 
         </RelativeLayout>
