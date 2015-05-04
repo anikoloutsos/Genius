@@ -41,6 +41,9 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     Animation MoveLeftFAdeIn;
     Animation ScaleFade;
 
+    Typeface font;
+    TextView Odigies;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +51,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         setContentView(R.layout.activity_main_game);
 
 
-
-
-        diamond_images= new ImageView[6];
+        diamond_images = new ImageView[6];
 
         diamond_images[0] = (ImageView) findViewById(R.id.blueDiamId);
         diamond_images[1] = (ImageView) findViewById(R.id.pinkDiamId);
@@ -58,8 +59,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         diamond_images[3] = (ImageView) findViewById(R.id.purpleDiamId);
         diamond_images[4] = (ImageView) findViewById(R.id.greenDiamId);
         diamond_images[5] = (ImageView) findViewById(R.id.yellowDiamId);
-
-
 
 
         //INTENTS FROM INITIALIZE
@@ -77,11 +76,11 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         epiloges = rg.getRandomCategories(current_diamonds);
         //
 
-        teamColor=teams[current_team].get_color();
+        teamColor = teams[current_team].get_color();
 
 
-        int backId= getResources().getIdentifier(intColorToString(teamColor) + "_back", "drawable", getPackageName());
-        RelativeLayout Layoutc= (RelativeLayout)findViewById(R.id.something);
+        int backId = getResources().getIdentifier(intColorToString(teamColor) + "_back", "drawable", getPackageName());
+        RelativeLayout Layoutc = (RelativeLayout) findViewById(R.id.something);
         Layoutc.setBackgroundResource(backId);
         for (int i = 0; i < 6; i++) {
             if (current_diamonds[i]) {
@@ -89,33 +88,34 @@ public class MainGame extends Activity implements Animation.AnimationListener {
             }
         }
 
-            //Εμφάνιση ονόματος ομάδας\\
-            TextView OmadaTxt = (TextView) findViewById(R.id.textViewOmada);
-            Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
-            OmadaTxt.setTypeface(font);
-            OmadaTxt.setText(teams[current_team].get_name());
+        //Εμφάνιση ονόματος ομάδας\\
+        TextView OmadaTxt = (TextView) findViewById(R.id.textViewOmada);
+        font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+        OmadaTxt.setTypeface(font);
+        OmadaTxt.setText(teams[current_team].get_name());
+
+        Odigies = (TextView) findViewById(R.id.instractions);
+        Odigies.setTypeface(font);
 
 
-            //FOrtwse ta animation
+        //FOrtwse ta animation
 
-            MoveRightFAdeIn = AnimationUtils.loadAnimation(getApplicationContext(),
-                    R.anim.move_fade2);
-
-
-            MoveRightFAdeIn.setAnimationListener(this);
-
-            MoveLeftFAdeIn = AnimationUtils.loadAnimation(getApplicationContext(),
-                    R.anim.move_fade1);
+        MoveRightFAdeIn = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.move_fade2);
 
 
-            MoveLeftFAdeIn.setAnimationListener(this);
+        MoveRightFAdeIn.setAnimationListener(this);
 
-            ScaleFade = AnimationUtils.loadAnimation(getApplicationContext(),
-                    R.anim.scale_fade);
-
-            ScaleFade.setAnimationListener(this);
+        MoveLeftFAdeIn = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.move_fade1);
 
 
+        MoveLeftFAdeIn.setAnimationListener(this);
+
+        ScaleFade = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.scale_fade);
+
+        ScaleFade.setAnimationListener(this);
 
 
     }
@@ -148,6 +148,9 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         secondbtn = (ImageButton) findViewById(R.id.btnCat2Id);
         diamondbtn = (ImageButton) findViewById(R.id.btnDiaId);
         spinbtn = (ImageButton) findViewById(R.id.btnSpin);
+
+        //test
+        Odigies.setVisibility(View.INVISIBLE);
 
         //animation
         spinbtn.setImageResource(R.drawable.spin_animation);
@@ -183,8 +186,33 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                 }
                 spinbtn.setVisibility(View.GONE);
 
+                //emfanizei ta text
+                if (epiloges[1].equals("naS")) {
+
+                    TextView Diatxt = (TextView) findViewById(R.id.textDiam);
+                    Diatxt.setTypeface(font);
+                    Diatxt.setText(catToText(epiloges[0]+"_b"));
+                    Diatxt.setVisibility(View.VISIBLE);
+                    Odigies.setVisibility(View.VISIBLE);
+                    Odigies.setText("Απαντήστε σωστα για να κερδίσετε διαμάντι");
+
+                }else {
+                    Odigies.setVisibility(View.VISIBLE);
+                    Odigies.setText("Επιλέξτε κατηγορία");
+
+                    TextView Cattxt1 = (TextView) findViewById(R.id.textCat1);
+                    Cattxt1.setTypeface(font);
+                    Cattxt1.setText(catToText(epiloges[0]));
+                    Cattxt1.setVisibility(View.VISIBLE);
+
+                    TextView Cattxt2 = (TextView) findViewById(R.id.textCat2);
+                    Cattxt2.setTypeface(font);
+                    Cattxt2.setText(catToText(epiloges[1]));
+                    Cattxt2.setVisibility(View.VISIBLE);
+                }
+
             }
-        }, 1000);
+        }, 1050);
 
 
     }
@@ -299,40 +327,59 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     }
 
 
-        @Override
-        public void onAnimationEnd(Animation animation) {
-            // Take any action after completing the animation
+    @Override
+    public void onAnimationEnd(Animation animation) {
+        // Take any action after completing the animation
 
 
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void onAnimationStart(Animation animation) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public String intColorToString(int col) {
+        if (col == 1) {
+            return "yellow";
+        } else if (col == 2) {
+            return "blue";
+        } else if (col == 3) {
+            return "green";
+        } else if (col == 4) {
+            return "pink";
+        } else if (col == 5) {
+            return "purple";
+        } else {
+            return "red";
+        }
+    }
+
+    public String catToText(String cat) {
+
+        if(cat.equals("geo_b")) {
+            return "Γεωγραφία";
+        }else if(cat.equals("cim_b")) {
+            return "Ψυχαγωγία";
+        }else if(cat.equals("his_b")) {
+                return "Ιστορία";
+        }else if(cat.equals("art_b")) {
+                return "Τέχνες";
+        }else if(cat.equals("sci_b")) {
+                return "Επιστήμη";
+        }else {
+                return "Χόμπυ";
         }
 
-        @Override
-        public void onAnimationRepeat(Animation animation) {
-            // TODO Auto-generated method stub
+    }
 
-        }
-
-        @Override
-        public void onAnimationStart(Animation animation) {
-            // TODO Auto-generated method stub
-
-        }
-
-        public String intColorToString(int col){
-            if(col==1){
-                return "yellow";
-            }else if(col==2){
-                return "blue";
-            }else if(col==3){
-                return "green";
-            }else if(col==4){
-                return "pink";
-            }else if(col==5){
-                return "purple";
-            }else{
-                return "red";
-            }
-        }
 
 }
 
