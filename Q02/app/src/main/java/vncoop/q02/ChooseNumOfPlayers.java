@@ -1,6 +1,7 @@
 package vncoop.q02;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,18 +29,24 @@ public class ChooseNumOfPlayers extends ActionBarActivity {
         setContentView(R.layout.activity_choose_num_of_players);
 
 
+        TextView RithmiseisTxt = (TextView)findViewById(R.id.textView);
+        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+        RithmiseisTxt.setTypeface(font);
+
+
          /* Initialize Radio Group and attach click handler */
         radioGroup = (RadioGroup) findViewById(R.id.RadioGroup_id);
-        radioGroup.clearCheck();
+        //radioGroup.clearCheck();
 
         /* Attach CheckedChangeListener to radio group */
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton rb = (RadioButton) group.findViewById(checkedId);
-                if(null!=rb && checkedId > -1){
-                    Toast.makeText(ChooseNumOfPlayers.this, rb.getText(), Toast.LENGTH_SHORT).show();
-                }
+               // if(null!=rb && checkedId > -1){
+                 //   Toast.makeText(ChooseNumOfPlayers.this, rb.getText(), Toast.LENGTH_SHORT).show();
+            //    }
+
 
             }
         });
@@ -55,7 +62,7 @@ public class ChooseNumOfPlayers extends ActionBarActivity {
     public void next_click(View view){
         Intent nextClick = new Intent(this, InitTeams.class);
         RadioButton rb = (RadioButton) radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
-        number_of_teams=Integer.parseInt(rb.getText().toString());
+        number_of_teams=Integer.parseInt(rb.getTag().toString());
         nextClick.putExtra("n_team_message",number_of_teams);
         startActivity(nextClick);
         finish();

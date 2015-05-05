@@ -11,11 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/NumofTeams"
-        android:id="@+id/txtTeamNumb"
+        android:text="Αριθμός Ομάδων"
+        android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
+        android:textColor="#ffffff"
+        android:textSize="50dp" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
@@ -23,69 +24,69 @@
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:id="@+id/RadioGroup_id"
-        android:layout_below="@id/txtTeamNumb">
+        android:layout_below="@id/textView"
+        android:checkedButton="@+id/button2">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/two"
             android:id="@+id/button2"
             android:layout_below="@+id/txtTeamNumb"
             android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:button="@drawable/twoplayer_selector"
+            android:checked="true"
+            android:scaleType="fitCenter"
+            android:tag="2"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/three"
+            android:button="@drawable/threeplayer_selector"
             android:id="@+id/button3"
             android:layout_below="@+id/button2"
             android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:tag="3"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/four"
+            android:button="@drawable/fourplayer_selector"
             android:id="@+id/button4"
             android:layout_below="@+id/button3"
             android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:tag="4"/>
 
     </RadioGroup>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/back"
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+
         android:id="@+id/button7"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="back_click"/>
+        android:onClick="back_click"
+        android:src="@drawable/home"
+        android:background="#00ffffff"
+        android:scaleType="fitCenter"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next"
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:id="@+id/button8"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="next_click"/>
+        android:onClick="next_click"
+        android:background="#00ffffff"
+        android:src="@drawable/next"
+        android:scaleType="fitCenter"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView7"
-        android:layout_below="@+id/RadioGroup_id"
-        android:layout_alignLeft="@+id/txtTeamNumb"
-        android:layout_alignStart="@+id/txtTeamNumb"
-        android:layout_above="@+id/button7"
-        android:layout_alignRight="@+id/RadioGroup_id"
-        android:layout_alignEnd="@+id/RadioGroup_id"
-        android:visibility="gone" />
 
 
 </RelativeLayout>
