@@ -1,14 +1,12 @@
 package vncoop.q02;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -33,7 +31,7 @@ public class QuestionScreen extends Activity {
         number_of_teams = intent.getIntExtra("number_of_teams", 1);
         teams = new parcTeams[number_of_teams];
         for (int i=0;i<number_of_teams;i++) {
-            teams[i] = (parcTeams) intent.getParcelableExtra("team"+i);
+            teams[i] = intent.getParcelableExtra("team"+i);
         }
         isDiamond = intent.getBooleanExtra("isDiamond",false);
         category = intent.getIntExtra("categoryNum",0);
@@ -86,14 +84,14 @@ public class QuestionScreen extends Activity {
         Intent intent1 = new Intent(this,Winner.class);
         boolean WeDontHaveAWinner= true;
         //an itan erwtisi gia diamanti kane true to sigkekrimeno diamanti
-        if (isDiamond == true){
+        if (isDiamond){
             teams[current_team].set_diamonds(category-1,true);
             //AN EXEI OLA TA DIAMANTIA NIKAEI
-            boolean[] AllDiamonds = new boolean[6];
+            boolean[] AllDiamonds;
             int diamondCounter=0;
             AllDiamonds = teams[current_team].get_diamonds();
             for (int i=0;i<6;i++){
-                if (AllDiamonds[i] == true){
+                if (AllDiamonds[i]){
                     diamondCounter++;
                 }
             }
@@ -142,27 +140,6 @@ public class QuestionScreen extends Activity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_question_screen, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public String intCatToString(int col){
         if(col==1){
@@ -195,4 +172,23 @@ public class QuestionScreen extends Activity {
             return "Χόμπυ";
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Σταμάτημα Παιχνιδιού")
+                .setMessage("Είστε σίγουροι ότι θέλετε να επιστρέψετε στην αρχική οθόνη;")
+                .setPositiveButton("Ναι", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("Όχι", null)
+                .show();
+    }
+
 }

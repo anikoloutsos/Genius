@@ -1,7 +1,5 @@
 package vncoop.q02;
 
-import android.util.Log;
-
 import java.util.Random;
 
 /**

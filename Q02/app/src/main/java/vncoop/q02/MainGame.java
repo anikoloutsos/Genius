@@ -1,15 +1,15 @@
 package vncoop.q02;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -17,6 +17,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 
 
 public class MainGame extends Activity implements Animation.AnimationListener {
@@ -33,7 +40,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     ImageButton diamondbtn;
     ImageButton spinbtn;
     ImageView[] diamond_images;
-    ImageView diamond_table;
     boolean[] current_diamonds;
     int teamColor;
 
@@ -67,7 +73,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         number_of_teams = intent.getIntExtra("number_of_teams", 1);
         teams = new parcTeams[number_of_teams];
         for (int i = 0; i < number_of_teams; i++) {
-            teams[i] = (parcTeams) intent.getParcelableExtra("team" + i);
+            teams[i] = intent.getParcelableExtra("team" + i);
         }
         current_diamonds = teams[current_team].get_diamonds();
 
@@ -121,27 +127,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_game, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public void getCatOrD(View view) {
         firstbtn = (ImageButton) findViewById(R.id.btnCat1Id);
@@ -364,22 +349,47 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
     public String catToText(String cat) {
 
-        if(cat.equals("geo_b")) {
-            return "Γεωγραφία";
-        }else if(cat.equals("cim_b")) {
-            return "Ψυχαγωγία";
-        }else if(cat.equals("his_b")) {
+        switch (cat) {
+            case "geo_b":
+                return "Γεωγραφία";
+            case "cim_b":
+                return "Ψυχαγωγία";
+            case "his_b":
                 return "Ιστορία";
-        }else if(cat.equals("art_b")) {
+            case "art_b":
                 return "Τέχνες";
-        }else if(cat.equals("sci_b")) {
+            case "sci_b":
                 return "Επιστήμη";
-        }else {
+            default:
                 return "Χόμπυ";
         }
 
     }
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Σταμάτημα Παιχνιδιού")
+                .setMessage("Είστε σίγουροι ότι θέλετε να επιστρέψετε στην αρχική οθόνη;")
+                .setPositiveButton("Ναι", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
+
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("Όχι", null)
+                .show();
+    }
+
+    @Override
+    protected void onDestroy() throws IOException{
+
+        super.onDestroy();
+    }
 }
 

@@ -3,6 +3,8 @@ package vncoop.q02;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by Alexandros on 20/4/2015.
  * Parcelable teams class
@@ -73,19 +75,6 @@ public class parcTeams implements Parcelable{
             stats[i]=0;
         }
     }
-    public parcTeams(String n, int c) {
-        name = n;
-        color = c;
-        for(int i=0;i<6; i++) {
-            diamonds[i] = true;
-        }
-        for (int i=0;i<12;i++){
-            stats[i]=0;
-        }
-        //for(int i=0;i<12; i++) {
-         //   stats[i] = 0;
-        //}
-    }
 
 
     //Get back Data\\
@@ -101,9 +90,6 @@ public class parcTeams implements Parcelable{
         return color;
     }
 
-    public int[] getStats(){
-        return stats;
-    }
 
     public float get_category_stats(int i){
         return (float) stats[i];

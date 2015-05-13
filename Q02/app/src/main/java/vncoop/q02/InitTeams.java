@@ -1,14 +1,11 @@
 package vncoop.q02;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -20,7 +17,6 @@ import android.widget.Toast;
 
 public class InitTeams extends ActionBarActivity {
     private int number_of_players;
-    private RadioGroup radioGroup;
 
 
     EditText[] b;
@@ -87,7 +83,7 @@ public class InitTeams extends ActionBarActivity {
             int RGID = getResources().getIdentifier(radioGroups, "id", getPackageName());
 
             /* Initialize Radio Group and attach click handler */
-            radioGroup = (RadioGroup) findViewById(RGID);
+            RadioGroup radioGroup = (RadioGroup) findViewById(RGID);
 
             radioGroup.clearCheck();
             /* Attach CheckedChangeListener to radio group */
@@ -110,7 +106,7 @@ public class InitTeams extends ActionBarActivity {
                         if (lastChecked[team_int - 1] != 0) {
 
                             for (int i = 1; i <= number_of_players; i++) {
-                                int ls = lastChecked[team_int-1];
+                                int ls = lastChecked[team_int - 1];
                                 String aa = "color" + i + "_" + ls;
                                 int ID = getResources().getIdentifier(aa, "id", getPackageName());
                                 View btn = findViewById(ID);
@@ -139,26 +135,25 @@ public class InitTeams extends ActionBarActivity {
 
                             String num_of_color = "color" + i + "_" + color_string;
                             int colorID = getResources().getIdentifier(num_of_color, "id", getPackageName());
-                            RadioButton btn =(RadioButton) findViewById(colorID);
+                            RadioButton btn = (RadioButton) findViewById(colorID);
                             btn.setEnabled(false);
-                            if(!btn.equals(rb)) {
+                            if (!btn.equals(rb)) {
                                 if (color_int == 1) {
-                                        btn.setButtonDrawable(R.drawable.yellow3);
-                                    } else if (color_int == 2) {
-                                        btn.setButtonDrawable(R.drawable.blue3);
-                                    } else if (color_int == 3) {
-                                        btn.setButtonDrawable(R.drawable.green3);
-                                    } else if (color_int == 4) {
-                                        btn.setButtonDrawable(R.drawable.pink3);
-                                    } else if (color_int == 5) {
-                                        btn.setButtonDrawable(R.drawable.purple3);
-                                    } else {
-                                        btn.setButtonDrawable(R.drawable.red3);
-                                    }
-
+                                    btn.setButtonDrawable(R.drawable.yellow3);
+                                } else if (color_int == 2) {
+                                    btn.setButtonDrawable(R.drawable.blue3);
+                                } else if (color_int == 3) {
+                                    btn.setButtonDrawable(R.drawable.green3);
+                                } else if (color_int == 4) {
+                                    btn.setButtonDrawable(R.drawable.pink3);
+                                } else if (color_int == 5) {
+                                    btn.setButtonDrawable(R.drawable.purple3);
+                                } else {
+                                    btn.setButtonDrawable(R.drawable.red3);
                                 }
-                            }
 
+                            }
+                        }
 
 
                         lastChecked[team_int - 1] = color_int;
@@ -234,24 +229,21 @@ public class InitTeams extends ActionBarActivity {
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_init_teams, menu);
-        return true;
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Σταμάτημα Παιχνιδιού")
+                .setMessage("Είστε σίγουροι ότι θέλετε να επιστρέψετε στην αρχική οθόνη;")
+                .setPositiveButton("Ναι", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("Όχι", null)
+                .show();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

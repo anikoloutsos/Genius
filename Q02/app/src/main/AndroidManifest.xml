@@ -6,10 +6,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+         >
         <activity
             android:name=".mainMenu"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,27 +20,33 @@
         </activity>
         <activity
             android:name=".Rules"
-            android:label="@string/title_activity_rules" >
+            android:label="@string/title_activity_rules"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ChooseNumOfPlayers"
-            android:label="@string/title_activity_choose_num_of_players" >
+            android:label="@string/title_activity_choose_num_of_players"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".InitTeams"
-            android:label="@string/title_activity_init_teams" >
+            android:label="@string/title_activity_init_teams"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".MainGame"
-            android:label="@string/title_activity_main_game" >
+            android:label="@string/title_activity_main_game"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".QuestionScreen"
-            android:label="@string/title_activity_question_screen" >
+            android:label="@string/title_activity_question_screen"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Winner"
-            android:label="@string/title_activity_winner" >
+            android:label="@string/title_activity_winner"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
