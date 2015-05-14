@@ -42,9 +42,11 @@
                 android:textSize="30dp"
                 style="@style/QuestionStyleWhite"
 
-                />
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:maxLength="25" />
             <RadioGroup
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/radioGroup1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,14 +123,16 @@
                 android:id="@+id/textView2"
                 android:layout_below="@id/textView1"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="100dp"
                 android:visibility="gone"
                 android:textSize="30dp"
                 style="@style/QuestionStyleWhite"
-                />
+                android:maxLength="25"
+                android:maxLines="1"
+                android:inputType="textPersonName" />
 
             <RadioGroup
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/radioGroup2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -201,13 +205,15 @@
                 android:id="@+id/textView3"
                 android:layout_below="@id/textView2"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="100dp"
                 android:visibility="gone"
                 android:textSize="30dp"
                 style="@style/QuestionStyleWhite"
-                />
+                android:maxLines="1"
+                android:maxLength="25"
+                android:inputType="textPersonName" />
             <RadioGroup
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/radioGroup3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -279,13 +285,15 @@
                 android:id="@+id/textView4"
                 android:layout_below="@id/textView3"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="100dp"
                 android:visibility="gone"
                 android:textSize="30dp"
                 style="@style/QuestionStyleWhite"
-                />
+                android:maxLength="25"
+                android:maxLines="1"
+                android:inputType="textPersonName" />
             <RadioGroup
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/radioGroup4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -355,13 +363,15 @@
                 android:id="@+id/textView5"
                 android:layout_below="@id/textView4"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="100dp"
                 android:visibility="gone"
                 android:textSize="30dp"
                 style="@style/QuestionStyleWhite"
-                />
+                android:maxLength="25"
+                android:maxLines="1"
+                android:inputType="textPersonName" />
             <RadioGroup
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/radioGroup5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -432,13 +442,15 @@
                 android:id="@+id/textView6"
                 android:layout_below="@id/textView5"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="100dp"
                 android:visibility="gone"
                 android:textSize="30dp"
                 style="@style/QuestionStyleWhite"
-                />
+                android:maxLength="25"
+                android:maxLines="1"
+                android:inputType="textPersonName" />
             <RadioGroup
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/radioGroup6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -530,7 +542,6 @@
         android:background="#00ffffff"
         android:src="@drawable/next"
         android:scaleType="fitCenter"/>
-
 
 
 </RelativeLayout>

@@ -197,7 +197,8 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                     secondbtn.setVisibility(View.VISIBLE);
                     secondbtn.setAnimation(MoveRightFAdeIn);
                 }
-                spinbtn.setVisibility(View.GONE);
+                spinbtn.setVisibility(View.INVISIBLE);
+                spinbtn.setEnabled(false);
 
                 //emfanizei ta text
                 if (epiloges[1].equals("naS")) {

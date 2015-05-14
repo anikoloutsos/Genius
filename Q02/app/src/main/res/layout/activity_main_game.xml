@@ -21,8 +21,7 @@
         android:layout_marginTop="15dp"
 
 
-
-        />
+        android:gravity="center" />
 
 
     <ImageButton
@@ -44,12 +43,9 @@
         android:background="#00000000"
         android:visibility="gone"
         android:onClick="choicebtn1"
-        android:layout_marginTop="131dp"
-        android:layout_below="@+id/textViewOmada"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp" />
+        android:layout_alignTop="@+id/btnSpin"
+        android:layout_alignParentStart="true" />
     <ImageButton
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -79,8 +75,7 @@
         android:id="@+id/TableId"
         android:src="@drawable/diam_table"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -89,7 +84,8 @@
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />/>
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true" />/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,7 +94,8 @@
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />/>
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true" />/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,7 +104,8 @@
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />/>
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true" />/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -116,7 +114,8 @@
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />/>
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true" />/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -125,7 +124,8 @@
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />/>
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true" />/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -134,7 +134,8 @@
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -143,10 +144,9 @@
         android:text="Ρίξτε το ζάρι"
         android:gravity="center"
         android:id="@+id/instractions"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/textViewOmada"
+        android:textColor="#ffffffff"
         android:layout_centerHorizontal="true"
-        android:textColor="#ffffffff" />
+        android:layout_marginTop="110dp"/>
 
     <TextView
         android:layout_width="wrap_content"
