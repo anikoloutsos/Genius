@@ -210,7 +210,7 @@ public class InitTeams extends ActionBarActivity {
         nextClick.putExtra("number_of_teams",number_of_players);
         nextClick.putExtra("current_message", current_team);
         for (int i = 0;i<number_of_players;i++) {
-            nextClick.putExtra("team"+i,teams[i]);
+            nextClick.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
 
 

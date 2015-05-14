@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Parcelable teams class
  */
 
-public class parcTeams implements Parcelable{
+public class parcTeams implements Parcelable,Serializable{
 
     //WHATS INSIDE THE PARCEL\\
     private int color = 0;

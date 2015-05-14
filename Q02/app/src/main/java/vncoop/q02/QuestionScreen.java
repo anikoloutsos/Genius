@@ -11,6 +11,11 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 
 public class QuestionScreen extends Activity {
 
@@ -35,6 +40,30 @@ public class QuestionScreen extends Activity {
         }
         isDiamond = intent.getBooleanExtra("isDiamond",false);
         category = intent.getIntExtra("categoryNum",0);
+
+        //SAVE STATE SE PERIPTWSI POU VGEI
+        String PATH = "/data/data/vncoop.q02/databases/";
+        String FILE = "poutsa1";
+        File f = new File(PATH + FILE);
+        f.delete();
+        try {
+
+            ObjectOutputStream oOS = new ObjectOutputStream(
+
+                    new FileOutputStream(PATH + FILE));
+            oOS.writeInt(number_of_teams);
+            for (int i = 0; i < number_of_teams; i++) {
+                oOS.writeObject(teams[i]);
+            }
+
+            oOS.writeInt(current_team);
+            oOS.flush();
+            oOS.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //WS EDW TO SAVE STATE
+
 
         DBHelper finder = new DBHelper(getApplicationContext());
         questionAndAnswer = finder.randFromCat(category);
@@ -98,7 +127,7 @@ public class QuestionScreen extends Activity {
             if (diamondCounter == 6){
 
                 for (int i = 0;i<number_of_teams;i++) {
-                    intent1.putExtra("team"+i,teams[i]);
+                    intent1.putExtra("team"+i, (android.os.Parcelable) teams[i]);
                 }
                 intent1.putExtra("current_message",current_team);
                 intent1.putExtra("number_of_teams",number_of_teams);
@@ -110,7 +139,7 @@ public class QuestionScreen extends Activity {
         intent.putExtra("number_of_teams",number_of_teams);
         intent.putExtra("current_message", current_team);
         for (int i = 0;i<number_of_teams;i++) {
-            intent.putExtra("team"+i,teams[i]);
+            intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
         if (WeDontHaveAWinner){
             startActivity(intent);
@@ -132,7 +161,7 @@ public class QuestionScreen extends Activity {
         intent.putExtra("number_of_teams",number_of_teams);
         intent.putExtra("current_message", current_team);
         for (int i = 0;i<number_of_teams;i++) {
-            intent.putExtra("team"+i,teams[i]);
+            intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
 
         startActivity(intent);

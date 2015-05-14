@@ -10,6 +10,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -18,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -77,10 +80,35 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         }
         current_diamonds = teams[current_team].get_diamonds();
 
+
+        //SAVE STATE SE PERIPTWSI POU VGEI
+        String PATH = "/data/data/vncoop.q02/databases/";
+        String FILE = "poutsa1";
+        File f = new File(PATH + FILE);
+        f.delete();
+        try {
+
+            ObjectOutputStream oOS = new ObjectOutputStream(
+
+                    new FileOutputStream(PATH + FILE));
+            oOS.writeInt(number_of_teams);
+            for (int i = 0; i < number_of_teams; i++) {
+                oOS.writeObject(teams[i]);
+            }
+
+            oOS.writeInt(current_team);
+            oOS.flush();
+            oOS.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //WS EDW TO SAVE STATE
+
+
         //Τυχαία επιλογή κατηγοριών ή διαμαντιών\\
         randGen rg = new randGen();
         epiloges = rg.getRandomCategories(current_diamonds);
-        //
+
 
         teamColor = teams[current_team].get_color();
 
@@ -229,7 +257,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         intent.putExtra("number_of_teams", number_of_teams);
         intent.putExtra("current_message", current_team);
         for (int i = 0; i < number_of_teams; i++) {
-            intent.putExtra("team" + i, teams[i]);
+            intent.putExtra("team" + i, (android.os.Parcelable) teams[i]);
         }
         intent.putExtra("categoryNum", categoryNum);
         intent.putExtra("isDiamond", false);
@@ -265,7 +293,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         intent.putExtra("number_of_teams", number_of_teams);
         intent.putExtra("current_message", current_team);
         for (int i = 0; i < number_of_teams; i++) {
-            intent.putExtra("team" + i, teams[i]);
+            intent.putExtra("team" + i, (android.os.Parcelable) teams[i]);
         }
         intent.putExtra("categoryNum", categoryNum);
         intent.putExtra("isDiamond", false);
@@ -302,7 +330,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         intent.putExtra("number_of_teams", number_of_teams);
         intent.putExtra("current_message", current_team);
         for (int i = 0; i < number_of_teams; i++) {
-            intent.putExtra("team" + i, teams[i]);
+            intent.putExtra("team" + i, (android.os.Parcelable) teams[i]);
         }
         intent.putExtra("categoryNum", categoryNum);
         intent.putExtra("isDiamond", true);
@@ -372,11 +400,9 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Σταμάτημα Παιχνιδιού")
                 .setMessage("Είστε σίγουροι ότι θέλετε να επιστρέψετε στην αρχική οθόνη;")
-                .setPositiveButton("Ναι", new DialogInterface.OnClickListener()
-                {
+                .setPositiveButton("Ναι", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
 
                         finish();
                     }
@@ -386,10 +412,5 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                 .show();
     }
 
-    @Override
-    protected void onDestroy() throws IOException{
-
-        super.onDestroy();
-    }
 }
 
