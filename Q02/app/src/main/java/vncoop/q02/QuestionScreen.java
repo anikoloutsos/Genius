@@ -20,10 +20,20 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 
 public class QuestionScreen extends Activity implements FragmentManager.OnBackStackChangedListener {
@@ -56,10 +66,34 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         number_of_teams = intent.getIntExtra("number_of_teams", 1);
         teams = new parcTeams[number_of_teams];
         for (int i=0;i<number_of_teams;i++) {
-            teams[i] = (parcTeams) intent.getParcelableExtra("team"+i);
+            teams[i] = intent.getParcelableExtra("team"+i);
         }
         isDiamond = intent.getBooleanExtra("isDiamond",false);
         category = intent.getIntExtra("categoryNum",0);
+
+        //SAVE STATE SE PERIPTWSI POU VGEI
+        String PATH = "/data/data/vncoop.q02/databases/";
+        String FILE = "poutsa1";
+        File f = new File(PATH + FILE);
+        f.delete();
+        try {
+
+            ObjectOutputStream oOS = new ObjectOutputStream(
+
+                    new FileOutputStream(PATH + FILE));
+            oOS.writeInt(number_of_teams);
+            for (int i = 0; i < number_of_teams; i++) {
+                oOS.writeObject(teams[i]);
+            }
+
+            oOS.writeInt(current_team);
+            oOS.flush();
+            oOS.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //WS EDW TO SAVE STATE
+
 
         DBHelper finder = new DBHelper(getApplicationContext());
         questionAndAnswer = finder.randFromCat(category);
@@ -175,23 +209,6 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
     }
 
 
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Σταμάτημα Παιχνιδιού")
-                .setMessage("Είστε σίγουροι ότι θέλετε να επιστρέψετε στην αρχική οθόνη;")
-                .setPositiveButton("Ναι", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        finish();
-                    }
-
-                })
-                .setNegativeButton("Όχι", null)
-                .show();
-    }
 
 
 
@@ -213,21 +230,21 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         Intent intent1 = new Intent(this,Winner.class);
         boolean WeDontHaveAWinner= true;
         //an itan erwtisi gia diamanti kane true to sigkekrimeno diamanti
-        if (isDiamond == true){
+        if (isDiamond){
             teams[current_team].set_diamonds(category-1,true);
             //AN EXEI OLA TA DIAMANTIA NIKAEI
-            boolean[] AllDiamonds = new boolean[6];
+            boolean[] AllDiamonds;
             int diamondCounter=0;
             AllDiamonds = teams[current_team].get_diamonds();
             for (int i=0;i<6;i++){
-                if (AllDiamonds[i] == true){
+                if (AllDiamonds[i]){
                     diamondCounter++;
                 }
             }
             if (diamondCounter == 6){
 
                 for (int i = 0;i<number_of_teams;i++) {
-                    intent1.putExtra("team"+i,teams[i]);
+                    intent1.putExtra("team"+i, (android.os.Parcelable) teams[i]);
                 }
                 intent1.putExtra("current_message",current_team);
                 intent1.putExtra("number_of_teams",number_of_teams);
@@ -239,7 +256,7 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         intent.putExtra("number_of_teams",number_of_teams);
         intent.putExtra("current_message", current_team);
         for (int i = 0;i<number_of_teams;i++) {
-            intent.putExtra("team"+i,teams[i]);
+            intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
         if (WeDontHaveAWinner){
             startActivity(intent);
@@ -261,24 +278,12 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         intent.putExtra("number_of_teams",number_of_teams);
         intent.putExtra("current_message", current_team);
         for (int i = 0;i<number_of_teams;i++) {
-            intent.putExtra("team"+i,teams[i]);
+            intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
 
         startActivity(intent);
         finish();
     }
-
-
-    public String question(){
-        return questionAndAnswer[0];
-    }
-    public String answer(){
-        return questionAndAnswer[1];
-    }
-    public String category(){
-        return intCatToString(category);
-    }
-
 
 
     public String intCatToString(int col){
@@ -312,4 +317,23 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
             return "Χόμπυ";
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Σταμάτημα Παιχνιδιού")
+                .setMessage("Είστε σίγουροι ότι θέλετε να επιστρέψετε στην αρχική οθόνη;")
+                .setPositiveButton("Ναι", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("Όχι", null)
+                .show();
+    }
+
 }
