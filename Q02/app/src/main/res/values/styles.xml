@@ -12,4 +12,12 @@
 
     </style>
 
+
+    <style name="Artstyle" parent="android:style/Widget.TextView">
+        <item name="android:background">@drawable/art_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">20dp</item>
+
+    </style>
+
 </resources>

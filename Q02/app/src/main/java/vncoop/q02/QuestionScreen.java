@@ -1,20 +1,32 @@
 package vncoop.q02;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-public class QuestionScreen extends Activity {
+public class QuestionScreen extends Activity implements FragmentManager.OnBackStackChangedListener {
 
     String[] questionAndAnswer = new String[2];
     int current_team;
@@ -22,13 +34,24 @@ public class QuestionScreen extends Activity {
     parcTeams[] teams;
     boolean isDiamond;
     int category;
+
+    CardFrontFragment cardfrontfragment= new CardFrontFragment();
+    CardBackFragment cardbackfragment= new CardBackFragment();
+
+
+
+    private boolean mShowingBack = false;
+    private Handler mHandler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_screen);
 
-        //INTENTS FROM INITIALIZE
-        Intent intent = getIntent();
+
+        ///get intents
+
+        Intent intent=getIntent();
         current_team = intent.getIntExtra("current_message", 1);
         number_of_teams = intent.getIntExtra("number_of_teams", 1);
         teams = new parcTeams[number_of_teams];
@@ -41,42 +64,146 @@ public class QuestionScreen extends Activity {
         DBHelper finder = new DBHelper(getApplicationContext());
         questionAndAnswer = finder.randFromCat(category);
 
-        TextView questiontext = (TextView) findViewById(R.id.questionId);
-        questiontext.setText(questionAndAnswer[0]);
-        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
-        questiontext.setTypeface(font);
 
-        int backId= getResources().getIdentifier(intCatToString(category) + "_back", "drawable", getPackageName());
-        RelativeLayout Layoutc= (RelativeLayout)findViewById(R.id.layout);
-        Layoutc.setBackgroundResource(backId);
 
-        int ansId= getResources().getIdentifier(intCatToString(category) + "_selector", "drawable", getPackageName());
-        ImageButton ans = (ImageButton)findViewById(R.id.answerbtnid);
-        ans.setImageResource(ansId);
+        //
 
-        TextView catTitle = (TextView)findViewById(R.id.categoryTitle);
-        catTitle.setTypeface(font);
-        catTitle.setText(intCatToText(category));
+        //send to fragments
+
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("catText",intCatToText(category));
+        bundle1.putString("cat",intCatToString(category));
+        bundle1.putString("que",questionAndAnswer[0]);
+        bundle1.putBoolean("isdiamond",isDiamond);
+
+        Bundle bundle2 = new Bundle();
+        bundle2.putString("cat",intCatToString(category));
+        bundle2.putString("ans",questionAndAnswer[1]);
+
+        cardfrontfragment.setArguments(bundle1);
+        cardbackfragment.setArguments(bundle2);
+
+        //
+
+
+
+
+        if (savedInstanceState == null) {
+            getFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.layout, cardfrontfragment)
+                    .commit();
+        }
+
 
     }
+
+    private void flipCard() {
+
+        //flip to front
+        if (mShowingBack) {
+
+            getFragmentManager()
+                    .beginTransaction()
+
+                            // Replace the default fragment animations with animator resources representing
+                            // rotations when switching to the back of the card, as well as animator
+                            // resources representing rotations when flipping back to the front (e.g. when
+                            // the system Back button is pressed).
+                    .setCustomAnimations(
+                            R.anim.card_flip_right_in, R.anim.card_flip_right_out,
+                            R.anim.card_flip_left_in, R.anim.card_flip_left_out)
+
+                            // Replace any fragments currently in the container view with a fragment
+                            // representing the next page (indicated by the just-incremented currentPage
+                            // variable).
+                    .replace(R.id.layout, cardfrontfragment)
+
+                            // Add this transaction to the back stack, allowing users to press Back
+                            // to get to the front of the card.
+                    .addToBackStack(null)
+
+
+
+                            // Commit the transaction.
+                    .commit();
+            mShowingBack=false;
+
+            return;
+        }else{
+
+
+
+            getFragmentManager()
+                    .beginTransaction()
+
+
+                            // Replace the default fragment animations with animator resources representing
+                            // rotations when switching to the back of the card, as well as animator
+                            // resources representing rotations when flipping back to the front (e.g. when
+                            // the system Back button is pressed).
+                    .setCustomAnimations(
+                            R.anim.card_flip_right_in, R.anim.card_flip_right_out,
+                            R.anim.card_flip_left_in, R.anim.card_flip_left_out)
+
+                            // Replace any fragments currently in the container view with a fragment
+                            // representing the next page (indicated by the just-incremented currentPage
+                            // variable).
+                    .replace(R.id.layout, cardbackfragment)
+
+                            // Add this transaction to the back stack, allowing users to press Back
+                            // to get to the front of the card.
+                    .addToBackStack(null)
+
+                            // Commit the transaction.
+                    .commit();
+            mShowingBack = true;
+
+            return;
+        }
+
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        mShowingBack = (getFragmentManager().getBackStackEntryCount() > 0);
+
+        // When the back stack changes, invalidate the options menu (action bar).
+        FrameLayout answb= (FrameLayout)findViewById(R.id.buttonid);
+        answb.setEnabled(false);
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Σταμάτημα Παιχνιδιού")
+                .setMessage("Είστε σίγουροι ότι θέλετε να επιστρέψετε στην αρχική οθόνη;")
+                .setPositiveButton("Ναι", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("Όχι", null)
+                .show();
+    }
+
+
 
 
     public void answerbtn(View view){
-        ImageButton correct = (ImageButton) findViewById(R.id.correctbtnid);
-        ImageButton wrong = (ImageButton) findViewById(R.id.wrongbtnid);
 
-        correct.setVisibility(View.VISIBLE);
-        wrong.setVisibility(View.VISIBLE);
+        FrameLayout answb= (FrameLayout)findViewById(R.id.buttonid);
+        answb.setEnabled(true);
+        flipCard();
 
-        TextView answertext = (TextView) findViewById(R.id.answerid);
-        answertext.setText(questionAndAnswer[1]);
-        answertext.setVisibility(View.VISIBLE);
-        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
-        answertext.setTypeface(font);
-
-        //Button answerbtn = (Button) findViewById(R.id.answerbtnid);
-        //answerbtn.setVisibility(View.GONE);
     }
+
 
     public void onCorrect(View view){
 
@@ -120,7 +247,7 @@ public class QuestionScreen extends Activity {
         else{
             startActivity(intent1);
         }
-        finish();
+        this.finish();
     }
 
     public void onWrong(View view){
@@ -142,27 +269,17 @@ public class QuestionScreen extends Activity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_question_screen, menu);
-        return true;
+    public String question(){
+        return questionAndAnswer[0];
+    }
+    public String answer(){
+        return questionAndAnswer[1];
+    }
+    public String category(){
+        return intCatToString(category);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public String intCatToString(int col){
         if(col==1){

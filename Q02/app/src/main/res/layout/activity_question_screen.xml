@@ -5,85 +5,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="vncoop.q02.QuestionScreen"
-    android:background="@drawable/spo_back"
+    android:background="@drawable/background"
     android:visibility="visible"
     android:id="@+id/layout">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/questionId"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="90dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        style="@style/QuestionStyleWhite"/>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/answerbtnid"
-        android:onClick="answerbtn"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/questionId"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/spo_selector"
-        android:background="#00ffffff" />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="poutses"
-        android:id="@+id/answerid"
-        android:visibility="gone"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/answerbtnid"
-        android:layout_centerHorizontal="true"
-        style="@style/QuestionStyleWhite"/>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Σωστά"
-        android:id="@+id/correctbtnid"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/questionId"
-        android:layout_alignEnd="@+id/questionId"
-        android:onClick = "onCorrect"
-        android:visibility="gone"
-        android:src="@drawable/right_selector"
-        android:background="#00ffffff" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Λάθος"
-        android:id="@+id/wrongbtnid"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick = "onWrong"
-        android:visibility="gone"
-        android:src="@drawable/wrong_selector"
-        android:background="#00ffffff" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="50dp"
-        android:text="kategoria"
-        android:id="@+id/categoryTitle"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="-10dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:gravity="center"
-        android:layout_alignRight="@+id/questionId"
-        android:layout_alignEnd="@+id/questionId" />
-
+    <FrameLayout
+        android:layout_width="220dp"
+        android:layout_height="380dp"
+        android:id="@+id/buttonid"
+        android:layout_centerInParent="true"
+        android:onClick="answerbtn"></FrameLayout>
 </RelativeLayout>
