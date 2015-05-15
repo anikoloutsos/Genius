@@ -71,29 +71,7 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         isDiamond = intent.getBooleanExtra("isDiamond",false);
         category = intent.getIntExtra("categoryNum",0);
 
-        //SAVE STATE SE PERIPTWSI POU VGEI
-        String PATH = "/data/data/vncoop.q02/databases/";
-        String FILE = "poutsa1";
-        File f = new File(PATH + FILE);
-        f.delete();
-        try {
-
-            ObjectOutputStream oOS = new ObjectOutputStream(
-
-                    new FileOutputStream(PATH + FILE));
-            oOS.writeInt(number_of_teams);
-            for (int i = 0; i < number_of_teams; i++) {
-                oOS.writeObject(teams[i]);
-            }
-
-            oOS.writeInt(current_team);
-            oOS.flush();
-            oOS.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //WS EDW TO SAVE STATE
-
+       
 
         DBHelper finder = new DBHelper(getApplicationContext());
         questionAndAnswer = finder.randFromCat(category);

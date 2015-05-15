@@ -55,7 +55,7 @@ public class mainMenu extends Activity {
 
     public void GoOnClick(View view){
 
-        Intent goOn = new Intent(this,MainGame.class);
+        Intent goOn = new Intent(this,SavedGameStatus.class);
         String FILE = "/data/data/vncoop.q02/databases/poutsa1";
         parcTeams[] teams = new parcTeams[2];
         int number_of_teams = 2;

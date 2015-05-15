@@ -1,11 +1,13 @@
 package vncoop.q02;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -224,26 +226,44 @@ public class InitTeams extends ActionBarActivity {
 
     }
 
+    public void throwPopup(View view){
 
+        Context context = this;
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
 
+        View promptView = layoutInflater.inflate(R.layout.popup_insert_name, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        // set prompts.xml to be the layout file of the alertdialog builder
+        alertDialogBuilder.setView(promptView);
+        final EditText input = (EditText) promptView.findViewById(R.id.userInput);
+        // setup a dialog window
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // get user input and set it to result
 
+                                b[0].setText(input.getText());
+                                //b[1].setText(input.getText());
+                                //b[2].setText(input.getText());
+                                //b[3].setText(input.getText());
 
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Σταμάτημα Παιχνιδιού")
-                .setMessage("Είστε σίγουροι ότι θέλετε να επιστρέψετε στην αρχική οθόνη;")
-                .setPositiveButton("Ναι", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
                     }
-
                 })
-                .setNegativeButton("Όχι", null)
-                .show();
+                .setNegativeButton("Ακύρωση",
+        new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        // create an alert dialog
+        AlertDialog alertD = alertDialogBuilder.create();
+
+        alertD.show();
+
+
+
     }
+
 
 }
