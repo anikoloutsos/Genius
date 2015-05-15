@@ -9,7 +9,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;

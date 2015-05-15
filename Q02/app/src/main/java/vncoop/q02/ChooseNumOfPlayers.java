@@ -1,5 +1,6 @@
 package vncoop.q02;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 
 
 
-public class ChooseNumOfPlayers extends ActionBarActivity {
+public class ChooseNumOfPlayers extends Activity {
     private RadioGroup radioGroup;
     public int number_of_teams;
 
@@ -22,7 +23,6 @@ public class ChooseNumOfPlayers extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_choose_num_of_players);
 
 
@@ -53,21 +53,5 @@ public class ChooseNumOfPlayers extends ActionBarActivity {
     }
     ///////////////////////
 
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Σταμάτημα Παιχνιδιού")
-                .setMessage("Είστε σίγουροι ότι θέλετε να επιστρέψετε στην αρχική οθόνη;")
-                .setPositiveButton("Ναι", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-
-                })
-                .setNegativeButton("Όχι", null)
-                .show();
-    }
 
 }

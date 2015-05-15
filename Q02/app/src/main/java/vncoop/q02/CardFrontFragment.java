@@ -39,8 +39,8 @@ public class CardFrontFragment extends Fragment {
         questiontext.setTypeface(font);
 
         int backId= getResources().getIdentifier(category + "_que", "drawable", getActivity().getPackageName());
-        RelativeLayout Layoutc= (RelativeLayout)myFragmentView.findViewById(R.id.layout);
-        Layoutc.setBackgroundResource(backId);
+        ImageView Layoutc = (ImageView) myFragmentView.findViewById(R.id.card);
+        Layoutc.setImageResource(backId);
 
         TextView catTitle = (TextView)myFragmentView.findViewById(R.id.categoryTitle);
         catTitle.setTypeface(font);
