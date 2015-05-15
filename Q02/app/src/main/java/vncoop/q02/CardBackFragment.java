@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -46,8 +48,8 @@ public class CardBackFragment extends Fragment {
         questiontext.setTypeface(font);
 
         int backId= getResources().getIdentifier(category + "_que", "drawable", getActivity().getPackageName());
-        ImageView Layoutc= (ImageView)myFragmentView.findViewById(R.id.card);
-        Layoutc.setImageResource(backId);
+        RelativeLayout Layoutc= (RelativeLayout)myFragmentView.findViewById(R.id.layout);
+        Layoutc.setBackgroundResource(backId);
 
 
         TextView catTitle = (TextView)myFragmentView.findViewById(R.id.categoryTitle);
