@@ -16,48 +16,53 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textColor="#ffffff"
-        android:textSize="50dp" />
+        android:textSize="50sp" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:orientation="vertical"
         android:id="@+id/RadioGroup_id"
         android:layout_below="@id/textView"
         android:checkedButton="@+id/button2"
-        android:layout_centerHorizontal="true">
+        android:layout_above="@+id/button7">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button2"
-            android:layout_below="@+id/txtTeamNumb"
             android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"
-            android:button="@drawable/twoplayer_selector"
+            android:button="@null"
             android:checked="true"
-            android:scaleType="fitXY"
-            android:tag="2"/>
+            android:tag="2"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/twoplayer_selector"
+            />
 
         <RadioButton
-            android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
-            android:button="@drawable/threeplayer_selector"
+            android:layout_width="wrap_content"
+
+            android:button="@null"
+            android:background="@drawable/threeplayer_selector"
             android:id="@+id/button3"
-            android:layout_below="@+id/button2"
             android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"
-            android:tag="3"/>
+            android:tag="3"
+            android:checked="false"
+            android:layout_gravity="center_horizontal"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:button="@drawable/fourplayer_selector"
+            android:button="@null"
+            android:background="@drawable/fourplayer_selector"
             android:id="@+id/button4"
-            android:layout_below="@+id/button3"
             android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"
-            android:tag="4"/>
+
+            android:tag="4"
+            android:checked="false"
+            android:layout_gravity="center_horizontal" />
 
     </RadioGroup>
 
