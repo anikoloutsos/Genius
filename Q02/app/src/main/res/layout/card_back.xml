@@ -19,13 +19,30 @@
         android:layout_alignParentStart="true" />
 
 
+
+
     <RelativeLayout
 
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="360dp"
+        android:layout_height="550dp"
         android:id="@+id/back"
-        android:visibility="visible">
+        android:visibility="visible"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="50dp"
+            android:text="kategoria"
+            android:layout_marginTop="18dp"
+            android:id="@+id/categoryTitle"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_gravity="top|center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -34,65 +51,60 @@
             android:text="Large Text"
             android:id="@+id/questionId"
             android:layout_gravity="center"
-            android:textAlignment="center"
+            android:autoText="false"
             android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="28dp"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Η απάντηση ηταν σωστή ή λάθος;"
+            android:text="Η απάντηση ήταν σωστή ή λάθος;"
             android:id="@+id/hintId"
-            android:layout_gravity="center_horizontal|bottom"
             style="@style/Artstyle"
-            android:layout_above="@+id/correctbtnid"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/questionId"
+
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="28dp"/>
 
         <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:scaleType="fitXY"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="fitCenter"
             android:text="Σωστά"
             android:id="@+id/correctbtnid"
             android:onClick = "onCorrect"
             android:visibility="visible"
             android:src="@drawable/right_selector"
             android:background="#00ffffff"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_alignTop="@+id/wrongbtnid"
-            android:layout_alignLeft="@+id/categoryTitle"
-            android:layout_alignStart="@+id/categoryTitle" />
+            android:layout_below="@+id/hintId"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="60dp"
+            android:layout_alignParentRight="true" />
 
         <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:scaleType="fitXY"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="fitCenter"
             android:text="Λάθος"
             android:id="@+id/wrongbtnid"
             android:onClick = "onWrong"
             android:visibility="visible"
             android:src="@drawable/wrong_selector"
             android:background="#00ffffff"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/categoryTitle"
-            android:layout_alignEnd="@+id/categoryTitle"
-            android:layout_marginBottom="59dp" />
+            android:layout_below="@+id/hintId"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginBottom="60dp"
+            android:layout_alignParentLeft="true"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50dp"
-            android:text="kategoria"
-            android:id="@+id/categoryTitle"
-            android:textColor="#FFFFFF"
-            android:gravity="center"
-            android:layout_gravity="top|center"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 

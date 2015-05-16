@@ -30,9 +30,6 @@ public class CardFrontFragment extends Fragment {
         int orgnlHeight = test.getDrawable().getIntrinsicHeight();
         int orgnlWidth = test.getDrawable().getIntrinsicWidth();
 
-        Log.d("o_height",Integer.toString(orgnlHeight));
-
-        Log.d("o_width",Integer.toString(orgnlWidth));
 
 
         RelativeLayout rl = (RelativeLayout) myFragmentView.findViewById(R.id.rlt);
