@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Q02</string>
+
+
+    <string name="action_settings">Settings</string>
+
+    <string name="new_game">Νέο Παιχνίδι</string>
+    <string name="options">Επιλογές</string>
+    <string name="rules">Κανόνες</string>
+    <string name="go_on">Συνέχεια Παιχνιδιού</string>
+    <string name="therules">shajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdshajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdshajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdshajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdshajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjashajsdjsabdjashdjash</string>
+
+    <string name="back">Πίσω</string>
+    <string name="NumofTeams">Αριθμός Ομάδων</string>
+    <string name="six">6</string>
+    <string name="five">5</string>
+    <string name="four">4</string>
+    <string name="three">3</string>
+    <string name="two">2</string>
+    <string name="one">1</string>
+    <string name="next">επόμενο</string>
+
+    <string name="team1">Ομάδα 1</string>
+    <string name="team2">Ομάδα 2</string>
+    <string name="team3">Ομάδα 3</string>
+    <string name="team4">Ομάδα 4</string>
+    <string name="team5">Ομάδα 5</string>
+    <string name="team6">Ομάδα 6</string>
+
+    <string name="rithmiseis_omadas">Ρυθμίσεις Ομάδων</string>
+    <string name="title_activity_rules">Rules</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_choose_num_of_players">ChooseNumOfPlayers</string>
+    <string name="title_activity_init_teams">InitTeams</string>
+    <string name="title_activity_main_game">MainGame</string>
+    <string name="title_activity_question_screen">QuestionScreen</string>
+    <string name="title_activity_winner">Winner</string>
+    <string name="title_activity_saved_game_status">SavedGameStatus</string>
+
+</resources>
