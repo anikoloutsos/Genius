@@ -26,12 +26,25 @@ public class CardFrontFragment extends Fragment {
                              Bundle savedInstanceState) {
         myFragmentView = inflater.inflate(R.layout.card_front, container, false);
 
+        ImageView test = (ImageView) myFragmentView.findViewById(R.id.card);
+        int orgnlHeight = test.getDrawable().getIntrinsicHeight();
+        int orgnlWidth = test.getDrawable().getIntrinsicWidth();
+
+        Log.d("o_height",Integer.toString(orgnlHeight));
+
+        Log.d("o_width",Integer.toString(orgnlWidth));
+
+
+        RelativeLayout rl = (RelativeLayout) myFragmentView.findViewById(R.id.rlt);
+        rl.getLayoutParams().height = orgnlHeight;
+        rl.getLayoutParams().width = orgnlWidth;
 
 
         String question = getArguments().getString("que");
         String category = getArguments().getString("cat");
         String categoryText = getArguments().getString("catText");
         boolean isdiamond = getArguments().getBoolean("isdiamond");
+
 
         TextView questiontext = (TextView) myFragmentView.findViewById(R.id.questionId);
         questiontext.setText(question);

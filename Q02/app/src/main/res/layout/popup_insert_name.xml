@@ -21,7 +21,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@+id/popupTeamNameId"
-    android:layout_alignParentStart="true"
     android:inputType="textPersonName"
     android:maxLines="1"
     android:maxLength="25">

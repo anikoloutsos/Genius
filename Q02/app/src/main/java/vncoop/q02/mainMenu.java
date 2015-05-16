@@ -31,7 +31,7 @@ public class mainMenu extends Activity {
 
         //Log.d("i have", dblist[0]);
 
-        //this.deleteDatabase("FDB.sqlite");
+        this.deleteDatabase("FDB.sqlite");
 
         DBHelper dbCreator = new DBHelper(getApplicationContext());
         try{
