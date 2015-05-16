@@ -1,0 +1,22 @@
+LOG - Checking percentile item positioning
+
+1. 	When setting layout arguments remember you are setting the upper right corner
+	In order to get the desired position you have to subtract half of the height and width of the object
+		example: lp.setMargins(Width/2-logo.getLayoutParams().width/2,Height/2-logo.getLayoutParams().height/2,0,0);
+	
+2.	In order to make this possible it is very important that all the images borders are correctly chosen.
+		example: the logo.png is asymmetrical in both x and y directions.
+	
+3.	Inevitably there will be some mistakes because the positing can only be done with integers and when we divide we get float numbers
+
+4.	Setting the position with layout parameters can be done this way: 
+		RelativeLayout.LayoutParams myLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+		myLayoutParams.setMargins(int Left, int Top, int Right, int Bottom);
+        myImageView.setLayoutParams(myLayoutParams);
+		
+5.	Seems Belalidicus...		
+		
+		...so shit...
+	
+	By Alexandros on the train - no internet so... English
+	
