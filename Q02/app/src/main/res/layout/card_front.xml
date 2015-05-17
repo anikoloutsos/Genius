@@ -58,7 +58,7 @@
             android:autoText="false"
             android:gravity="center"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="25dp"
+            android:layout_marginRight="28dp"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />

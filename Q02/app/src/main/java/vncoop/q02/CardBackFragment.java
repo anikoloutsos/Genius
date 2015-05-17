@@ -36,7 +36,15 @@ public class CardBackFragment extends Fragment {
                              Bundle savedInstanceState) {
         myFragmentView = inflater.inflate(R.layout.card_back, container, false);
 
+        ImageView test = (ImageView) myFragmentView.findViewById(R.id.card);
+        int orgnlHeight = test.getDrawable().getIntrinsicHeight();
+        int orgnlWidth = test.getDrawable().getIntrinsicWidth();
 
+
+
+        RelativeLayout rl = (RelativeLayout) myFragmentView.findViewById(R.id.back);
+        rl.getLayoutParams().height = orgnlHeight;
+        rl.getLayoutParams().width = orgnlWidth;
 
 
         String answer = getArguments().getString("ans");
