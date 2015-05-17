@@ -177,7 +177,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                 //Do something after 1000ms
 
                 if (epiloges[1].equals("naS")) {
-                    int didd = getResources().getIdentifier(epiloges[0], "drawable", getPackageName());
+                    int didd = getResources().getIdentifier(epiloges[0]+"_selector", "drawable", getPackageName());
                     diamondbtn.setScaleType(ImageButton.ScaleType.FIT_XY);
                     diamondbtn.setImageResource(didd);
                     diamondbtn.setVisibility(View.VISIBLE);
@@ -185,13 +185,13 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                 } else {
 
 
-                    int did1 = getResources().getIdentifier(epiloges[0], "drawable", getPackageName());
+                    int did1 = getResources().getIdentifier(epiloges[0]+"_selector", "drawable", getPackageName());
                     firstbtn.setScaleType(ImageButton.ScaleType.FIT_XY);
                     firstbtn.setImageResource(did1);
                     firstbtn.setVisibility(View.VISIBLE);
                     firstbtn.setAnimation(MoveLeftFAdeIn);
 
-                    int did2 = getResources().getIdentifier(epiloges[1], "drawable", getPackageName());
+                    int did2 = getResources().getIdentifier(epiloges[1]+"_selector", "drawable", getPackageName());
                     secondbtn.setScaleType(ImageButton.ScaleType.FIT_XY);
                     secondbtn.setImageResource(did2);
                     secondbtn.setVisibility(View.VISIBLE);
@@ -201,6 +201,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                 spinbtn.setEnabled(false);
 
                 //emfanizei ta text
+                //if diamanti
                 if (epiloges[1].equals("naS")) {
 
                     TextView Diatxt = (TextView) findViewById(R.id.textDiam);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/cim_selec"
+    <item android:drawable="@drawable/zari_selec"
           android:state_pressed="true" />
-    <item android:drawable="@drawable/cim" />
+    <item android:drawable="@drawable/zari" />
 </selector>

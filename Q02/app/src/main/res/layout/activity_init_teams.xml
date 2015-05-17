@@ -533,7 +533,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:onClick="back_click"
-        android:src="@drawable/home"
+        android:src="@drawable/home_selector"
         android:background="#00ffffff"
         android:scaleType="fitCenter"/>
 
@@ -546,7 +546,7 @@
         android:layout_alignParentEnd="true"
         android:onClick="next_click"
         android:background="#00ffffff"
-        android:src="@drawable/next"
+        android:src="@drawable/next_selector"
         android:scaleType="fitCenter"/>
 
 
