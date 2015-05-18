@@ -33,15 +33,31 @@ public class Winner extends ActionBarActivity {
         //Statistics
         for(int i=0;i<number_of_teams;i++){
             float[] percentStats = new float[6];
+            int[] stats_all = new int[6];
+            int[] stats_corr = new int[6];
             for(int j=0;j<6;j++){
                 percentStats[j] = 100*teams[i].get_category_stats(6+j)/teams[i].get_category_stats(j);
+                stats_all[j] = (int) teams[i].get_category_stats(j);
+                stats_corr[j] = (int) teams[i].get_category_stats(6+j);
 
             } //eikonitsa dipla se kathe statistiko???
             if(i==0) {
-                statistics_team1.setText(teams[i].get_name() + "\nΓεωγραφία:" + percentStats[0] + "\nΣινεμά/Μουσική:" + percentStats[1]);
+                statistics_team1.setText(teams[i].get_name()
+                        + "\nΓεωγραφία: Συνολικά" + stats_all[0] +"Σωστά" + stats_corr[0] + "Ποσοστό:" + percentStats[0]
+                        + "\nΨυχαγωγία: Συνολικά" + stats_all[1] +"Σωστά" + stats_corr[1] + "Ποσοστό:" + percentStats[1]
+                        + "\nΙστορία: Συνολικά" + stats_all[2] +"Σωστά" + stats_corr[2] + "Ποσοστό:" + percentStats[2]
+                        + "\nΤέχνες: Συνολικά" + stats_all[3] +"Σωστά" + stats_corr[3] + "Ποσοστό:" + percentStats[3]
+                        + "\nΕπιστήμη: Συνολικά" + stats_all[4] +"Σωστά" + stats_corr[4] + "Ποσοστό:" + percentStats[4]
+                        + "\nΧόμπυ: Συνολικά" + stats_all[5] +"Σωστά" + stats_corr[5] + "Ποσοστό:" + percentStats[5]);
             }
             else if(i==1){
-                statistics_team2.setText(teams[i].get_name() + "\nΓεωγραφία:" + percentStats[0] + "\nΣινεμά/Μουσική:" + percentStats[1]);
+                statistics_team2.setText(teams[i].get_name()
+                        + "\nΓεωγραφία: Συνολικά" + stats_all[0] +"Σωστά" + stats_corr[0] + "Ποσοστό:" + percentStats[0]
+                        + "\nΨυχαγωγία: Συνολικά" + stats_all[1] +"Σωστά" + stats_corr[1] + "Ποσοστό:" + percentStats[1]
+                        + "\nΙστορία: Συνολικά" + stats_all[2] +"Σωστά" + stats_corr[2] + "Ποσοστό:" + percentStats[2]
+                        + "\nΤέχνες: Συνολικά" + stats_all[3] +"Σωστά" + stats_corr[3] + "Ποσοστό:" + percentStats[3]
+                        + "\nΕπιστήμη: Συνολικά" + stats_all[4] +"Σωστά" + stats_corr[4] + "Ποσοστό:" + percentStats[4]
+                        + "\nΧόμπυ: Συνολικά" + stats_all[5] +"Σωστά" + stats_corr[5] + "Ποσοστό:" + percentStats[5]);
             }
         }
 

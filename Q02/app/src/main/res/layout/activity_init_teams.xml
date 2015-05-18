@@ -131,7 +131,7 @@
                 style="@style/QuestionStyleWhite"
                 android:maxLength="25"
                 android:maxLines="1"
-                android:inputType="textPersonName" />
+                 />
 
             <RadioGroup
                 android:layout_marginTop="10dp"

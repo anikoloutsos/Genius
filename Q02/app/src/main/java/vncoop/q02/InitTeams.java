@@ -7,9 +7,12 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -29,10 +32,6 @@ public class InitTeams extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_init_teams);
         getSupportActionBar().hide();
-
-        //GIA NA MIN VGAZEI KATEFTHIAN TO PLIKTROLOGIO NA GRAPSEIS ONOMA
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
 
         /////////DECLARATIONS////////////
         Intent intent = getIntent();
@@ -64,6 +63,8 @@ public class InitTeams extends ActionBarActivity {
             b[i - 1].setVisibility(View.VISIBLE);
             b[i-1].setTypeface(font);
             teams[i - 1].set_name(b[i - 1].getHint().toString());
+            b[i-1].setFocusable(false);
+            b[i-1].setClickable(true);
             //Log.d("----------------",b.getHint().toString());
         }
 
@@ -229,35 +230,56 @@ public class InitTeams extends ActionBarActivity {
     public void throwPopup(View view){
 
         Context context = this;
+
+        final int id1 = view.getId();
+        final int  tv1 = R.id.textView1;
+        final int  tv2 = R.id.textView2;
+        final int  tv3 = R.id.textView3;
+
+
         LayoutInflater layoutInflater = LayoutInflater.from(context);
 
+
+
         View promptView = layoutInflater.inflate(R.layout.popup_insert_name, null);
+
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-        // set prompts.xml to be the layout file of the alertdialog builder
+        //AlertDialog test = alertDialogBuilder.create();
         alertDialogBuilder.setView(promptView);
         final EditText input = (EditText) promptView.findViewById(R.id.userInput);
+
         // setup a dialog window
         alertDialogBuilder
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // get user input and set it to result
 
-                                b[0].setText(input.getText());
-                                //b[1].setText(input.getText());
-                                //b[2].setText(input.getText());
-                                //b[3].setText(input.getText());
+                        // get user input and set it to result
+                        if (id1 == tv1) {
+                            b[0].setText(input.getText());
+                        }
+                        else if (id1 == tv2) {
+                            b[1].setText(input.getText());
+                        }
+                        else if (id1 == tv3) {
+                            b[2].setText(input.getText());
+                        }
+                        else {
+                             b[3].setText(input.getText());
+                        }
 
                     }
+
                 })
                 .setNegativeButton("Ακύρωση",
-        new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
         // create an alert dialog
         AlertDialog alertD = alertDialogBuilder.create();
+        alertD.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         alertD.show();
 

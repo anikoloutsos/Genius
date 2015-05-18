@@ -35,22 +35,53 @@
         android:layout_marginBottom="68dp"
         android:onClick="telos"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/statsT1id"
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/winningTeamTextId"
-        android:layout_alignEnd="@+id/winningTeamTextId" />
+        android:id="@+id/scrollView3" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/statsT2id"
-        android:layout_below="@+id/statsT1id"
-        android:layout_alignRight="@+id/winningTeamTextId"
-        android:layout_alignEnd="@+id/winningTeamTextId" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/statsT1id"
+                android:text = "aksfsaasfld"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:id="@+id/scrollView4"
+        android:layout_below="@+id/scrollView3"
+        android:layout_centerHorizontal="true" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="asdjnasdas"
+                android:id="@+id/statsT2id"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </ScrollView>
+
 </RelativeLayout>
