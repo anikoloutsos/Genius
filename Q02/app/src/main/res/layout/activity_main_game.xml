@@ -30,7 +30,7 @@
         android:id="@+id/btnSpin"
         android:background="#00000000"
         android:onClick = "getCatOrD"
-        android:src="@drawable/zari"
+        android:src="@drawable/zari_selector"
         android:scaleType="fitCenter"
         android:visibility="visible"
         android:layout_marginTop="200dp"

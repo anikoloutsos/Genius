@@ -13,7 +13,8 @@
         android:src="@drawable/art_que"
         android:visibility="visible"
         android:contentDescription="card"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"/>
 
 
     <RelativeLayout
