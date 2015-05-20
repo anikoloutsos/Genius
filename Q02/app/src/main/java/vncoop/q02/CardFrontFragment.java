@@ -45,6 +45,16 @@ public class CardFrontFragment extends Fragment {
 
         TextView questiontext = (TextView) myFragmentView.findViewById(R.id.questionId);
         questiontext.setText(question);
+        double marginTopd = orgnlHeight*0.4;
+        double marginLeftd = orgnlWidth*0.08;
+        double marginRightd = orgnlWidth*0.08;
+
+        int marginTop =(int) marginTopd;
+        int marginLeft =(int) marginLeftd;
+        int marginRight =(int) marginRightd;
+
+        Log.d("height"+orgnlHeight,"margin"+marginTop);
+        setMargins(questiontext,marginLeft,marginTop,marginRight,0);
         Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "VAG-HandWritten.otf");
         questiontext.setTypeface(font);
 
@@ -64,6 +74,17 @@ public class CardFrontFragment extends Fragment {
 
 
         return myFragmentView;
+    }
+
+
+    public static void setMargins(View v, int l, int t, int r, int b) {
+
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
     }
 
 

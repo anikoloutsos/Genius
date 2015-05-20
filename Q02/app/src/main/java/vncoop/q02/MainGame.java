@@ -5,13 +5,17 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -52,6 +56,8 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
     Typeface font;
     TextView Odigies;
+
+    public TextView OmadaTxt;
 
 
     @Override
@@ -105,6 +111,21 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         //WS EDW TO SAVE STATE
 
 
+        //set layout margin of button categories
+
+        int width=getDisplaywidth();
+        Log.d("____________",""+width);
+        ImageButton b1 = (ImageButton)findViewById(R.id.btnCat1Id);
+        ImageButton b2 = (ImageButton)findViewById(R.id.btnCat2Id);
+
+        double margind = width*0.1;
+        int margin = (int) margind;
+        Log.d("MARGIn" + margin, "Width" + width);
+        setMargins(b1,margin,0,0, 0);
+        setMargins(b2,0,0,margin,0);
+        //telos
+
+
         //Τυχαία επιλογή κατηγοριών ή διαμαντιών\\
         randGen rg = new randGen();
         epiloges = rg.getRandomCategories(current_diamonds);
@@ -123,13 +144,21 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         }
 
         //Εμφάνιση ονόματος ομάδας\\
-        TextView OmadaTxt = (TextView) findViewById(R.id.textViewOmada);
+        OmadaTxt = (TextView) findViewById(R.id.textViewOmada);
         font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
         OmadaTxt.setTypeface(font);
         OmadaTxt.setText(teams[current_team].get_name());
 
+
+        OmadaTxt.measure(0, 0);       //must call measure!
+        int textwidth=OmadaTxt.getMeasuredWidth(); //get width
+
+        Log.d("Text size " +OmadaTxt.getTextSize(), "text width " + textwidth);
+        refitText(OmadaTxt,width, textwidth, 45);
+        Log.d("Text Height "+width, "text width " + textwidth);
         Odigies = (TextView) findViewById(R.id.instractions);
         Odigies.setTypeface(font);
+        //telos
 
 
         //FOrtwse ta animation
@@ -177,7 +206,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                 //Do something after 1000ms
 
                 if (epiloges[1].equals("naS")) {
-                    int didd = getResources().getIdentifier(epiloges[0]+"_selector", "drawable", getPackageName());
+                    int didd = getResources().getIdentifier(epiloges[0] + "_selector", "drawable", getPackageName());
                     diamondbtn.setScaleType(ImageButton.ScaleType.FIT_XY);
                     diamondbtn.setImageResource(didd);
                     diamondbtn.setVisibility(View.VISIBLE);
@@ -185,13 +214,13 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                 } else {
 
 
-                    int did1 = getResources().getIdentifier(epiloges[0]+"_selector", "drawable", getPackageName());
+                    int did1 = getResources().getIdentifier(epiloges[0] + "_selector", "drawable", getPackageName());
                     firstbtn.setScaleType(ImageButton.ScaleType.FIT_XY);
                     firstbtn.setImageResource(did1);
                     firstbtn.setVisibility(View.VISIBLE);
                     firstbtn.setAnimation(MoveLeftFAdeIn);
 
-                    int did2 = getResources().getIdentifier(epiloges[1]+"_selector", "drawable", getPackageName());
+                    int did2 = getResources().getIdentifier(epiloges[1] + "_selector", "drawable", getPackageName());
                     secondbtn.setScaleType(ImageButton.ScaleType.FIT_XY);
                     secondbtn.setImageResource(did2);
                     secondbtn.setVisibility(View.VISIBLE);
@@ -206,12 +235,12 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
                     TextView Diatxt = (TextView) findViewById(R.id.textDiam);
                     Diatxt.setTypeface(font);
-                    Diatxt.setText(catToText(epiloges[0]+"_b"));
+                    Diatxt.setText(catToText(epiloges[0] + "_b"));
                     Diatxt.setVisibility(View.VISIBLE);
                     Odigies.setVisibility(View.VISIBLE);
                     Odigies.setText("Απαντήστε σωστα για να κερδίσετε διαμάντι");
 
-                }else {
+                } else {
                     Odigies.setVisibility(View.VISIBLE);
                     Odigies.setText("Επιλέξτε κατηγορία");
 
@@ -412,6 +441,58 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                 })
                 .setNegativeButton("Όχι", null)
                 .show();
+    }
+
+
+
+
+    public static void setMargins(View v, int l, int t, int r, int b) {
+
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
+    }
+
+   /* public static void setWidth(View v, int w) {
+
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+
+            ViewGroup.LayoutParams p = (ViewGroup.LayoutParams) v.getLayoutParams();
+            p.width=w;
+            v.requestLayout();
+        }
+    }*/
+
+    public int getDisplaywidth(){
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
+        if(height<=width){width=height;}
+        return width;
+    }
+
+
+    public void refitText(TextView tv,int width, int textWidth, float maxTextSize) {
+
+            int availableWidth = width;
+            float trySize = maxTextSize;
+
+            while (textWidth > availableWidth) {
+                trySize -= 1;
+                tv.setTextSize(trySize);
+                tv.measure(0, 0);
+                textWidth =tv.getMeasuredWidth();
+                Log.d("textwidth " +textWidth,"textsize " +trySize);
+                //tv.requestLayout();
+                }
+
+        tv.setTextSize(trySize);
+
     }
 
 }

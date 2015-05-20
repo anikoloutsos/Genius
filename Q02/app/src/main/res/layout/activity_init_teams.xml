@@ -31,6 +31,14 @@
                 android:textSize="50dp"
                 />
 
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/textView"
+                android:src="@drawable/seperator" />
+
             <EditText
                 android:layout_marginTop="100dp"
                 android:layout_width="fill_parent"

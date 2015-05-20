@@ -26,7 +26,7 @@
         android:background="#00ffffff"
         android:scaleType="fitCenter"
         android:layout_below="@+id/imageView"
-/>
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:id="@+id/goid"
@@ -39,7 +39,7 @@
         android:scaleType="fitCenter"
         android:layout_marginTop="1dp"
         android:layout_below="@+id/ngid"
-        />
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -50,6 +50,7 @@
         android:scaleType="fitCenter"
         android:layout_marginTop="1dp"
         android:layout_below="@+id/goid"
-        android:id="@+id/imageButton3" />
+        android:id="@+id/imageButton3"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
