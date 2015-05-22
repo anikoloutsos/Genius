@@ -149,13 +149,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         OmadaTxt.setTypeface(font);
         OmadaTxt.setText(teams[current_team].get_name());
 
-
-        OmadaTxt.measure(0, 0);       //must call measure!
-        int textwidth=OmadaTxt.getMeasuredWidth(); //get width
-
-        Log.d("Text size " +OmadaTxt.getTextSize(), "text width " + textwidth);
-        refitText(OmadaTxt,width, textwidth, 45);
-        Log.d("Text Height "+width, "text width " + textwidth);
+        refitText(OmadaTxt, 45);
         Odigies = (TextView) findViewById(R.id.instractions);
         Odigies.setTypeface(font);
         //telos
@@ -477,7 +471,10 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     }
 
 
-    public void refitText(TextView tv,int width, int textWidth, float maxTextSize) {
+    public void refitText(TextView tv,float maxTextSize) {
+        tv.measure(0, 0);
+        int width=getDisplaywidth();
+        int textWidth =tv.getMeasuredWidth();
 
             int availableWidth = width;
             float trySize = maxTextSize;

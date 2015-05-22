@@ -7,6 +7,7 @@ import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -48,6 +49,10 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
     CardFrontFragment cardfrontfragment= new CardFrontFragment();
     CardBackFragment cardbackfragment= new CardBackFragment();
 
+    MediaPlayer wrongSound;
+    MediaPlayer diamondsound;
+    MediaPlayer correctsound;
+
 
 
     private boolean mShowingBack = false;
@@ -58,7 +63,10 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_screen);
 
-
+        //
+        wrongSound = MediaPlayer.create(this, R.raw.wrong);
+        diamondsound = MediaPlayer.create(this, R.raw.diamondi);
+        correctsound = MediaPlayer.create(this, R.raw.correct);
         ///get intents
 
         Intent intent=getIntent();
@@ -202,6 +210,7 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
 
     public void onCorrect(View view){
 
+
         teams[current_team].set_stats_category_correct(category-1);
 
 
@@ -209,6 +218,10 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         boolean WeDontHaveAWinner= true;
         //an itan erwtisi gia diamanti kane true to sigkekrimeno diamanti
         if (isDiamond){
+            //hxos
+            diamondsound.start();
+            //telos hxou
+
             teams[current_team].set_diamonds(category-1,true);
             //AN EXEI OLA TA DIAMANTIA NIKAEI
             boolean[] AllDiamonds;
@@ -228,7 +241,13 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
                 intent1.putExtra("number_of_teams",number_of_teams);
                 WeDontHaveAWinner = false;
             }
+        }else
+        {
+            //hxos
+            correctsound.start();
+            //telos
         }
+
         Intent intent = new Intent(this, MainGame.class);
 
         intent.putExtra("number_of_teams",number_of_teams);
@@ -246,6 +265,10 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
     }
 
     public void onWrong(View view){
+
+        wrongSound.start();
+
+
         teams[current_team].set_stats_category_wrong(category-1);
 
         current_team++;

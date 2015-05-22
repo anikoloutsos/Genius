@@ -109,7 +109,7 @@ public class SavedGameStatus extends ActionBarActivity {
     public void back_click(View view){
         finish();
     }
-    public void MoveToMainGame(View view) {
+    public void next_click(View view) {
 
         Intent mg = new Intent(this, MainGame.class);
 
