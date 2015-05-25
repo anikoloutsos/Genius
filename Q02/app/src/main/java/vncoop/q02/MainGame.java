@@ -193,12 +193,18 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         //test
         Odigies.setVisibility(View.INVISIBLE);
 
-        //animation
+        //spin animation
         spinbtn.setImageResource(R.drawable.spin_animation);
         AnimationDrawable frameAnimation = (AnimationDrawable) spinbtn.getDrawable();
-        int didd = getResources().getIdentifier(epiloges[0], "drawable", getPackageName());
+        int didd;
+        if (epiloges[1].equals("naS")) {
+            didd = getResources().getIdentifier(epiloges[0]+"_b", "drawable", getPackageName());
+        }else{
+            didd = getResources().getIdentifier(epiloges[0], "drawable", getPackageName());
+        }
         frameAnimation.addFrame(getResources().getDrawable(didd),50);
         frameAnimation.start();
+        //
 
         final Handler handler = new Handler();
 
@@ -264,7 +270,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                 }
 
             }
-        }, 1050);
+        }, 1100);
 
 
     }

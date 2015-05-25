@@ -28,7 +28,8 @@
         android:id="@+id/back"
         android:visibility="visible"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        >
 
 
         <TextView
@@ -36,10 +37,9 @@
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:text="kategoria"
-            android:layout_marginTop="18dp"
             android:id="@+id/categoryTitle"
             android:textColor="#FFFFFF"
-            android:gravity="center"
+            android:gravity="top|center"
             android:layout_gravity="top|center"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
@@ -53,8 +53,8 @@
             android:layout_gravity="center"
             android:autoText="false"
             android:gravity="center"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="28dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -66,11 +66,8 @@
             android:text="Η απάντηση ήταν σωστή ή λάθος;"
             android:id="@+id/hintId"
             style="@style/Artstyle"
-            android:layout_below="@+id/questionId"
-
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="28dp"/>
+            android:layout_above="@+id/correctbtnid"
+            android:layout_centerHorizontal="true" />
 
         <ImageButton
             android:layout_width="80dp"
@@ -82,11 +79,9 @@
             android:visibility="visible"
             android:src="@drawable/right_selector"
             android:background="#00ffffff"
-            android:layout_below="@+id/hintId"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="60dp"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <ImageButton
             android:layout_width="80dp"
@@ -98,12 +93,9 @@
             android:visibility="visible"
             android:src="@drawable/wrong_selector"
             android:background="#00ffffff"
-            android:layout_below="@+id/hintId"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginBottom="60dp"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            />
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 

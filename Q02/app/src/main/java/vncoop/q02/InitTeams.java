@@ -4,11 +4,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -49,9 +51,12 @@ public class InitTeams extends ActionBarActivity {
 
 
         ////////////////////////////////
+
         TextView RithmiseisTxt = (TextView)findViewById(R.id.textView);
+        refitText(RithmiseisTxt,50);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
         RithmiseisTxt.setTypeface(font);
+
 
 
 
@@ -213,7 +218,7 @@ public class InitTeams extends ActionBarActivity {
         nextClick.putExtra("number_of_teams",number_of_players);
         nextClick.putExtra("current_message", current_team);
         for (int i = 0;i<number_of_players;i++) {
-            nextClick.putExtra("team"+i, (android.os.Parcelable) teams[i]);
+            nextClick.putExtra("team" + i, (android.os.Parcelable) teams[i]);
         }
 
 
@@ -284,6 +289,41 @@ public class InitTeams extends ActionBarActivity {
         alertD.show();
 
 
+
+    }
+
+
+    public int getDisplaywidth() {
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
+        if (height <= width) {
+            width = height;
+        }
+        return width;
+    }
+
+
+    public void refitText(TextView tv, float maxTextSize) {
+        tv.measure(0, 0);
+        int width = getDisplaywidth();
+        int textWidth = tv.getMeasuredWidth();
+
+        int availableWidth = width;
+        float trySize = maxTextSize;
+
+        while (textWidth > availableWidth) {
+            trySize -= 1;
+            tv.setTextSize(trySize);
+            tv.measure(0, 0);
+            textWidth = tv.getMeasuredWidth();
+            Log.d("textwidth " + textWidth, "textsize " + trySize);
+            //tv.requestLayout();
+        }
+
+        tv.setTextSize(trySize);
 
     }
 

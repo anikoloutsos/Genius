@@ -67,6 +67,16 @@ public class CardBackFragment extends Fragment {
         TextView hint = (TextView) myFragmentView.findViewById(R.id.hintId);
         hint.setTypeface(font);
 
+        double marginLeftd = orgnlWidth*0.2;
+        double marginRightd = orgnlWidth*0.2;
+        double marginTopd = orgnlWidth*0.05;
+
+        int marginLeft =(int) marginLeftd;
+        int marginRight =(int) marginRightd;
+        int marginTop =(int) marginTopd;
+
+        setMargins(rl, marginLeft,0, 0, marginLeft);
+
 
         return myFragmentView;
     }
@@ -105,5 +115,14 @@ public class CardBackFragment extends Fragment {
 
 
 
+    public static void setMargins(View v, int l, int t, int r, int b) {
+
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
+    }
 
 }

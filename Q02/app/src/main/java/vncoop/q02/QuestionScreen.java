@@ -1,5 +1,6 @@
 package vncoop.q02;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -8,8 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,13 +31,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class QuestionScreen extends Activity implements FragmentManager.OnBackStackChangedListener {
 
     String[] questionAndAnswer = new String[2];
@@ -218,9 +219,6 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         boolean WeDontHaveAWinner= true;
         //an itan erwtisi gia diamanti kane true to sigkekrimeno diamanti
         if (isDiamond){
-            //hxos
-            diamondsound.start();
-            //telos hxou
 
             teams[current_team].set_diamonds(category-1,true);
             //AN EXEI OLA TA DIAMANTIA NIKAEI
@@ -241,12 +239,10 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
                 intent1.putExtra("number_of_teams",number_of_teams);
                 WeDontHaveAWinner = false;
             }
-        }else
-        {
+        }
             //hxos
             correctsound.start();
             //telos
-        }
 
         Intent intent = new Intent(this, MainGame.class);
 
