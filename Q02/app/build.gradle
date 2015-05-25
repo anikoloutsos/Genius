@@ -23,4 +23,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.0.0'
+    compile files('C:/Users/Alexandros/AndroidStudioProjects/Q02/libs/activation.jar')
+    compile files('C:/Users/Alexandros/AndroidStudioProjects/Q02/libs/additionnal.jar')
+    compile files('C:/Users/Alexandros/AndroidStudioProjects/Q02/libs/mail.jar')
 }

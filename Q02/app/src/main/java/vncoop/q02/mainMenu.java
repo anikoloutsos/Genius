@@ -31,7 +31,7 @@ public class mainMenu extends Activity {
 
         //Log.d("i have", dblist[0]);
 
-        this.deleteDatabase("FDB.sqlite");
+        //this.deleteDatabase("FDB.sqlite");
 
         DBHelper dbCreator = new DBHelper(getApplicationContext());
         try{
@@ -95,6 +95,12 @@ public class mainMenu extends Activity {
     public void rulesClick(View view){
         Intent rules = new Intent(this, Rules.class);
         startActivity(rules);
+
+    }
+
+    public void addQue(View view){
+        Intent addque = new Intent(this, addQuestion.class);
+        startActivity(addque);
 
     }
 

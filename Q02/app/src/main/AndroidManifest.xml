@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vncoop.q02" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -51,6 +53,10 @@
             android:name=".SavedGameStatus"
             android:label="@string/title_activity_saved_game_status"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".addQuestion"
+            android:label="@string/title_activity_add_question" >
         </activity>
     </application>
 
