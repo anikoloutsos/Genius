@@ -18,8 +18,8 @@
 
 
     <RelativeLayout
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/rlt">
@@ -60,13 +60,16 @@
             android:layout_marginRight="28dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-    </RelativeLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/rlt"
-        android:layout_centerHorizontal="true"></LinearLayout>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Report"
+            android:id="@+id/reportBtnId"
+            android:layout_alignBottom="@+id/diamond"
+            android:layout_centerHorizontal="true"
+            android:onClick="reportBtn"/>
+    </RelativeLayout>
 
 </RelativeLayout>

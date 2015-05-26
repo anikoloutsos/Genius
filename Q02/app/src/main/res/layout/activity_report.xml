@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="vncoop.q02.report" android:background="@drawable/background">
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView4" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/repRG">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Λάθος Απάντηση"
+                    android:id="@+id/repId1"
+                    android:checked="false"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Πολύ δύσκολη ερώτηση"
+                    android:id="@+id/repId2"
+                    android:checked="false"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Πολύ εύκολη ερώτηση"
+                    android:id="@+id/repId3"
+                    android:checked="false"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ασαφής Ερώτηση"
+                    android:id="@+id/repId4"
+                    android:checked="false"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Λάθος Κατηγορία"
+                    android:id="@+id/repId5"
+                    android:checked="false"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ορθογραφικό λάθος"
+                    android:id="@+id/repId7"
+                    android:checked="false"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Άλλο..."
+                    android:id="@+id/repId6"
+                    android:checked="false"
+                    android:textSize="20sp"/>
+
+            </RadioGroup>
+
+            <EditText
+                style="@style/QuestionStyleWhite"
+                android:layout_width="fill_parent"
+                android:layout_height="160dp"
+                android:id="@+id/repEditTextId"
+                android:textSize="30sp"
+                android:gravity="center_horizontal"
+                android:hint="Λόγος"
+                android:inputType="text"
+                android:layout_below="@+id/repRG"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ΟΚ"
+        android:id="@+id/submitReportId"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="submitReport"/>
+
+</RelativeLayout>

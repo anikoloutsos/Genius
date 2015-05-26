@@ -3,6 +3,8 @@ package vncoop.q02;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +26,7 @@ public class addQuestion extends Activity {
     ProgressDialog pdialog = null;
     Context context = null;
     EditText subQue,subAns;
-    String rec, subject, textMessage;
+    String rec, subject, textMessage,sender,senderPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +38,13 @@ public class addQuestion extends Activity {
         subQue = (EditText) findViewById(R.id.submitQuestion);
         subAns = (EditText) findViewById(R.id.submitAnswer);
 
-        rec = "anikoloutsos@hotmail.com";
+        rec = "geniusquizapp@gmail.com";
+
+        sender = "geniusquizhandler@gmail.com";
+        senderPassword = "funiculifunicula";
+
         subject = "New Question";
+
     }
 
 
@@ -45,24 +52,31 @@ public class addQuestion extends Activity {
 
     public void sendQuestion(View view) {
 
-        textMessage = subQue.getText()+"\n"+subAns.getText();
+        if (!NetworkIsAvailable()){
 
-        Properties props = new Properties();
-        props.put("mail.smtp.host","smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port","465");
-        props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.auth","true");
-        props.put("mail.smtp.port","465");
+            Toast.makeText(getApplicationContext(),"Παρακαλώ ελέγξτε τη σύνδεση σας στο Internet",Toast.LENGTH_LONG).show();
 
-        session = Session.getDefaultInstance(props, new javax.mail.Authenticator(){
-            protected javax.mail.PasswordAuthentication getPasswordAuthentication(){
-                return new javax.mail.PasswordAuthentication("anikoloutsos@gmail.com","nixtastabouna");
-            }
-        });
-        pdialog = ProgressDialog.show(context,"","Αποστολή Ερώτησης...",true);
+        }
+        else{
+            textMessage = subQue.getText()+"/n"+subAns.getText();
 
-        RetrieveFeedTask task = new RetrieveFeedTask();
-        task.execute();
+            Properties props = new Properties();
+            props.put("mail.smtp.host","smtp.gmail.com");
+            props.put("mail.smtp.socketFactory.port","465");
+            props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+            props.put("mail.smtp.auth","true");
+            props.put("mail.smtp.port","465");
+
+            session = Session.getDefaultInstance(props, new javax.mail.Authenticator(){
+                protected javax.mail.PasswordAuthentication getPasswordAuthentication(){
+                    return new javax.mail.PasswordAuthentication(sender,senderPassword);
+                }
+            });
+            pdialog = ProgressDialog.show(context,"","Αποστολή Ερώτησης...",true);
+
+            RetrieveFeedTask task = new RetrieveFeedTask();
+            task.execute();
+        }
 
     }
 
@@ -72,7 +86,7 @@ public class addQuestion extends Activity {
 
             try{
                 javax.mail.Message message = new MimeMessage(session);
-                message.setFrom(new InternetAddress("anikoloutsos@gmail.com"));
+                message.setFrom(new InternetAddress(sender));
                 message.setRecipients(javax.mail.Message.RecipientType.TO,InternetAddress.parse(rec));
                 message.setSubject(subject);
                 message.setContent(textMessage,"text/html; charset=utf-8");
@@ -95,6 +109,13 @@ public class addQuestion extends Activity {
 
 
 
+    }
+
+    private boolean NetworkIsAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 }

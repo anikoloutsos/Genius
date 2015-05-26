@@ -86,8 +86,8 @@ public class Winner extends Activity {
             if(i==0) {
                 team1.setText(teams[i].get_name());
                 refitText(team1, 20);
-                statistics_team1.setText(
-                        "Γεωγραφία: "+ (int)percentStats[0] +"% (" + stats_corr[0] +"/" + stats_all[0] + ")"
+
+                statistics_team1.setText("Γεωγραφία: "+ (int)percentStats[0] +"% (" + stats_corr[0] +"/" + stats_all[0] + ")"
                         + "\nΨυχαγωγία: "+ (int)percentStats[1] +"% (" + stats_corr[1] +"/" + stats_all[1] + ")"
                         + "\nΙστορία: "+ (int)percentStats[2] +"% (" + stats_corr[2] +"/" + stats_all[2] + ")"
                         + "\nΤέχνες: "+ (int)percentStats[3] +"% (" + stats_corr[3] +"/" + stats_all[3] + ")"
@@ -97,6 +97,7 @@ public class Winner extends Activity {
             else if(i==1){
                 team2.setText(teams[i].get_name());
                 refitText(team2, 25);
+
                 statistics_team2.setText(
                         "Γεωγραφία: "+ (int)percentStats[0] +"% (" + stats_corr[0] +"/" + stats_all[0] + ")"
                                 + "\nΨυχαγωγία: "+ (int)percentStats[1] +"% (" + stats_corr[1] +"/" + stats_all[1] + ")"
@@ -126,6 +127,8 @@ public class Winner extends Activity {
                                 + "\nΧόμπυ: " + + (int)percentStats[5] +"% (" + stats_corr[5] +"/" + stats_all[5] + ")");
             }
         }
+
+
 
     }
 

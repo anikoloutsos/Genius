@@ -38,5 +38,6 @@
     <string name="title_activity_winner">Winner</string>
     <string name="title_activity_saved_game_status">SavedGameStatus</string>
     <string name="title_activity_add_question">addQuestion</string>
+    <string name="title_activity_report">report</string>
 
 </resources>

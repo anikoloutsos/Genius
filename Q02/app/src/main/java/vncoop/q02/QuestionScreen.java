@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -284,6 +285,11 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
 
         startActivity(intent);
         finish();
+    }
+    public void reportBtn(View view){
+        Intent goReport = new Intent(this, report.class);
+        goReport.putExtra("Question",questionAndAnswer[0]);
+        startActivity(goReport);
     }
 
 
