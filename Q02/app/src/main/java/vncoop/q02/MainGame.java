@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Bundle;
 
@@ -59,12 +60,16 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
     public TextView OmadaTxt;
 
+    MediaPlayer s1;
+    MediaPlayer s2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_game);
 
+        s1= MediaPlayer.create(this, R.raw.selec_click);
+        s2= MediaPlayer.create(this, R.raw.selec_click2);
 
         diamond_images = new ImageView[6];
 
@@ -188,12 +193,27 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         //test
         Odigies.setVisibility(View.INVISIBLE);
 
-        //animation
+        //spin animation
         spinbtn.setImageResource(R.drawable.spin_animation);
         AnimationDrawable frameAnimation = (AnimationDrawable) spinbtn.getDrawable();
+        int didd;
+        if (epiloges[1].equals("naS")) {
+            didd = getResources().getIdentifier(epiloges[0]+"_b", "drawable", getPackageName());
+        }else{
+            didd = getResources().getIdentifier(epiloges[0], "drawable", getPackageName());
+        }
+        frameAnimation.addFrame(getResources().getDrawable(didd),50);
         frameAnimation.start();
+        //
 
         final Handler handler = new Handler();
+
+        //sounds
+        if (epiloges[1].equals("naS")) {
+        s1.start();}else{
+        s2.start();}
+        //
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -250,7 +270,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                 }
 
             }
-        }, 1050);
+        }, 1100);
 
 
     }
