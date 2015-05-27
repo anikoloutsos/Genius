@@ -19,55 +19,13 @@
         android:textSize="50dp"
         android:gravity="center" />
 
-
-    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:id="@+id/RadioGroup_id"
+        android:layout_height="wrap_content"
+        android:id="@+id/seperator"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/textView"
-        android:checkedButton="@+id/button2"
-        android:layout_above="@+id/button7">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button2"
-            android:layout_marginTop="30dp"
-            android:button="@null"
-            android:checked="true"
-            android:tag="2"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/twoplayer_selector"
-            />
-
-        <RadioButton
-
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-
-            android:button="@null"
-            android:background="@drawable/threeplayer_selector"
-            android:id="@+id/button3"
-            android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"
-            android:tag="3"
-            android:layout_gravity="center_horizontal"
-            android:checked="false"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:background="@drawable/fourplayer_selector"
-            android:id="@+id/button4"
-            android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:tag="4"
-            android:checked="false" />
-
-    </RadioGroup>
+        android:src="@drawable/seperator" />
 
     <ImageButton
         android:layout_width="70dp"
@@ -97,10 +55,69 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
+        android:id="@+id/seperator2"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/textView"
+        android:layout_above="@id/button7"
         android:src="@drawable/seperator" />
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/seperator"
+        android:layout_above="@id/seperator2"
+        android:id="@+id/scrollView5" >
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:id="@+id/RadioGroup_id"
+            android:checkedButton="@+id/button2"
+            android:gravity="center"
+            android:layout_centerHorizontal="true">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button2"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:checked="true"
+                android:tag="2"
+                android:background="@drawable/twoplayer_selector"
+                />
+
+            <RadioButton
+
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:button="@null"
+                android:background="@drawable/threeplayer_selector"
+                android:id="@+id/button3"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:tag="3"
+                android:layout_gravity="center_horizontal"
+                android:checked="false"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:background="@drawable/fourplayer_selector"
+                android:id="@+id/button4"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:tag="4"
+                android:checked="false" />
+
+        </RadioGroup>
+    </ScrollView>
 
 
 </RelativeLayout>

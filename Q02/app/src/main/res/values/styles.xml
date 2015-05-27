@@ -20,11 +20,4 @@
 
     </style>
 
-    <style name="Cimstyle" parent="android:style/Widget.TextView">
-        <item name="android:background">@drawable/cim_color</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">20dp</item>
-
-    </style>
-
 </resources>
