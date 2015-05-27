@@ -1,89 +1,119 @@
 package vncoop.q02;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-/**
- * Created by thanos on 14/5/2015.
- */
 public class CardFrontFragment extends Fragment {
 
-    private View myFragmentView;
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        myFragmentView = inflater.inflate(R.layout.card_front, container, false);
 
-        ImageView test = (ImageView) myFragmentView.findViewById(R.id.card);
-        int orgnlHeight = test.getDrawable().getIntrinsicHeight();
-        int orgnlWidth = test.getDrawable().getIntrinsicWidth();
+        View myFragmentView = inflater.inflate(R.layout.card_front, container, false);
+        //Orismoi
+        double cardHeight, cardWidth, cardRatio, screenWidth, screenHeight, percentWidth,
+                percentHeight, differenceInWidth, differenceInHeight, screenRatio, Left,
+                Right, Top, Bottom,statusBarHeight,orgnlHeight,orgnlWidth;
 
-
-
-        RelativeLayout rl = (RelativeLayout) myFragmentView.findViewById(R.id.rlt);
-        rl.getLayoutParams().height = orgnlHeight;
-        rl.getLayoutParams().width = orgnlWidth;
-
-
-        String question = getArguments().getString("que");
-        String category = getArguments().getString("cat");
-        String categoryText = getArguments().getString("catText");
-        boolean isdiamond = getArguments().getBoolean("isdiamond");
-
-
-        TextView questiontext = (TextView) myFragmentView.findViewById(R.id.questionId);
-        questiontext.setText(question);
-        double marginTopd = orgnlHeight*0.3;
-        double marginLeftd = orgnlWidth*0.08;
-        double marginRightd = orgnlWidth*0.08;
-
-        int marginTop =(int) marginTopd;
-        int marginLeft =(int) marginLeftd;
-        int marginRight =(int) marginRightd;
-
-        Log.d("height"+orgnlHeight,"margin"+marginTop);
-        setMargins(questiontext,0,marginTop,0,0);
-
-        marginLeftd = orgnlWidth*0.2;
-        marginRightd = orgnlWidth*0.2;
-        marginTopd = orgnlWidth*0.05;
-
-        marginLeft =(int) marginLeftd;
-        marginRight =(int) marginRightd;
-        marginTop =(int) marginTopd;
-
-        setMargins(rl, marginLeft,0, 0, marginLeft);
+        ImageView card = (ImageView) myFragmentView.findViewById(R.id.card);
         Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "VAG-HandWritten.otf");
-        questiontext.setTypeface(font);
+        RelativeLayout rl = (RelativeLayout) myFragmentView.findViewById(R.id.rlt);
+        TextView categoryTitle = (TextView) myFragmentView.findViewById(R.id.categoryTitle);
+        TextView questionText = (TextView) myFragmentView.findViewById(R.id.questionId);
 
-        int backId= getResources().getIdentifier(category + "_que", "drawable", getActivity().getPackageName());
-        ImageView Layoutc = (ImageView) myFragmentView.findViewById(R.id.card);
-        Layoutc.setImageResource(backId);
+        int backId = getResources().getIdentifier(getArguments().getString("cat") + "_que", "drawable", getActivity().getPackageName());
+        card.setImageResource(backId);
 
-        TextView catTitle = (TextView)myFragmentView.findViewById(R.id.categoryTitle);
-        catTitle.setTypeface(font);
-        catTitle.setText(categoryText);
+        //Card characteristics
+        cardHeight = (double) (card.getDrawable().getIntrinsicHeight());
+        cardWidth = (double) (card.getDrawable().getIntrinsicWidth());
+        cardRatio = cardHeight / cardWidth;
 
-        if(isdiamond) {
+        //Screen characteristics
+        DisplayMetrics dm = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        screenWidth = (double) dm.widthPixels;
+        screenHeight = (double) dm.heightPixels;
+        double screenDensity = (double) dm.density;
+
+        statusBarHeight = (double) getStatusBarHeight();
+        screenHeight -= statusBarHeight;
+
+        screenRatio = (screenHeight / screenWidth);
+        percentWidth = (screenWidth / cardWidth);
+        percentHeight = (screenHeight / cardHeight);
+
+        if (cardRatio < screenRatio){
+            orgnlWidth = screenWidth;
+            orgnlHeight = (cardHeight *percentWidth);
+            differenceInWidth = 0;
+            differenceInHeight = Math.abs(screenHeight - orgnlHeight);
+
+        }else{
+            orgnlWidth = (cardWidth * percentHeight);
+            orgnlHeight = screenHeight;
+            differenceInHeight = 0;
+            differenceInWidth = Math.abs(screenWidth - orgnlWidth);
+
+        }
+
+
+
+
+        categoryTitle.setTypeface(font);
+        categoryTitle.setText(getArguments().getString("catText"));
+
+        questionText.setTypeface(font);
+        questionText.setText(getArguments().getString("que"));
+
+
+
+        //RelativeLayout margins
+        Left = (differenceInWidth/2+(0.073*orgnlWidth));
+        Right = (differenceInWidth/2+(0.074*orgnlWidth));
+        Top = (differenceInHeight/2+(0.044* orgnlHeight));
+        Bottom = (differenceInHeight/2+(0.052* orgnlHeight));
+        setMargins(rl, (int) Left, (int) Top, (int) Right, (int) Bottom);
+
+
+        //CategoryTitle margins
+        Top = (0.002629848783694* orgnlHeight);
+        Bottom = (0.12360289* orgnlHeight);
+        setMargins(categoryTitle,0,(int) Top,0,(int) Bottom);
+        categoryTitle.setTextSize((float) ((0.09/screenDensity)*orgnlHeight));
+
+        //Question margins
+        Left = (0.012245* orgnlWidth);
+        Top = (0.41617357* orgnlHeight);
+        Right = (0.012245* orgnlWidth);
+        setMargins(questionText, (int) Left,(int) Top,(int) Right, 0);
+        questionText.setTextSize((float) ((0.05/screenDensity)*orgnlHeight));
+
+
+
+
+
+
+        if (getArguments().getBoolean("isdiamond")) {
             ImageView diamond = (ImageView) myFragmentView.findViewById(R.id.diamond);
-            int diamId = getResources().getIdentifier(category, "drawable", getActivity().getPackageName());
+            int diamId = getResources().getIdentifier(getArguments().getString("cat"), "drawable", getActivity().getPackageName());
             diamond.setImageResource(diamId);
         }
 
 
-        return myFragmentView;
+            return myFragmentView;
+
     }
 
 
@@ -97,6 +127,13 @@ public class CardFrontFragment extends Fragment {
         }
     }
 
-
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
 
 }

@@ -9,19 +9,20 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:scaleType="fitCenter"
         android:id="@+id/card"
         android:src="@drawable/art_que"
         android:visibility="visible"
-        android:contentDescription="card"
+        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
 
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:layout_width="3000dp"
+        android:layout_height="3000dp"
+
         android:id="@+id/rlt"
         >
 
@@ -33,9 +34,8 @@
             android:id="@+id/categoryTitle"
             android:textColor="#FFFFFF"
             android:gravity="center"
-            android:layout_gravity="center_horizontal|top"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            />
 
         <ImageView
 
@@ -57,9 +57,8 @@
             android:id="@+id/questionId"
             android:autoText="false"
             android:gravity="center"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            />
 
 
         <Button
@@ -70,7 +69,8 @@
             android:id="@+id/reportBtnId"
             android:layout_alignBottom="@+id/diamond"
             android:layout_centerHorizontal="true"
-            android:onClick="reportBtn"/>
+            android:onClick="reportBtn"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 </RelativeLayout>
