@@ -98,7 +98,7 @@ public class CardFrontFragment extends Fragment {
         Top = (0.41617357* orgnlHeight);
         Right = (0.012245* orgnlWidth);
         setMargins(questionText, (int) Left,(int) Top,(int) Right, 0);
-        questionText.setTextSize((float) ((0.05/screenDensity)*orgnlHeight));
+        questionText.setTextSize((float) ((0.058/screenDensity)*orgnlHeight));
 
 
 

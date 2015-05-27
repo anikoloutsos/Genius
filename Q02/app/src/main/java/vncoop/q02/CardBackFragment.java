@@ -117,7 +117,7 @@ public class CardBackFragment extends Fragment {
         Top = (0.38330046* orgnlHeight);
         Right = (0.012245* orgnlWidth);
         setMargins(questionText, (int) Left,(int) Top,(int) Right, 0);
-        questionText.setTextSize((float) ((0.05/screenDensity)*orgnlHeight));
+        questionText.setTextSize((float) ((0.058/screenDensity)*orgnlHeight));
 
         //Hint margins
         Left = (0.012245* orgnlWidth);
@@ -127,10 +127,10 @@ public class CardBackFragment extends Fragment {
         hint.setTextSize((float) ((0.04/screenDensity)*orgnlHeight));
 
         //Wrong button margins
-        Left = (0.1020408* orgnlWidth);
+        Left = (0.0612244897* orgnlWidth);
         Top = (0.7034845496* orgnlHeight);
         Right = (0.5408632* orgnlWidth);
-        Bottom = (0.06574621959*orgnlHeight);
+        Bottom = (0.0394477317*orgnlHeight);
         setMargins(wrong, (int) Left, (int) Top, (int) Right, (int) Bottom);
 
         //Correct button margins
