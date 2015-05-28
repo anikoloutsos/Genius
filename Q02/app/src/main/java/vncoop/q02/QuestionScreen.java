@@ -245,10 +245,11 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
             correctsound.start();
             //telos
 
-        Intent intent = new Intent(this, MainGame.class);
+        Intent intent = new Intent(this, ContinueScreen.class);
 
         intent.putExtra("number_of_teams",number_of_teams);
         intent.putExtra("current_message", current_team);
+        intent.putExtra("same_team",true);
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
@@ -271,10 +272,11 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         current_team++;
         current_team = current_team%number_of_teams;
 
-        Intent intent = new Intent(this, MainGame.class);
+        Intent intent = new Intent(this, ContinueScreen.class);
 
         intent.putExtra("number_of_teams",number_of_teams);
         intent.putExtra("current_message", current_team);
+        intent.putExtra("same_team",false);
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }

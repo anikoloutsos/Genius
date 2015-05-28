@@ -63,6 +63,10 @@
             android:name=".report"
             android:label="@string/title_activity_report" >
         </activity>
+        <activity
+            android:name=".ContinueScreen"
+            android:label="@string/title_activity_continue_screen" >
+        </activity>
     </application>
 
 </manifest>

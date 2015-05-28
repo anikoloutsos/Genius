@@ -6,9 +6,11 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 
 import java.io.File;
@@ -40,6 +42,17 @@ public class mainMenu extends Activity {
             throw new Error("ImpossibleToCreateDB");
         }
 
+        //style buttons
+        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+        Button addq = (Button)findViewById(R.id.addQueId);
+        Button goon = (Button)findViewById(R.id.goid);
+        Button rules = (Button)findViewById(R.id.rulid);
+        Button neg = (Button)findViewById(R.id.ngid);
+        addq.setTypeface(font);
+        goon.setTypeface(font);
+        rules.setTypeface(font);
+        neg.setTypeface(font);
+        //
 
     }
 

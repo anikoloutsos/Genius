@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile files('/home/thanos/Documents/git project/aQp/Q02/libs/activation.jar')
     compile files('/home/thanos/Documents/git project/aQp/Q02/libs/additionnal.jar')

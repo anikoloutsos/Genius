@@ -6,10 +6,10 @@
     android:visibility="visible"
     android:id="@+id/layout">
 
-
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:scaleType="fitCenter"
         android:id="@+id/card"
         android:src="@drawable/art_que"
         android:visibility="visible"
@@ -18,45 +18,35 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-
-
     <RelativeLayout
 
-        android:layout_width="360dp"
-        android:layout_height="550dp"
-        android:id="@+id/back"
-        android:visibility="visible"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:layout_width="3000dp"
+        android:layout_height="3000dp"
+        android:id="@+id/rlt"
         >
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:text="kategoria"
             android:id="@+id/categoryTitle"
             android:textColor="#FFFFFF"
-            android:gravity="top|center"
-            android:layout_gravity="top|center"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            />
 
         <TextView
+            android:text="Large Text"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="Large Text"
+            android:textSize="30sp"
             android:id="@+id/questionId"
-            android:layout_gravity="center"
             android:autoText="false"
             android:gravity="center"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_centerHorizontal="true"
+            />
 
         <TextView
             android:layout_width="fill_parent"
@@ -65,36 +55,30 @@
             android:text="Η απάντηση ήταν σωστή ή λάθος;"
             android:id="@+id/hintId"
             style="@style/Artstyle"
-            android:layout_above="@+id/correctbtnid"
+            android:gravity="center"
             android:layout_centerHorizontal="true" />
 
         <ImageButton
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="3000dp"
+            android:layout_height="3000dp"
             android:scaleType="fitCenter"
             android:text="Σωστά"
             android:id="@+id/correctbtnid"
             android:onClick = "onCorrect"
             android:visibility="visible"
             android:src="@drawable/right_selector"
-            android:background="#00ffffff"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:background="#00ffffff" />
 
         <ImageButton
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="3000dp"
+            android:layout_height="3000dp"
             android:scaleType="fitCenter"
             android:text="Λάθος"
             android:id="@+id/wrongbtnid"
             android:onClick = "onWrong"
-            android:visibility="visible"
             android:src="@drawable/wrong_selector"
             android:background="#00ffffff"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            />
 
     </RelativeLayout>
 
