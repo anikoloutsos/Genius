@@ -36,10 +36,24 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Αποστολή Ερώτησης"
+        android:text="Αποστολή"
         android:id="@+id/sendQueId"
+        android:onClick="sendQuestion"
+        style="@style/ButtonStyle"
+        android:textColor="#ffffffff"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="51dp"
-        android:onClick="sendQuestion"/>
+        android:layout_alignRight="@+id/submitAnswer"
+        android:layout_alignEnd="@+id/submitAnswer" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Πίσω"
+        android:id="@+id/backId"
+        android:onClick="onBack"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/ButtonStyle"
+        android:textColor="#ffffffff" />
 </RelativeLayout>

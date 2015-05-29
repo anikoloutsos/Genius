@@ -22,7 +22,6 @@
     <RelativeLayout
         android:layout_width="3000dp"
         android:layout_height="3000dp"
-
         android:id="@+id/rlt"
         >
 
@@ -39,14 +38,14 @@
 
         <ImageView
 
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scaleType="fitXY"
             android:id="@+id/diamond"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="60dp"
-            android:layout_alignParentBottom="true"
+            android:layout_alignTop="@id/questionId"
             android:layout_centerHorizontal="true"
+            android:visibility="gone"
             android:alpha="0.3"/>
 
         <TextView
@@ -61,16 +60,18 @@
             />
 
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Report"
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
             android:id="@+id/reportBtnId"
-            android:layout_alignBottom="@+id/diamond"
-            android:layout_centerHorizontal="true"
             android:onClick="reportBtn"
-            android:visibility="gone"/>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/report_selector"
+            android:alpha="0.5"
+            android:background="#00ffffff" />
+
     </RelativeLayout>
 
 </RelativeLayout>

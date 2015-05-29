@@ -4,14 +4,18 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.Button;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,13 +32,18 @@ public class mainMenu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        double screenWidth,screenHeight,statusBarHeight,Left,Top,Right,Bottom;
+        double screenWidth,screenHeight,statusBarHeight,Left,Top,Right,Bottom,screenDensity;
         ImageView logo = (ImageView) findViewById(R.id.logoId);
-        ImageButton newGame = (ImageButton) findViewById(R.id.ngid);
-        ImageButton Continue = (ImageButton) findViewById(R.id.goid);
-        ImageButton rules = (ImageButton) findViewById(R.id.rulesId);
-        ImageButton AddQuestion = (ImageButton) findViewById(R.id.addQueId);
+        Button newGame = (Button) findViewById(R.id.ngid);
+        Button Continue = (Button) findViewById(R.id.goid);
+        Button rules = (Button) findViewById(R.id.rulesId);
+        Button AddQuestion = (Button) findViewById(R.id.addQueId);
+        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
 
+        newGame.setTypeface(font);
+        Continue.setTypeface(font);
+        rules.setTypeface(font);
+        AddQuestion.setTypeface(font);
         String[] dblist = this.databaseList();
 
         if (dblist[0] == null) {
@@ -56,7 +65,7 @@ public class mainMenu extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         screenWidth = (double) dm.widthPixels;
         screenHeight = (double) dm.heightPixels;
-        //screenDensity = (double) dm.density;
+        screenDensity = (double) dm.density;
 
         statusBarHeight = (double) getStatusBarHeight();
         screenHeight -= statusBarHeight;
@@ -69,6 +78,7 @@ public class mainMenu extends Activity {
         Right = Left;
         Bottom = (screenHeight- Top -(screenWidth-2*Left));
         setMargins(logo,(int) Left,(int) Top,(int) Right, (int) Bottom);
+
 
         //New game Button margins
         Left = 0.04*screenWidth;
@@ -93,10 +103,8 @@ public class mainMenu extends Activity {
         setMargins(AddQuestion,(int) Left,(int) Top,(int) Right, (int) Bottom);
     }
 
+
     ////////////BUTTONS\\\\\\\\\\\\\\
-
-
-
     public void NGClick(View view) {
         Intent new_game = new Intent(this, ChooseNumOfPlayers.class);
         startActivity(new_game);

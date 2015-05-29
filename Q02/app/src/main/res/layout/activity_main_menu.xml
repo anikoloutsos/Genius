@@ -1,8 +1,9 @@
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context=".mainMenu"    android:background="@drawable/background">
-
 
     <ImageView
         android:layout_width="200dp"
@@ -12,48 +13,49 @@
         android:scaleType="fitCenter"
         android:layout_centerHorizontal="true"
          />
-
-    <ImageButton
-
+    <Button
         android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:id="@+id/ngid"
+        android:text="Νέο Παιχνίδι"
         android:onClick="NGClick"
-        android:src="@drawable/newgame_selector"
-        android:background="#00ffffff"
-        android:scaleType="fitCenter"
-        android:layout_centerHorizontal="true" />
+        style="@style/ButtonStyle"
+        android:textColor="#ffffffff"
+        android:layout_centerHorizontal="true"
 
-    <ImageButton
+    />
+
+    <Button
         android:id="@+id/goid"
-
         android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:onClick="GoOnClick"
-        android:src="@drawable/goon_selector"
-        android:background="#00ffffff"
-        android:scaleType="fitCenter"
-        android:layout_centerHorizontal="true" />
+        android:text="Συνέχεια Παιχνιδιού"
+        style="@style/ButtonStyle"
+        android:textColor="#ffffffff"
+        android:layout_centerHorizontal="true"
+        />
 
-    <ImageButton
+    <Button
         android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:onClick="rulesClick"
-        android:src="@drawable/rules_selector"
-        android:background="#00ffffff"
-        android:scaleType="fitCenter"
+        android:text="Κανόνες"
+        android:textColor="#ffffffff"
         android:id="@+id/rulesId"
+        style="@style/ButtonStyle"
         android:layout_centerHorizontal="true" />
 
-    <ImageButton
+    <Button
         android:layout_width="fill_parent"
         android:layout_height="200dp"
-        android:onClick="addQue"
-        android:src="@drawable/rules_selector"
-        android:background="#00ffffff"
-        android:scaleType="fitCenter"
+        android:text="Προσθήκη Ερώτησης"
         android:id="@+id/addQueId"
-        android:layout_centerHorizontal="true" />
+        android:onClick="addQue"
+        style="@style/ButtonStyle"
+        android:textColor="#ffffffff" />
+
+
 
 
 

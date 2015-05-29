@@ -1,0 +1,437 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="vncoop.q02.SavedGameStatus"
+    android:background="@drawable/background">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Συγχαρητήρια"
+        android:id="@+id/textView1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"
+        android:textSize="45dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ομαδα1"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"
+        android:textSize="45dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Ξαναπαίζεις"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"
+        android:textSize="45dp" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seperator"
+        android:src="@drawable/seperator"
+        android:layout_below="@id/textView3"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Συνέχεια"
+        android:onClick="onContinue"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"
+        style="@style/ButtonStyle" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seperator2"
+        android:src="@drawable/seperator"
+        android:layout_above="@id/button"/>
+
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView2"
+        android:layout_above="@+id/seperator2"
+        android:layout_below="@id/seperator">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:baselineAligned="false">
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/rl1"
+                android:layout_margin="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/team1NameId"
+                    android:visibility="gone"
+                    android:textColor="#ffffffff"
+                    android:textSize="35sp"
+                    android:text=""
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team1DiamId"
+                    android:src="@drawable/diam_table"
+                    android:layout_below="@+id/team1NameId"
+                    android:layout_alignParentStart="true"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team1blueDiamId"
+                    android:src="@drawable/blue_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team1NameId"
+                    android:layout_alignParentStart="true"  />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team1redDiamId"
+                    android:src="@drawable/red_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team1NameId"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team1yellowDiamId"
+                    android:src="@drawable/yellow_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team1NameId"
+                    android:layout_alignParentStart="true"  />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team1purpleDiamId"
+                    android:src="@drawable/purple_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team1NameId"
+                    android:layout_alignParentStart="true"  />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team1pinkDiamId"
+                    android:src="@drawable/pink_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team1NameId"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team1greenDiamId"
+                    android:src="@drawable/green_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team1NameId"
+                    android:layout_alignParentStart="true"  />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/rl2"
+                android:layout_margin="20dp">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/team2NameId"
+                    android:visibility="gone"
+                    android:textColor="#ffffffff"
+                    android:textSize="35sp"
+                    android:text=""
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team2DiamId"
+                    android:src="@drawable/diam_table"
+                    android:layout_below="@+id/team2NameId"
+                    android:layout_alignParentStart="true"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team2blueDiamId"
+                    android:src="@drawable/blue_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team2NameId"
+                    android:layout_alignParentStart="true"  />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team2redDiamId"
+                    android:src="@drawable/red_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team2NameId"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team2yellowDiamId"
+                    android:src="@drawable/yellow_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team2NameId"
+                    android:layout_alignParentStart="true"  />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team2purpleDiamId"
+                    android:src="@drawable/purple_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team2NameId"
+                    android:layout_alignParentStart="true"  />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team2pinkDiamId"
+                    android:src="@drawable/pink_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team2NameId"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team2greenDiamId"
+                    android:src="@drawable/green_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team2NameId"
+                    android:layout_alignParentStart="true"  />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/rl3"
+                android:layout_margin="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/team3NameId"
+                    android:visibility="gone"
+                    android:textColor="#ffffffff"
+                    android:textSize="35sp"
+                    android:text=""
+                    android:layout_centerHorizontal="true"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team3DiamId"
+                    android:src="@drawable/diam_table"
+                    android:layout_below="@+id/team3NameId"
+                    android:layout_alignParentStart="true"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team3blueDiamId"
+                    android:src="@drawable/blue_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team3NameId"
+                    android:layout_alignParentStart="true"  />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team3redDiamId"
+                    android:src="@drawable/red_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team3NameId"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team3yellowDiamId"
+                    android:src="@drawable/yellow_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team3NameId"
+                    android:layout_alignParentStart="true"  />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team3purpleDiamId"
+                    android:src="@drawable/purple_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team3NameId"
+                    android:layout_alignParentStart="true"  />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team3pinkDiamId"
+                    android:src="@drawable/pink_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team3NameId"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team3greenDiamId"
+                    android:src="@drawable/green_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team3NameId"
+                    android:layout_alignParentStart="true"  />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/rl4"
+                android:layout_margin="20dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team4blueDiamId"
+                    android:src="@drawable/blue_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team4NameId"
+                    android:layout_alignParentStart="true"  />
+
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/team4NameId"
+                    android:visibility="gone"
+                    android:textColor="#ffffffff"
+                    android:textSize="35sp"
+                    android:text=""
+                    android:layout_centerHorizontal="true"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team4DiamId"
+                    android:src="@drawable/diam_table"
+                    android:layout_below="@+id/team4NameId"
+                    android:layout_alignParentStart="true"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team4redDiamId"
+                    android:src="@drawable/red_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team4NameId"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team4yellowDiamId"
+                    android:src="@drawable/yellow_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team4NameId"
+                    android:layout_alignParentStart="true"  />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team4purpleDiamId"
+                    android:src="@drawable/purple_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team4NameId"
+                    android:layout_alignParentStart="true"  />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team4pinkDiamId"
+                    android:src="@drawable/pink_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team4NameId"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team4greenDiamId"
+                    android:src="@drawable/green_diam"
+                    android:visibility="gone"
+                    android:layout_below="@+id/team4NameId"
+                    android:layout_alignParentStart="true"  />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

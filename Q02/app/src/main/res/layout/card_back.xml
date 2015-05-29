@@ -22,7 +22,6 @@
 
         android:layout_width="3000dp"
         android:layout_height="3000dp"
-
         android:id="@+id/rlt"
         >
 
@@ -82,6 +81,5 @@
             />
 
     </RelativeLayout>
-
 
 </RelativeLayout>

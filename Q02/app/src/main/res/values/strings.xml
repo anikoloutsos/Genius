@@ -39,6 +39,8 @@
     <string name="title_activity_saved_game_status">SavedGameStatus</string>
     <string name="title_activity_add_question">addQuestion</string>
     <string name="title_activity_report">report</string>
+
     <string name="title_activity_saved_games">SavedGames</string>
+    <string name="title_activity_continue_screen">ContinueScreen</string>
 
 </resources>
