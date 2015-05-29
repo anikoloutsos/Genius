@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/team1NameId"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:textColor="#ffffffff"
                 android:textSize="45sp"
                 android:text=""
@@ -38,14 +38,14 @@
                 android:src="@drawable/diam_table"
                 android:layout_below="@+id/team1NameId"
                 android:layout_alignParentStart="true"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/team1blueDiamId"
                 android:src="@drawable/blue_diam"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_below="@+id/team1NameId"
                 android:layout_alignParentStart="true"  />
 
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/team1redDiamId"
                 android:src="@drawable/red_diam"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_below="@+id/team1NameId"
                 android:layout_alignParentStart="true" />
 
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/team1yellowDiamId"
                 android:src="@drawable/yellow_diam"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_below="@+id/team1NameId"
                 android:layout_alignParentStart="true"  />
 
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/team1purpleDiamId"
                 android:src="@drawable/purple_diam"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_below="@+id/team1NameId"
                 android:layout_alignParentStart="true"  />
 
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/team1pinkDiamId"
                 android:src="@drawable/pink_diam"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_below="@+id/team1NameId"
                 android:layout_alignParentStart="true" />
 
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/team1greenDiamId"
                 android:src="@drawable/green_diam"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_below="@+id/team1NameId"
                 android:layout_alignParentStart="true"  />
 

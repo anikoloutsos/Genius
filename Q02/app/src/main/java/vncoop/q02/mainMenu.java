@@ -2,22 +2,23 @@ package vncoop.q02;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-
+import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.StreamCorruptedException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class mainMenu extends Activity {
@@ -27,20 +28,69 @@ public class mainMenu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        //String[] dblist = this.databaseList();
+        double screenWidth,screenHeight,statusBarHeight,Left,Top,Right,Bottom;
+        ImageView logo = (ImageView) findViewById(R.id.logoId);
+        ImageButton newGame = (ImageButton) findViewById(R.id.ngid);
+        ImageButton Continue = (ImageButton) findViewById(R.id.goid);
+        ImageButton rules = (ImageButton) findViewById(R.id.rulesId);
+        ImageButton AddQuestion = (ImageButton) findViewById(R.id.addQueId);
 
-        //Log.d("i have", dblist[0]);
+        String[] dblist = this.databaseList();
 
-        //this.deleteDatabase("FDB.sqlite");
+        if (dblist[0] == null) {
+            //Log.d("i have", dblist[0]);
 
-        DBHelper dbCreator = new DBHelper(getApplicationContext());
-        try{
-            dbCreator.createDB();
-        }catch (IOException ex){
-            throw new Error("ImpossibleToCreateDB");
+            //this.deleteDatabase("FDB.sqlite");
+
+            DBHelper dbCreator = new DBHelper(getApplicationContext());
+            try {
+                dbCreator.createDB();
+            } catch (IOException ex) {
+                throw new Error("ImpossibleToCreateDB");
+            }
         }
 
 
+        //Screen characteristics
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        screenWidth = (double) dm.widthPixels;
+        screenHeight = (double) dm.heightPixels;
+        //screenDensity = (double) dm.density;
+
+        statusBarHeight = (double) getStatusBarHeight();
+        screenHeight -= statusBarHeight;
+
+        double buttonsRatio = 81.0/572.0;
+
+        //Logo margins
+        Left = 0.25*screenWidth;
+        Top = 0.09*screenHeight;
+        Right = Left;
+        Bottom = (screenHeight- Top -(screenWidth-2*Left));
+        setMargins(logo,(int) Left,(int) Top,(int) Right, (int) Bottom);
+
+        //New game Button margins
+        Left = 0.04*screenWidth;
+        Top = 2*Right+Top + 0.06*screenHeight;
+        Right = Left;
+        Bottom =(screenHeight - Top - (buttonsRatio*(screenWidth-2*Left)));
+        setMargins(newGame,(int) Left,(int) Top,(int) Right, (int) Bottom);
+
+        //Continue Button margins
+        Top = Top + (buttonsRatio*(screenWidth-2*Left))+0.04*screenHeight;
+        Bottom = (screenHeight - Top - (buttonsRatio*(screenWidth-2*Left)));
+        setMargins(Continue,(int) Left,(int) Top,(int) Right, (int) Bottom);
+
+        //Rules Button margins
+        Top = Top + (buttonsRatio*(screenWidth-2*Left)) + 0.04*screenHeight;
+        Bottom = (screenHeight - Top - (buttonsRatio*(screenWidth-2*Left)));
+        setMargins(rules,(int) Left,(int) Top,(int) Right, (int) Bottom);
+
+        //Add Questions Button margins
+        Top = Top + (buttonsRatio*(screenWidth-2*Left)) + 0.04*screenHeight;
+        Bottom = screenHeight - Top - buttonsRatio* (screenWidth-2*Left);
+        setMargins(AddQuestion,(int) Left,(int) Top,(int) Right, (int) Bottom);
     }
 
     ////////////BUTTONS\\\\\\\\\\\\\\
@@ -60,6 +110,14 @@ public class mainMenu extends Activity {
         parcTeams[] teams = new parcTeams[2];
         int number_of_teams = 2;
         int current_team = 0;
+        File file = new File(FILE);
+        if (file.exists()) {
+            Date lastModified = new Date(file.lastModified());
+            Log.d("date", String.valueOf(lastModified));
+            SimpleDateFormat date = new SimpleDateFormat("yyyyMMddhhmmss");
+            String dateFile1 = date.format(lastModified);
+            Log.d("date2", dateFile1);
+
         try {
             ObjectInputStream oIS = new ObjectInputStream(
                     new FileInputStream(FILE));
@@ -87,6 +145,9 @@ public class mainMenu extends Activity {
 
 
         startActivity(goOn);
+        }else{
+            Toast.makeText(getApplicationContext(), " Δεν υπάρχουν αποθηκευμένα παιχνίδια", Toast.LENGTH_LONG).show();
+        }
 
 
         //finish();
@@ -126,5 +187,24 @@ public class mainMenu extends Activity {
                 })
                 .setNegativeButton("Όχι", null)
                 .show();
+    }
+
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+    public static void setMargins(View v, int l, int t, int r, int b) {
+
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
     }
 }

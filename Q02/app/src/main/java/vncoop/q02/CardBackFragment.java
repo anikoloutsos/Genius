@@ -1,34 +1,19 @@
 package vncoop.q02;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-/**
- * Created by thanos on 14/5/2015.
- */
+
 public class CardBackFragment extends Fragment {
-
-    String[] questionAndAnswer = new String[2];
-    int current_team;
-    int number_of_teams;
-    parcTeams[] teams;
-    boolean isDiamond;
-    int category;
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -101,10 +86,6 @@ public class CardBackFragment extends Fragment {
         Top = (differenceInHeight/2+(0.044* orgnlHeight));
         Bottom = (differenceInHeight/2+(0.052* orgnlHeight));
         setMargins(rl, (int) Left, (int) Top, (int) Right, (int) Bottom);
-        Log.d("Left", String.valueOf(Left));
-        Log.d("Right", String.valueOf(Right));
-        Log.d("Top", String.valueOf(Top));
-        Log.d("Bottom", String.valueOf(Bottom));
 
         //CategoryTitle margins
         Top = (0.002629848783694* orgnlHeight);
@@ -137,40 +118,6 @@ public class CardBackFragment extends Fragment {
         setMargins(correct, (int) Right, (int) Top, (int) Left, (int) Bottom);
         return myFragmentView;
     }
-
-    public String intCatToString(int col){
-        if(col==1){
-            return "geo";
-        }else if(col==2){
-            return "cim";
-        }else if(col==3){
-            return "his";
-        }else if(col==4){
-            return "art";
-        }else if(col==5){
-            return "sci";
-        }else{
-            return "spo";
-        }
-    }
-
-    public String intCatToText(int col){
-        if(col==1){
-            return "Γεωγραφία";
-        }else if(col==2){
-            return "Ψυχαγωγία";
-        }else if(col==3){
-            return "Ιστορία";
-        }else if(col==4){
-            return "Τέχνες";
-        }else if(col==5){
-            return "Επιστήμη";
-        }else{
-            return "Χόμπυ";
-        }
-    }
-
-
 
     public static void setMargins(View v, int l, int t, int r, int b) {
 
