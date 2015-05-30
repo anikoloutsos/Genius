@@ -30,11 +30,11 @@ public class ChooseNumOfPlayers extends Activity {
         setContentView(R.layout.activity_choose_num_of_players);
 
 
-        rb1=(ImageButton)findViewById(R.id.twoplayerid);
-        rb2=(ImageButton)findViewById(R.id.threeplayerid);
-        rb3=(ImageButton)findViewById(R.id.fourplayerid);
-        number_of_teams=2;
-        double screenWidth,screenHeight,screenDensity,statusBarHeight,Left,Top,Right,Bottom;
+        rb1 = (ImageButton) findViewById(R.id.twoplayerid);
+        rb2 = (ImageButton) findViewById(R.id.threeplayerid);
+        rb3 = (ImageButton) findViewById(R.id.fourplayerid);
+        number_of_teams = 2;
+        double screenWidth, screenHeight, screenDensity, statusBarHeight, Left, Top, Right, Bottom;
 
         TextView NumberOfTeamsText = (TextView) findViewById(R.id.numberOfTeamsId);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
@@ -54,46 +54,38 @@ public class ChooseNumOfPlayers extends Activity {
         NumberOfTeamsText.setTypeface(font);
         NumberOfTeamsText.setTextSize((float) ((0.087 / screenDensity) * screenHeight));
 
-        double buttonsRatio = 51.0/80.0;
+        double buttonsRatio = 51.0 / 80.0;
 
-        Left = 0.33*screenWidth;
-        Top = 0.24*screenHeight;
+        Left = 0.33 * screenWidth;
+        Top = 0.24 * screenHeight;
         Right = Left;
-        Bottom = 0.616*screenHeight;
+        Bottom = 0.616 * screenHeight;
 
         setMargins(rb1, (int) Left, (int) Top, (int) Right, (int) Bottom);
 
-        Top = 0.428*screenHeight;
-        Bottom = 0.428*screenHeight;
+        Top = 0.428 * screenHeight;
+        Bottom = 0.428 * screenHeight;
 
-        setMargins(rb2,(int) Left,(int) Top,(int) Right, (int) Bottom);
-        Top = 0.616*screenHeight;
-        Bottom = 0.24*screenHeight;
-        setMargins(rb3,(int) Left,(int) Top,(int) Right, (int) Bottom);
+        setMargins(rb2, (int) Left, (int) Top, (int) Right, (int) Bottom);
+        Top = 0.616 * screenHeight;
+        Bottom = 0.24 * screenHeight;
+        setMargins(rb3, (int) Left, (int) Top, (int) Right, (int) Bottom);
 
 
-        Left = 0.05*screenWidth;
-        Top = 0.8*screenHeight;
+        Left = 0.05 * screenWidth;
+        Top = 0.8 * screenHeight;
         Right = Left;
-        Bottom = 0.02*screenHeight;
+        Bottom = 0.02 * screenHeight;
 
-        setMargins(home, (int)Left, (int) Top, (int)Right, (int) Bottom);
+        setMargins(home, (int) Left, (int) Top, (int) Right, (int) Bottom);
 
-        Left = 0.05*screenWidth;
-        Top = 0.8*screenHeight;
+        Left = 0.05 * screenWidth;
+        Top = 0.8 * screenHeight;
         Right = Left;
-        Bottom = 0.02*screenHeight;
+        Bottom = 0.02 * screenHeight;
 
-        setMargins(back, (int)Left, (int) Top, (int)Right, (int) Bottom);
-
-
-
-
-         /* Initialize Radio Group and attach click handler */
-
-        //radioGroup.clearCheck();
+        setMargins(back, (int) Left, (int) Top, (int) Right, (int) Bottom);
     }
-//////////////////////////
 
 
     ////ΠΙΣΩ ΚΟΥΜΠΙ
