@@ -12,6 +12,7 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Bundle;
 
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -41,8 +42,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     int current_team;
     int number_of_teams;
     parcTeams[] teams;
-
-
     ImageButton firstbtn;
     ImageButton secondbtn;
     ImageButton diamondbtn;
@@ -116,18 +115,76 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         //WS EDW TO SAVE STATE
 
 
-        //set layout margin of button categories
 
-        int width=getDisplaywidth();
-        Log.d("____________",""+width);
-        ImageButton b1 = (ImageButton)findViewById(R.id.btnCat1Id);
-        ImageButton b2 = (ImageButton)findViewById(R.id.btnCat2Id);
+        double screenWidth,screenHeight,statusBarHeight,Left,Top,Right,Bottom,screenDensity;
 
-        double margind = width*0.1;
-        int margin = (int) margind;
-        Log.d("MARGIn" + margin, "Width" + width);
-        setMargins(b1,margin,0,0, 0);
-        setMargins(b2,0,0,margin,0);
+        OmadaTxt = (TextView) findViewById(R.id.textViewOmada);
+        Odigies = (TextView) findViewById(R.id.instructions);
+        spinbtn = (ImageButton) findViewById(R.id.btnSpin);
+        ImageButton button1 = (ImageButton)findViewById(R.id.btnCat1Id);
+        ImageButton button2 = (ImageButton)findViewById(R.id.btnCat2Id);
+        TextView Cattxt1 = (TextView) findViewById(R.id.textCat1);
+        TextView Cattxt2 = (TextView) findViewById(R.id.textCat2);
+        diamondbtn = (ImageButton) findViewById(R.id.btnDiaId);
+        TextView Diatxt = (TextView) findViewById(R.id.textDiam);
+        font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+
+        //Screen characteristics
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        screenWidth = (double) dm.widthPixels;
+        screenHeight = (double) dm.heightPixels;
+        screenDensity = (double) dm.density;
+
+        statusBarHeight = (double) getStatusBarHeight();
+        screenHeight -= statusBarHeight;
+
+        //Setting Team name\\
+        OmadaTxt.setTypeface(font);
+        OmadaTxt.setText(teams[current_team].get_name());
+        Top = (0.035* screenHeight);
+        setMargins(OmadaTxt,0,(int) Top,0,0);
+        OmadaTxt.setTextSize((float) ((0.09/screenDensity)*screenHeight));
+
+        //Setting instructions\\
+        Odigies.setTypeface(font);
+        Top = ((0.3-0.05)* screenHeight);
+        setMargins(Odigies,0,(int) Top,0,0);
+        Odigies.setTextSize((float) ((0.058/screenDensity)*screenHeight));
+
+        //Setting spin button\\
+        Left = (0.344626168*screenWidth);
+        Top = ((0.4692367-0.05)*screenHeight);
+        Right = Left;
+        Bottom = ((0.32320872+0.05)*screenHeight);
+        setMargins(spinbtn,(int) Left,(int) Top, (int) Right,(int) Bottom);
+
+        //Setting choices 1 and 2
+        Left = ((0.0946262)*screenWidth);
+        Right=((0.594042)*screenWidth);
+        setMargins(button1,(int) Left,(int) Top, (int) Right,(int) Bottom);
+        setMargins(button2,(int) Right,(int) Top, (int) Left,(int) Bottom);
+
+        //Setting Category Texts
+        Top = screenHeight-Bottom;
+        Left = ((0.0946262)*screenWidth);
+        Right=((0.594042)*screenWidth);
+        setMargins(Cattxt1,(int) Left,(int) Top, (int) Right,0);
+        setMargins(Cattxt2,(int) Right,(int) Top, (int) Left,0);
+        Cattxt1.setTextSize((float) ((0.052/screenDensity)*screenHeight));
+        Cattxt2.setTextSize((float) ((0.052/screenDensity)*screenHeight));
+
+        //Setting Diamond
+        Left = (0.2178738*screenWidth);
+        Top = ((0.4692367-0.08)*screenHeight);
+        Right = Left;
+        Bottom = ((0.21300623+0.08)*screenHeight);
+        setMargins(diamondbtn,(int) Left,(int) Top, (int) Right,(int) Bottom);
+
+        //Setting Diamond Text
+        Top = screenHeight-Bottom;
+        setMargins(Diatxt,(int) Left,(int) Top, (int) Right,0);
+        Diatxt.setTextSize((float) ((0.058/screenDensity)*screenHeight));
         //telos
 
 
@@ -148,15 +205,9 @@ public class MainGame extends Activity implements Animation.AnimationListener {
             }
         }
 
-        //Εμφάνιση ονόματος ομάδας\\
-        OmadaTxt = (TextView) findViewById(R.id.textViewOmada);
-        font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
-        OmadaTxt.setTypeface(font);
-        OmadaTxt.setText(teams[current_team].get_name());
 
-        refitText(OmadaTxt, 45);
-        Odigies = (TextView) findViewById(R.id.instractions);
-        Odigies.setTypeface(font);
+
+
         //telos
 
 
@@ -194,6 +245,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         Odigies.setVisibility(View.INVISIBLE);
 
         //spin animation
+
         spinbtn.setImageResource(R.drawable.spin_animation);
         AnimationDrawable frameAnimation = (AnimationDrawable) spinbtn.getDrawable();
         int didd;
@@ -221,7 +273,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
                 if (epiloges[1].equals("naS")) {
                     int didd = getResources().getIdentifier(epiloges[0] + "_selector", "drawable", getPackageName());
-                    diamondbtn.setScaleType(ImageButton.ScaleType.FIT_XY);
                     diamondbtn.setImageResource(didd);
                     diamondbtn.setVisibility(View.VISIBLE);
                     diamondbtn.setAnimation(ScaleFade);
@@ -229,13 +280,11 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
 
                     int did1 = getResources().getIdentifier(epiloges[0] + "_selector", "drawable", getPackageName());
-                    firstbtn.setScaleType(ImageButton.ScaleType.FIT_XY);
                     firstbtn.setImageResource(did1);
                     firstbtn.setVisibility(View.VISIBLE);
                     firstbtn.setAnimation(MoveLeftFAdeIn);
 
                     int did2 = getResources().getIdentifier(epiloges[1] + "_selector", "drawable", getPackageName());
-                    secondbtn.setScaleType(ImageButton.ScaleType.FIT_XY);
                     secondbtn.setImageResource(did2);
                     secondbtn.setVisibility(View.VISIBLE);
                     secondbtn.setAnimation(MoveRightFAdeIn);
@@ -458,8 +507,14 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     }
 
 
-
-
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
     public static void setMargins(View v, int l, int t, int r, int b) {
 
         if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
@@ -468,48 +523,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
             p.setMargins(l, t, r, b);
             v.requestLayout();
         }
-    }
-
-   /* public static void setWidth(View v, int w) {
-
-        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-
-            ViewGroup.LayoutParams p = (ViewGroup.LayoutParams) v.getLayoutParams();
-            p.width=w;
-            v.requestLayout();
-        }
-    }*/
-
-    public int getDisplaywidth(){
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        int height = size.y;
-        if(height<=width){width=height;}
-        return width;
-    }
-
-
-    public void refitText(TextView tv,float maxTextSize) {
-        tv.measure(0, 0);
-        int width=getDisplaywidth();
-        int textWidth =tv.getMeasuredWidth();
-
-            int availableWidth = width;
-            float trySize = maxTextSize;
-
-            while (textWidth > availableWidth) {
-                trySize -= 1;
-                tv.setTextSize(trySize);
-                tv.measure(0, 0);
-                textWidth =tv.getMeasuredWidth();
-                Log.d("textwidth " +textWidth,"textsize " +trySize);
-                //tv.requestLayout();
-                }
-
-        tv.setTextSize(trySize);
-
     }
 
 }

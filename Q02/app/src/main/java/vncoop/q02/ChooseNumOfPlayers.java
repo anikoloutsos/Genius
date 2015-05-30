@@ -52,21 +52,22 @@ public class ChooseNumOfPlayers extends Activity {
 
         double buttonsRatio = 51.0/80.0;
 
-        Left = 0.2*screenWidth;
+        Left = 0.25*screenWidth;
         Top = 0.2*screenHeight;
+        Bottom = 0.01*screenHeight;
         setMargins(radioGroup,(int) Left,(int) Top
-                ,(int) Left, (int) 0);
+                ,(int) Left, (int) Bottom);
         //Two players selection margins
         //Left = 0.3*screenWidth;
-        Left=0;
-        Top = 0.01*screenHeight;
-        Right = Left;
-        Bottom = (screenHeight - Top - buttonsRatio*(screenWidth-2*Left)) ;
+        //Left=0;
+        //Top = 0.01*screenHeight;
+        //Right = Left;
+        //Bottom = (screenHeight - Top - buttonsRatio*(screenWidth-2*Left)) ;
 
-        setMargins(radioButton2Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
+        //setMargins(radioButton2Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
         Top = 0.01*screenHeight;
-        setMargins(radioButton3Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
-        setMargins(radioButton4Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
+        //setMargins(radioButton3Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
+        //setMargins(radioButton4Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
 
 
          /* Initialize Radio Group and attach click handler */

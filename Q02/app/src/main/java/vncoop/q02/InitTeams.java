@@ -46,7 +46,6 @@ public class InitTeams extends ActionBarActivity {
         for (int i = 0; i < number_of_players; i++) {
             lastChecked[i] = 0;
             teams[i] = new parcTeams();
-            //Log.d("----------------",teams[0].name);
         }
 
 

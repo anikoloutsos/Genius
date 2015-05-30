@@ -73,36 +73,38 @@ public class mainMenu extends Activity {
         double buttonsRatio = 105.0/572.0;
 
         //Logo margins
-        Left = 0.24*screenWidth;
-        Top = 0.06*screenHeight;
-        Right = Left;
-        Bottom = (screenHeight- Top -(screenWidth-2*Left));
+        Left = 0.30081775700934*screenWidth;
+        Top = 0.0700934579*screenHeight;
+        Right = 0.2961448598*screenWidth;
+        Bottom =0.64953271*screenHeight;
         setMargins(logo,(int) Left,(int) Top,(int) Right, (int) Bottom);
 
 
         //New game Button margins
-        Left = 0.04*screenWidth;
-        Top = 2*Right+Top + 0.06*screenHeight;
-        Right = Left;
-        Bottom =(screenHeight - Top - (buttonsRatio*(screenWidth-2*Left)));
+
+        Top = 0.41082555*screenHeight;
+        Left = 0.05*screenWidth;
+        Bottom = 0.47858255451*screenHeight;
+        Right=Left;
+
         setMargins(newGame,(int) Left,(int) Top,(int) Right, (int) Bottom);
         newGame.setTextSize((float) (0.057/screenDensity*screenHeight));
 
         //Continue Button margins
-        Top = Top + (buttonsRatio*(screenWidth-2*Left))+0.04*screenHeight;
-        Bottom = (screenHeight - Top - (buttonsRatio*(screenWidth-2*Left)));
+        Top = Top + 0.140576323987*screenHeight;
+        Bottom = Bottom -  0.140576323987*screenHeight;
         setMargins(Continue,(int) Left,(int) Top,(int) Right, (int) Bottom);
         Continue.setTextSize((float) (0.057/screenDensity*screenHeight));
 
         //Rules Button margins
-        Top = Top + (buttonsRatio*(screenWidth-2*Left)) + 0.04*screenHeight;
-        Bottom = (screenHeight - Top - (buttonsRatio*(screenWidth-2*Left)));
+        Top = Top + 0.140576323987*screenHeight;
+        Bottom = Bottom -  0.140576323987*screenHeight;
         setMargins(rules,(int) Left,(int) Top,(int) Right, (int) Bottom);
         rules.setTextSize((float) (0.057/screenDensity*screenHeight));
 
         //Add Questions Button margins
-        Top = Top + (buttonsRatio*(screenWidth-2*Left)) + 0.04*screenHeight;
-        Bottom = screenHeight - Top - buttonsRatio* (screenWidth-2*Left);
+        Top = Top + 0.140576323987*screenHeight;
+        Bottom = Bottom -  0.140576323987*screenHeight;
         setMargins(AddQuestion,(int) Left,(int) Top,(int) Right, (int) Bottom);
         AddQuestion.setTextSize((float) (0.057/screenDensity*screenHeight));
     }
