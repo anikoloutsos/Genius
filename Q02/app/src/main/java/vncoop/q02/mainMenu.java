@@ -70,11 +70,11 @@ public class mainMenu extends Activity {
         statusBarHeight = (double) getStatusBarHeight();
         screenHeight -= statusBarHeight;
 
-        double buttonsRatio = 81.0/572.0;
+        double buttonsRatio = 105.0/572.0;
 
         //Logo margins
-        Left = 0.25*screenWidth;
-        Top = 0.09*screenHeight;
+        Left = 0.24*screenWidth;
+        Top = 0.06*screenHeight;
         Right = Left;
         Bottom = (screenHeight- Top -(screenWidth-2*Left));
         setMargins(logo,(int) Left,(int) Top,(int) Right, (int) Bottom);
@@ -86,21 +86,25 @@ public class mainMenu extends Activity {
         Right = Left;
         Bottom =(screenHeight - Top - (buttonsRatio*(screenWidth-2*Left)));
         setMargins(newGame,(int) Left,(int) Top,(int) Right, (int) Bottom);
+        newGame.setTextSize((float) (0.057/screenDensity*screenHeight));
 
         //Continue Button margins
         Top = Top + (buttonsRatio*(screenWidth-2*Left))+0.04*screenHeight;
         Bottom = (screenHeight - Top - (buttonsRatio*(screenWidth-2*Left)));
         setMargins(Continue,(int) Left,(int) Top,(int) Right, (int) Bottom);
+        Continue.setTextSize((float) (0.057/screenDensity*screenHeight));
 
         //Rules Button margins
         Top = Top + (buttonsRatio*(screenWidth-2*Left)) + 0.04*screenHeight;
         Bottom = (screenHeight - Top - (buttonsRatio*(screenWidth-2*Left)));
         setMargins(rules,(int) Left,(int) Top,(int) Right, (int) Bottom);
+        rules.setTextSize((float) (0.057/screenDensity*screenHeight));
 
         //Add Questions Button margins
         Top = Top + (buttonsRatio*(screenWidth-2*Left)) + 0.04*screenHeight;
         Bottom = screenHeight - Top - buttonsRatio* (screenWidth-2*Left);
         setMargins(AddQuestion,(int) Left,(int) Top,(int) Right, (int) Bottom);
+        AddQuestion.setTextSize((float) (0.057/screenDensity*screenHeight));
     }
 
 

@@ -23,6 +23,7 @@
         android:textColor="#ffffffff"
         android:layout_centerHorizontal="true"
 
+
     />
 
     <Button
@@ -34,6 +35,7 @@
         style="@style/ButtonStyle"
         android:textColor="#ffffffff"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         />
 
     <Button
@@ -44,7 +46,8 @@
         android:textColor="#ffffffff"
         android:id="@+id/rulesId"
         style="@style/ButtonStyle"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
 
     <Button
         android:layout_width="fill_parent"
@@ -53,7 +56,8 @@
         android:id="@+id/addQueId"
         android:onClick="addQue"
         style="@style/ButtonStyle"
-        android:textColor="#ffffffff" />
+        android:textColor="#ffffffff"
+        android:gravity="center"/>
 
 
 

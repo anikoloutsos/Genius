@@ -33,8 +33,8 @@ public class ChooseNumOfPlayers extends Activity {
         //refitText(RithmiseisTxt,50);
         ImageView separator = (ImageView) findViewById(R.id.separatorId);
         RadioButton radioButton2Teams = (RadioButton) findViewById(R.id.button2);
-        RadioButton radioButton3Teams = (RadioButton) findViewById(R.id.button2);
-        RadioButton radioButton4Teams = (RadioButton) findViewById(R.id.button2);
+        RadioButton radioButton3Teams = (RadioButton) findViewById(R.id.button3);
+        RadioButton radioButton4Teams = (RadioButton) findViewById(R.id.button4);
         radioGroup = (RadioGroup) findViewById(R.id.RadioGroup_id);
 
         //Screen characteristics
@@ -59,11 +59,12 @@ public class ChooseNumOfPlayers extends Activity {
         //Two players selection margins
         //Left = 0.3*screenWidth;
         Left=0;
-        Top = 0.35*screenHeight;
+        Top = 0.01*screenHeight;
         Right = Left;
         Bottom = (screenHeight - Top - buttonsRatio*(screenWidth-2*Left)) ;
+
         setMargins(radioButton2Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
-        Top = 0.05*screenHeight;
+        Top = 0.01*screenHeight;
         setMargins(radioButton3Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
         setMargins(radioButton4Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
 
