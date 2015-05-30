@@ -26,7 +26,4 @@ dependencies {
     compile files('/home/thanos/Documents/git project/aQp/Q02/libs/activation.jar')
     compile files('/home/thanos/Documents/git project/aQp/Q02/libs/additionnal.jar')
     compile files('/home/thanos/Documents/git project/aQp/Q02/libs/mail.jar')
-    compile files('C:/Users/Alexandros/Desktop/Q02/libs/mail.jar')
-    compile files('C:/Users/Alexandros/Desktop/Q02/libs/activation.jar')
-    compile files('C:/Users/Alexandros/Desktop/Q02/libs/additionnal.jar')
 }

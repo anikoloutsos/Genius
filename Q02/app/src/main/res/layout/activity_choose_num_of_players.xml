@@ -1,9 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="vncoop.q02.ChooseNumOfPlayers"
+    android:layout_height="match_parent" tools:context="vncoop.q02.ChooseNumOfPlayers"
     android:background="@drawable/background">
 
 
@@ -29,6 +26,16 @@
         android:src="@drawable/seperator" />
 
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seperator2"
+        android:src="@drawable/seperator"
+        android:layout_above="@+id/button8"
+        android:layout_alignLeft="@+id/button7"
+        android:layout_alignStart="@+id/button7"
+        android:visibility="gone"/>
+
     <ImageButton
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -37,86 +44,51 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:onClick="next_click"
-        android:background="#00ffffff"
         android:src="@drawable/next_selector"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter"
+        style="@style/ButtonStyle"/>
 
     <ImageButton
         android:layout_width="70dp"
         android:layout_height="70dp"
-
         android:id="@+id/button7"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:onClick="back_click"
         android:src="@drawable/home_selector"
+
+        android:scaleType="fitCenter"
+        style="@style/ButtonStyle"/>
+
+    <ImageButton
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:id="@+id/twoplayerid"
+        android:src="@drawable/twoplayerbutton_selec"
+        android:scaleType="fitCenter"
+        android:onClick="onTwoClick"
         android:background="#00ffffff"
-        android:scaleType="fitCenter"/>
+        />
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/seperator2"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/button7"
-        android:src="@drawable/seperator" />
+    <ImageButton
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:id="@+id/threeplayerid"
+        android:src="@drawable/threeplayerbutton"
+        android:onClick="onThreeClick"
+        android:scaleType="fitCenter"
+        android:background="#00ffffff" />
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/seperator2"
-        android:layout_below="@+id/separatorId"
-        android:id="@+id/scrollView5" >
-
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:id="@+id/RadioGroup_id"
-            android:checkedButton="@+id/button2"
-            android:gravity="center"
-
-            android:layout_centerHorizontal="true">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button2"
-                android:button="@null"
-                android:checked="true"
-
-                android:tag="2"
-                android:background="@drawable/twoplayer_selector"
-                />
-
-            <RadioButton
-
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:button="@null"
-                android:background="@drawable/threeplayer_selector"
-                android:id="@+id/button3"
-                android:layout_centerHorizontal="true"
-                android:tag="3"
-                android:layout_gravity="center_horizontal"
-                android:checked="false"/>
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:background="@drawable/fourplayer_selector"
-                android:id="@+id/button4"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal"
-                android:tag="4"
-                android:checked="false" />
-
-        </RadioGroup>
-    </ScrollView>
+    <ImageButton
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:onClick="onFourClick"
+        android:id="@+id/fourplayerid"
+        android:src="@drawable/fourplayerbutton"
+        android:scaleType="fitCenter"
+        android:background="#00ffffff"
+         />
 
 
 </RelativeLayout>

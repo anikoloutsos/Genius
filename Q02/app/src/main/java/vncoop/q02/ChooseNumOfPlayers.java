@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -18,6 +19,9 @@ import android.widget.TextView;
 public class ChooseNumOfPlayers extends Activity {
     private RadioGroup radioGroup;
     public int number_of_teams;
+    ImageButton rb1;
+    ImageButton rb2;
+    ImageButton rb3;
 
 
     @Override
@@ -26,16 +30,16 @@ public class ChooseNumOfPlayers extends Activity {
         setContentView(R.layout.activity_choose_num_of_players);
 
 
+        rb1=(ImageButton)findViewById(R.id.twoplayerid);
+        rb2=(ImageButton)findViewById(R.id.threeplayerid);
+        rb3=(ImageButton)findViewById(R.id.fourplayerid);
+        number_of_teams=2;
         double screenWidth,screenHeight,screenDensity,statusBarHeight,Left,Top,Right,Bottom;
 
         TextView NumberOfTeamsText = (TextView) findViewById(R.id.numberOfTeamsId);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
-        //refitText(RithmiseisTxt,50);
-        ImageView separator = (ImageView) findViewById(R.id.separatorId);
-        RadioButton radioButton2Teams = (RadioButton) findViewById(R.id.button2);
-        RadioButton radioButton3Teams = (RadioButton) findViewById(R.id.button3);
-        RadioButton radioButton4Teams = (RadioButton) findViewById(R.id.button4);
-        radioGroup = (RadioGroup) findViewById(R.id.RadioGroup_id);
+        ImageButton home = (ImageButton) findViewById(R.id.button7);
+        ImageButton back = (ImageButton) findViewById(R.id.button8);
 
         //Screen characteristics
         DisplayMetrics dm = new DisplayMetrics();
@@ -52,21 +56,37 @@ public class ChooseNumOfPlayers extends Activity {
 
         double buttonsRatio = 51.0/80.0;
 
-        Left = 0.2*screenWidth;
-        Top = 0.2*screenHeight;
-        setMargins(radioGroup,(int) Left,(int) Top
-                ,(int) Left, (int) 0);
-        //Two players selection margins
-        //Left = 0.3*screenWidth;
-        Left=0;
-        Top = 0.01*screenHeight;
+        Left = 0.33*screenWidth;
+        Top = 0.24*screenHeight;
         Right = Left;
-        Bottom = (screenHeight - Top - buttonsRatio*(screenWidth-2*Left)) ;
+        Bottom = 0.616*screenHeight;
 
-        setMargins(radioButton2Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
-        Top = 0.01*screenHeight;
-        setMargins(radioButton3Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
-        setMargins(radioButton4Teams,(int) Left,(int) Top,(int) Right, (int) Bottom);
+        setMargins(rb1, (int) Left, (int) Top, (int) Right, (int) Bottom);
+
+        Top = 0.428*screenHeight;
+        Bottom = 0.428*screenHeight;
+
+        setMargins(rb2,(int) Left,(int) Top,(int) Right, (int) Bottom);
+        Top = 0.616*screenHeight;
+        Bottom = 0.24*screenHeight;
+        setMargins(rb3,(int) Left,(int) Top,(int) Right, (int) Bottom);
+
+
+        Left = 0.05*screenWidth;
+        Top = 0.8*screenHeight;
+        Right = Left;
+        Bottom = 0.02*screenHeight;
+
+        setMargins(home, (int)Left, (int) Top, (int)Right, (int) Bottom);
+
+        Left = 0.05*screenWidth;
+        Top = 0.8*screenHeight;
+        Right = Left;
+        Bottom = 0.02*screenHeight;
+
+        setMargins(back, (int)Left, (int) Top, (int)Right, (int) Bottom);
+
+
 
 
          /* Initialize Radio Group and attach click handler */
@@ -84,11 +104,45 @@ public class ChooseNumOfPlayers extends Activity {
     ////ΕΠΟΜΕΝΟ ΚΟΥΜΠΙ ΣΤΕΙΛΕ ΣΤΟ INIT_TEAMS ΤΟ NUMBER OF PLAYERS
     public void next_click(View view) {
         Intent nextClick = new Intent(this, InitTeams.class);
-        RadioButton rb = (RadioButton) radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
-        number_of_teams = Integer.parseInt(rb.getTag().toString());
         nextClick.putExtra("n_team_message", number_of_teams);
         startActivity(nextClick);
         finish();
+    }
+
+
+
+    public void onTwoClick(View view){
+        int d1id = getResources().getIdentifier("twoplayerbutton_selec", "drawable", getPackageName());
+        int d2id = getResources().getIdentifier("threeplayerbutton", "drawable", getPackageName());
+        int d3id = getResources().getIdentifier("fourplayerbutton", "drawable", getPackageName());
+
+       rb1.setImageResource(d1id);
+       rb2.setImageResource(d2id);
+       rb3.setImageResource(d3id);
+        number_of_teams=2;
+
+    }
+    public void onThreeClick(View view){
+        int d1id = getResources().getIdentifier("twoplayerbutton", "drawable", getPackageName());
+        int d2id = getResources().getIdentifier("threeplayerbutton_selec", "drawable", getPackageName());
+        int d3id = getResources().getIdentifier("fourplayerbutton", "drawable", getPackageName());
+
+        rb1.setImageResource(d1id);
+        rb2.setImageResource(d2id);
+        rb3.setImageResource(d3id);
+        number_of_teams=3;
+
+    }
+    public void onFourClick(View view){
+        int d1id = getResources().getIdentifier("twoplayerbutton", "drawable", getPackageName());
+        int d2id = getResources().getIdentifier("threeplayerbutton", "drawable", getPackageName());
+        int d3id = getResources().getIdentifier("fourplayerbutton_selec", "drawable", getPackageName());
+
+        rb1.setImageResource(d1id);
+        rb2.setImageResource(d2id);
+        rb3.setImageResource(d3id);
+        number_of_teams=4;
+
     }
 
     public int getStatusBarHeight() {
