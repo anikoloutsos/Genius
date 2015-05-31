@@ -15,9 +15,13 @@ import android.widget.TextView;
 
 import java.io.File;
 
+<<<<<<< HEAD
 
 public class Winner extends Activity {
     private int fileIndex;
+=======
+public class Winner extends Activity {
+>>>>>>> alex
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,48 @@ public class Winner extends Activity {
         //telos
 
 
+<<<<<<< HEAD
+=======
+        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+
+        TextView winningteam = (TextView) findViewById(R.id.winningTeamTextId);
+        TextView statistics_team1 = (TextView) findViewById(R.id.Team1Stats);
+        TextView statistics_team2 = (TextView) findViewById(R.id.Team2Stats);
+        TextView statistics_team3 = (TextView) findViewById(R.id.Team3Stats);
+        TextView statistics_team4 = (TextView) findViewById(R.id.Team4Stats);
+        TextView team1 = (TextView) findViewById(R.id.Team1);
+        TextView team2 = (TextView) findViewById(R.id.Team2);
+        TextView team3 = (TextView) findViewById(R.id.Team3);
+        TextView team4 = (TextView) findViewById(R.id.Team4);
+        TextView congrats = (TextView) findViewById(R.id.congrats);
+        TextView youWin = (TextView) findViewById(R.id.youwin);
+        TextView statistics = (TextView) findViewById(R.id.statistika);
+
+        //set font
+        winningteam.setText(teams[current_team].get_name());
+        team1.setTypeface(font);
+        team1.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        team2.setTypeface(font);
+        team2.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        team3.setTypeface(font);
+        team3.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        team4.setTypeface(font);
+        team4.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        statistics_team1.setTypeface(font);
+        statistics_team2.setTypeface(font);
+        statistics_team3.setTypeface(font);
+        statistics_team4.setTypeface(font);
+        winningteam.setTypeface(font);
+        congrats.setTypeface(font);
+        youWin.setTypeface(font);
+        statistics.setTypeface(font);
+
+        refitText(winningteam, 40);
+        winningteam.requestLayout();
+        //telos
+
+
+>>>>>>> alex
         //Statistics
         for(int i=0;i<number_of_teams;i++){
             float[] percentStats = new float[6];
@@ -142,6 +188,8 @@ public class Winner extends Activity {
         File f = new File(FILE[fileIndex]);
         f.delete();
         //ews edw
+
+
 
     }
 

@@ -38,8 +38,14 @@ public class ChooseNumOfPlayers extends Activity {
 
         TextView NumberOfTeamsText = (TextView) findViewById(R.id.numberOfTeamsId);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+<<<<<<< HEAD
         ImageButton home = (ImageButton) findViewById(R.id.button7);
         ImageButton back = (ImageButton) findViewById(R.id.button8);
+=======
+
+        ImageButton homeButton = (ImageButton) findViewById(R.id.homeButtonId);
+        ImageButton nextButton = (ImageButton) findViewById(R.id.nextButtonId);
+>>>>>>> alex
 
         //Screen characteristics
         DisplayMetrics dm = new DisplayMetrics();
@@ -53,13 +59,22 @@ public class ChooseNumOfPlayers extends Activity {
         //Number of teams text Size set
         NumberOfTeamsText.setTypeface(font);
         NumberOfTeamsText.setTextSize((float) ((0.087 / screenDensity) * screenHeight));
+<<<<<<< HEAD
 
         double buttonsRatio = 51.0 / 80.0;
 
+=======
+        Top = (0.035* screenHeight);
+        setMargins(NumberOfTeamsText,0,(int) Top,0,0);
+        double buttonsRatio = 51.0 / 80.0;
+
+        //Setting Two player Button
+>>>>>>> alex
         Left = 0.33 * screenWidth;
         Top = 0.24 * screenHeight;
         Right = Left;
         Bottom = 0.616 * screenHeight;
+<<<<<<< HEAD
 
         setMargins(rb1, (int) Left, (int) Top, (int) Right, (int) Bottom);
 
@@ -85,6 +100,28 @@ public class ChooseNumOfPlayers extends Activity {
         Bottom = 0.02 * screenHeight;
 
         setMargins(back, (int) Left, (int) Top, (int) Right, (int) Bottom);
+=======
+        setMargins(rb1, (int) Left, (int) Top, (int) Right, (int) Bottom);
+
+        //Setting Three player Button
+        Top = 0.428 * screenHeight;
+        Bottom = 0.428 * screenHeight;
+        setMargins(rb2, (int) Left, (int) Top, (int) Right, (int) Bottom);
+
+        //Setting Four player Button
+        Top = 0.616 * screenHeight;
+        Bottom = 0.24 * screenHeight;
+        setMargins(rb3, (int) Left, (int) Top, (int) Right, (int) Bottom);
+
+        //Setting home and Next buttons margins
+        Left = 0.063668224 * screenWidth;
+        Top = (0.80218068+0.015) * screenHeight;
+        Right = 0.702102803738*screenWidth;
+        Bottom = 0.04088785 * screenHeight;
+        setMargins(homeButton, (int) Left, (int) Top, (int) Right, (int) Bottom);
+        setMargins(nextButton, (int) Right, (int) Top, (int) Left, (int) Bottom);
+
+>>>>>>> alex
     }
 
 
@@ -146,9 +183,15 @@ public class ChooseNumOfPlayers extends Activity {
         return result;
     }
     public static void setMargins(View v, int l, int t, int r, int b) {
+<<<<<<< HEAD
 
         if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
 
+=======
+
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+
+>>>>>>> alex
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
             p.setMargins(l, t, r, b);
             v.requestLayout();

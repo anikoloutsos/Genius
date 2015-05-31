@@ -47,7 +47,10 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
     parcTeams[] teams;
     boolean isDiamond;
     int category;
+<<<<<<< HEAD
     private int fileIndex;
+=======
+>>>>>>> alex
 
     CardFrontFragment cardfrontfragment= new CardFrontFragment();
     CardBackFragment cardbackfragment= new CardBackFragment();
@@ -85,6 +88,8 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
 
        
 
+       
+
         DBHelper finder = new DBHelper(getApplicationContext());
         questionAndAnswer = finder.randFromCat(category);
 
@@ -119,6 +124,7 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
                     .commit();
         }
 
+<<<<<<< HEAD
 
     }
 
@@ -188,6 +194,77 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
 
     }
 
+=======
+
+    }
+
+    private void flipCard() {
+
+        //flip to front
+        if (mShowingBack) {
+
+            getFragmentManager()
+                    .beginTransaction()
+
+                            // Replace the default fragment animations with animator resources representing
+                            // rotations when switching to the back of the card, as well as animator
+                            // resources representing rotations when flipping back to the front (e.g. when
+                            // the system Back button is pressed).
+                    .setCustomAnimations(
+                            R.anim.card_flip_right_in, R.anim.card_flip_right_out,
+                            R.anim.card_flip_left_in, R.anim.card_flip_left_out)
+
+                            // Replace any fragments currently in the container view with a fragment
+                            // representing the next page (indicated by the just-incremented currentPage
+                            // variable).
+                    .replace(R.id.layout, cardfrontfragment)
+
+                            // Add this transaction to the back stack, allowing users to press Back
+                            // to get to the front of the card.
+                    .addToBackStack(null)
+
+
+
+                            // Commit the transaction.
+                    .commit();
+            mShowingBack=false;
+
+            return;
+        }else{
+
+
+
+            getFragmentManager()
+                    .beginTransaction()
+
+
+                            // Replace the default fragment animations with animator resources representing
+                            // rotations when switching to the back of the card, as well as animator
+                            // resources representing rotations when flipping back to the front (e.g. when
+                            // the system Back button is pressed).
+                    .setCustomAnimations(
+                            R.anim.card_flip_right_in, R.anim.card_flip_right_out,
+                            R.anim.card_flip_left_in, R.anim.card_flip_left_out)
+
+                            // Replace any fragments currently in the container view with a fragment
+                            // representing the next page (indicated by the just-incremented currentPage
+                            // variable).
+                    .replace(R.id.layout, cardbackfragment)
+
+                            // Add this transaction to the back stack, allowing users to press Back
+                            // to get to the front of the card.
+                    .addToBackStack(null)
+
+                            // Commit the transaction.
+                    .commit();
+            mShowingBack = true;
+
+            return;
+        }
+
+    }
+
+>>>>>>> alex
     @Override
     public void onBackStackChanged() {
         mShowingBack = (getFragmentManager().getBackStackEntryCount() > 0);
