@@ -26,33 +26,39 @@
         android:src="@drawable/seperator" />
 
 
-
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seperator2"
+        android:src="@drawable/seperator"
+        android:layout_above="@+id/button8"
+        android:layout_alignLeft="@+id/button7"
+        android:layout_alignStart="@+id/button7"
+        android:visibility="gone"/>
 
     <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/nextButtonId"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/button8"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:onClick="next_click"
         android:src="@drawable/next_selector"
         android:scaleType="fitCenter"
         style="@style/ButtonStyle"/>
 
     <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/homeButtonId"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/button7"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:onClick="back_click"
         android:src="@drawable/home_selector"
         android:scaleType="fitCenter"
         style="@style/ButtonStyle"/>
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/separator2Id"
-        android:src="@drawable/seperator"
-        android:scaleType="fitCenter"
-
-        android:visibility="gone" />
 
     <ImageButton
         android:layout_width="500dp"
