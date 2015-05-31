@@ -21,9 +21,19 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class InitTeams extends ActionBarActivity {
     private int number_of_players;
+    private int fileIndex;
 
 
     EditText[] b;
@@ -51,12 +61,10 @@ public class InitTeams extends ActionBarActivity {
 
         ////////////////////////////////
 
-        TextView RithmiseisTxt = (TextView)findViewById(R.id.textView);
-        refitText(RithmiseisTxt,50);
+        TextView RithmiseisTxt = (TextView) findViewById(R.id.textView);
+        refitText(RithmiseisTxt, 50);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
         RithmiseisTxt.setTypeface(font);
-
-
 
 
         //////////////SET EDIT TEXT VISIBLE//////////////
@@ -65,10 +73,10 @@ public class InitTeams extends ActionBarActivity {
             int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
             b[i - 1] = (EditText) findViewById(resID);
             b[i - 1].setVisibility(View.VISIBLE);
-            b[i-1].setTypeface(font);
+            b[i - 1].setTypeface(font);
             teams[i - 1].set_name(b[i - 1].getHint().toString());
-            b[i-1].setFocusable(false);
-            b[i-1].setClickable(true);
+            b[i - 1].setFocusable(false);
+            b[i - 1].setClickable(true);
             //Log.d("----------------",b.getHint().toString());
         }
 
@@ -175,6 +183,45 @@ public class InitTeams extends ActionBarActivity {
 
         }
 
+        //check saved games to send the oldest
+        String[] FILE = new String[3];
+        FILE[0] = "/data/data/vncoop.q02/databases/savegame1";
+        FILE[1] = "/data/data/vncoop.q02/databases/savegame2";
+        FILE[2]= "/data/data/vncoop.q02/databases/savegame3";
+
+
+        parcTeams[] teams = new parcTeams[2];
+        int number_of_teams = 2;
+        int current_team = 0;
+        long timeStamp=0;
+        long lastTimeStamp=0;
+        fileIndex =0;
+        boolean flag =true;
+
+        for (int i=0; i<3; i++) {
+            File file = new File(FILE[i]);
+
+            if (file.exists()) {
+                Date lastModified = new Date(file.lastModified());
+                SimpleDateFormat date = new SimpleDateFormat("yyyyMMddhhmmss");
+                String timeString = date.format(lastModified);
+                timeStamp = Long.parseLong(timeString);
+            } else {
+                timeStamp = i;
+            }
+
+            if (flag){
+                lastTimeStamp = timeStamp;
+            flag = false;
+            }
+
+            if(timeStamp<=lastTimeStamp){
+                lastTimeStamp=timeStamp;
+                fileIndex=i;
+            }
+            Log.d(""+timeStamp, "wololo"+fileIndex);
+
+        }
 
     }
 
@@ -216,6 +263,7 @@ public class InitTeams extends ActionBarActivity {
         //Εισαγωγή πληροφοριών
         nextClick.putExtra("number_of_teams",number_of_players);
         nextClick.putExtra("current_message", current_team);
+        nextClick.putExtra("file_index",fileIndex);
         for (int i = 0;i<number_of_players;i++) {
             nextClick.putExtra("team" + i, (android.os.Parcelable) teams[i]);
         }

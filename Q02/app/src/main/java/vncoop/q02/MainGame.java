@@ -49,6 +49,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     ImageView[] diamond_images;
     boolean[] current_diamonds;
     int teamColor;
+    private int fileIndex;
 
     Animation MoveRightFAdeIn;
     Animation MoveLeftFAdeIn;
@@ -89,30 +90,11 @@ public class MainGame extends Activity implements Animation.AnimationListener {
             teams[i] = intent.getParcelableExtra("team" + i);
         }
         current_diamonds = teams[current_team].get_diamonds();
+        fileIndex =intent.getIntExtra("file_index",0);
 
 
-        //SAVE STATE SE PERIPTWSI POU VGEI
-        String PATH = "/data/data/vncoop.q02/databases/";
-        String FILE = "poutsa1";
-        File f = new File(PATH + FILE);
-        f.delete();
-        try {
 
-            ObjectOutputStream oOS = new ObjectOutputStream(
 
-                    new FileOutputStream(PATH + FILE));
-            oOS.writeInt(number_of_teams);
-            for (int i = 0; i < number_of_teams; i++) {
-                oOS.writeObject(teams[i]);
-            }
-
-            oOS.writeInt(current_team);
-            oOS.flush();
-            oOS.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //WS EDW TO SAVE STATE
 
 
 
@@ -144,7 +126,9 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         OmadaTxt.setText(teams[current_team].get_name());
         Top = (0.035* screenHeight);
         setMargins(OmadaTxt,0,(int) Top,0,0);
-        OmadaTxt.setTextSize((float) ((0.09/screenDensity)*screenHeight));
+        OmadaTxt.setTextSize((float) ((0.09 / screenDensity) * screenHeight));
+        refitText(OmadaTxt,45,(int)screenWidth);
+
 
         //Setting instructions\\
         Odigies.setTypeface(font);
@@ -254,7 +238,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         }else{
             didd = getResources().getIdentifier(epiloges[0], "drawable", getPackageName());
         }
-        frameAnimation.addFrame(getResources().getDrawable(didd),50);
+        frameAnimation.addFrame(getResources().getDrawable(didd), 50);
         frameAnimation.start();
         //
 
@@ -355,6 +339,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         }
         intent.putExtra("categoryNum", categoryNum);
         intent.putExtra("isDiamond", false);
+        intent.putExtra("file_index",fileIndex);
 
         startActivity(intent);
         finish();
@@ -391,6 +376,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         }
         intent.putExtra("categoryNum", categoryNum);
         intent.putExtra("isDiamond", false);
+        intent.putExtra("file_index",fileIndex);
 
         startActivity(intent);
         finish();
@@ -428,6 +414,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         }
         intent.putExtra("categoryNum", categoryNum);
         intent.putExtra("isDiamond", true);
+        intent.putExtra("file_index",fileIndex);
 
         startActivity(intent);
         finish();
@@ -523,6 +510,29 @@ public class MainGame extends Activity implements Animation.AnimationListener {
             p.setMargins(l, t, r, b);
             v.requestLayout();
         }
+    }
+
+
+
+
+    public void refitText(TextView tv, float maxTextSize, int width) {
+        tv.measure(0, 0);
+        int textWidth = tv.getMeasuredWidth();
+
+        int availableWidth = width;
+        float trySize = maxTextSize;
+
+        while (textWidth > availableWidth) {
+            trySize -= 1;
+            tv.setTextSize(trySize);
+            tv.measure(0, 0);
+            textWidth = tv.getMeasuredWidth();
+            Log.d("textwidth " + textWidth, "textsize " + trySize);
+            //tv.requestLayout();
+        }
+
+        tv.setTextSize(trySize);
+
     }
 
 }
