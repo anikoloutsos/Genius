@@ -9,10 +9,7 @@ import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.InputType;
-<<<<<<< HEAD
-=======
 import android.util.DisplayMetrics;
->>>>>>> alex
 import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -22,8 +19,11 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,10 +39,7 @@ import java.util.Date;
 
 public class InitTeams extends ActionBarActivity {
     private int number_of_players;
-<<<<<<< HEAD
     private int fileIndex;
-=======
->>>>>>> alex
 
 
     EditText[] b;
@@ -70,18 +67,14 @@ public class InitTeams extends ActionBarActivity {
 
         ////////////////////////////////
 
-<<<<<<< HEAD
-        TextView RithmiseisTxt = (TextView) findViewById(R.id.textView);
-        refitText(RithmiseisTxt, 50);
-        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
-        RithmiseisTxt.setTypeface(font);
-=======
         TextView RithmiseisTxt = (TextView)findViewById(R.id.textView);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
-        RithmiseisTxt.setTypeface(font);
         ImageButton homeButton = (ImageButton) findViewById(R.id.homeButtonId);
         ImageButton nextButton = (ImageButton) findViewById(R.id.nextButtonId);
         double screenWidth, screenHeight,statusBarHeight,Top,screenDensity,Left,Right,Bottom;
+        ScrollView scrollview = (ScrollView) findViewById(R.id.scrollView);
+
+
         //Screen characteristics
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -96,6 +89,7 @@ public class InitTeams extends ActionBarActivity {
         Top = (0.035* screenHeight);
         setMargins(RithmiseisTxt,0,(int) Top,0,0);
         RithmiseisTxt.setTextSize((float) ((0.088/screenDensity)*screenHeight));
+        RithmiseisTxt.setTypeface(font);
 
         //Setting home and Next buttons margins
         Left = 0.063668224 * screenWidth;
@@ -105,8 +99,18 @@ public class InitTeams extends ActionBarActivity {
         setMargins(homeButton, (int) Left, (int) Top, (int) Right, (int) Bottom);
         setMargins(nextButton, (int) Right, (int) Top, (int) Left, (int) Bottom);
 
->>>>>>> alex
 
+        //Setting scrollview margins
+        Top = (0.15+0.03)* screenHeight;
+        Bottom = ((1-0.80018068)*screenHeight);
+        Left = (0.05*screenWidth);
+        Right = Left;
+        setMargins(scrollview,(int) Left,(int) Top,(int) Right,(int) Bottom);
+
+        ImageView Sep2 = (ImageView) findViewById(R.id.separator2Id);
+        Top = ((0.80018068-0.02)*screenHeight);
+        Bottom = (0.983-0.80018068)*screenHeight;
+        setMargins(Sep2,0,(int) Top,0,(int) Bottom);
 
         //////////////SET EDIT TEXT VISIBLE//////////////
         for (int i = 1; i <= number_of_players; i++) {
@@ -114,17 +118,10 @@ public class InitTeams extends ActionBarActivity {
             int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
             b[i - 1] = (EditText) findViewById(resID);
             b[i - 1].setVisibility(View.VISIBLE);
-<<<<<<< HEAD
             b[i - 1].setTypeface(font);
             teams[i - 1].set_name(b[i - 1].getHint().toString());
             b[i - 1].setFocusable(false);
             b[i - 1].setClickable(true);
-=======
-            b[i-1].setTypeface(font);
-            teams[i - 1].set_name(b[i - 1].getHint().toString());
-            b[i-1].setFocusable(false);
-            b[i-1].setClickable(true);
->>>>>>> alex
             //Log.d("----------------",b.getHint().toString());
         }
 
@@ -277,11 +274,16 @@ public class InitTeams extends ActionBarActivity {
 
 
     public void back_click(View view) {
+
         finish();
     }
 
 
     public void next_click(View view) {
+
+
+
+
         int counter=0;
         for (int i = 0; i < number_of_players; i++) {           //Για κάθε ομάδα
             teams[i].set_name(b[i].getText().toString());       //θέτει στην team[i] το όνομα που εισήγαγε
@@ -290,6 +292,8 @@ public class InitTeams extends ActionBarActivity {
             if(teams[i].get_name().matches("")){                //αν δεν έγραψε τίποτα
                 teams[i].set_name(b[i].getHint().toString());   //πάρε το hint (Ομάδα i) για όνομα ομάδας
             }
+
+
             if(teams[i].get_color()!=0) {
                 counter++;                                       //για έλεγχο αν κάποιος δεν διάλεξε χρώμα
             }
@@ -321,7 +325,6 @@ public class InitTeams extends ActionBarActivity {
     }
 
     public void throwPopup(View view){
-<<<<<<< HEAD
 
         Context context = this;
 
@@ -362,39 +365,6 @@ public class InitTeams extends ActionBarActivity {
                              b[3].setText(input.getText());
                         }
 
-=======
-
-        Context context = this;
-        final int id1 = view.getId();
-        final int  tv1 = R.id.textView1;
-        final int  tv2 = R.id.textView2;
-        final int  tv3 = R.id.textView3;
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-
-        View promptView = layoutInflater.inflate(R.layout.popup_insert_name, null);
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-        alertDialogBuilder.setView(promptView);
-        final EditText input = (EditText) promptView.findViewById(R.id.userInput);
-
-        // setup a dialog window
-        alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        if (id1 == tv1) {
-                            b[0].setText(input.getText());
-                        }
-                        else if (id1 == tv2) {
-                            b[1].setText(input.getText());
-                        }
-                        else if (id1 == tv3) {
-                            b[2].setText(input.getText());
-                        }
-                        else {
-                             b[3].setText(input.getText());
-                        }
-
->>>>>>> alex
                     }
 
                 })
@@ -415,54 +385,17 @@ public class InitTeams extends ActionBarActivity {
     }
 
 
-<<<<<<< HEAD
-    public int getDisplaywidth() {
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        int height = size.y;
-        if (height <= width) {
-            width = height;
-        }
-        return width;
-    }
 
-
-    public void refitText(TextView tv, float maxTextSize) {
-        tv.measure(0, 0);
-        int width = getDisplaywidth();
-        int textWidth = tv.getMeasuredWidth();
-
-        int availableWidth = width;
-        float trySize = maxTextSize;
-
-        while (textWidth > availableWidth) {
-            trySize -= 1;
-            tv.setTextSize(trySize);
-            tv.measure(0, 0);
-            textWidth = tv.getMeasuredWidth();
-            Log.d("textwidth " + textWidth, "textsize " + trySize);
-            //tv.requestLayout();
-=======
     public int getStatusBarHeight() {
         int result = 0;
         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
             result = getResources().getDimensionPixelSize(resourceId);
->>>>>>> alex
         }
         return result;
     }
     public static void setMargins(View v, int l, int t, int r, int b) {
 
-<<<<<<< HEAD
-        tv.setTextSize(trySize);
-
-    }
-
-
-=======
         if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
 
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
@@ -470,6 +403,4 @@ public class InitTeams extends ActionBarActivity {
             v.requestLayout();
         }
     }
-
->>>>>>> alex
 }

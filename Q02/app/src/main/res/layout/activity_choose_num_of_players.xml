@@ -26,39 +26,6 @@
         android:src="@drawable/seperator" />
 
 
-<<<<<<< HEAD
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/seperator2"
-        android:src="@drawable/seperator"
-        android:layout_above="@+id/button8"
-        android:layout_alignLeft="@+id/button7"
-        android:layout_alignStart="@+id/button7"
-        android:visibility="gone"/>
-
-    <ImageButton
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:id="@+id/button8"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="next_click"
-        android:src="@drawable/next_selector"
-        android:scaleType="fitCenter"
-        style="@style/ButtonStyle"/>
-
-    <ImageButton
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:id="@+id/button7"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="back_click"
-        android:src="@drawable/home_selector"
-=======
 
 
     <ImageButton
@@ -67,30 +34,10 @@
         android:id="@+id/nextButtonId"
         android:onClick="next_click"
         android:src="@drawable/next_selector"
->>>>>>> alex
         android:scaleType="fitCenter"
         style="@style/ButtonStyle"/>
 
     <ImageButton
-<<<<<<< HEAD
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:id="@+id/twoplayerid"
-        android:src="@drawable/twoplayerbutton_selec"
-        android:scaleType="fitCenter"
-        android:onClick="onTwoClick"
-        android:background="#00ffffff"
-        />
-
-    <ImageButton
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:id="@+id/threeplayerid"
-        android:src="@drawable/threeplayerbutton"
-        android:onClick="onThreeClick"
-        android:scaleType="fitCenter"
-        android:background="#00ffffff" />
-=======
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/homeButtonId"
@@ -106,13 +53,10 @@
         android:scaleType="fitCenter"
 
         android:visibility="gone" />
->>>>>>> alex
 
     <ImageButton
         android:layout_width="500dp"
         android:layout_height="500dp"
-<<<<<<< HEAD
-=======
         android:id="@+id/twoplayerid"
         android:src="@drawable/twoplayerbutton_selec"
         android:scaleType="fitCenter"
@@ -132,12 +76,11 @@
     <ImageButton
         android:layout_width="500dp"
         android:layout_height="500dp"
->>>>>>> alex
         android:onClick="onFourClick"
         android:id="@+id/fourplayerid"
         android:src="@drawable/fourplayerbutton"
         android:scaleType="fitCenter"
         android:background="#00ffffff"
-/>
+        />
 
 </RelativeLayout>

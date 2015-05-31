@@ -7,31 +7,22 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.util.DisplayMetrics;
-=======
->>>>>>> alex
 import android.util.Log;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
-<<<<<<< HEAD
 import android.view.ViewTreeObserver;
-=======
->>>>>>> alex
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-<<<<<<< HEAD
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-=======
->>>>>>> alex
 
 public class ContinueScreen extends Activity {
 
@@ -40,24 +31,18 @@ public class ContinueScreen extends Activity {
     parcTeams[] teams;
     boolean[] current_diamonds;
     boolean sameTeam;
-<<<<<<< HEAD
     private int fileIndex;
-=======
->>>>>>> alex
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_continue_screen);
 
-<<<<<<< HEAD
         //get metrics
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         double screenWidth = (double) dm.widthPixels;
         //
-=======
->>>>>>> alex
 
         //INTENTS FROM question
         Intent intent = getIntent();
@@ -70,10 +55,7 @@ public class ContinueScreen extends Activity {
             teams[i] = intent.getParcelableExtra("team" + i);
         }
         current_diamonds = teams[current_team].get_diamonds();
-<<<<<<< HEAD
         fileIndex = intent.getIntExtra("file_index", 0);
-=======
->>>>>>> alex
 
     ///set text
         TextView tv1 =(TextView)findViewById(R.id.textView1);
@@ -138,24 +120,16 @@ public class ContinueScreen extends Activity {
         allTeamsTxt[2] = (TextView) findViewById(R.id.team3NameId);
         allTeamsTxt[3] = (TextView) findViewById(R.id.team4NameId);
 
-<<<<<<< HEAD
 
         for (int j =0; j<number_of_teams; j++) {
-=======
-        for (int j =0; j<number_of_teams;j++) {
->>>>>>> alex
             allTeamsDiamondTables[j].setVisibility(View.VISIBLE);
             int backId = getResources().getIdentifier(intColorToString(teams[j].get_color()) + "_color", "drawable", getPackageName());
             rl[j].setBackgroundResource(backId);
 
             allTeamsTxt[j].setTypeface(font);
             allTeamsTxt[j].setText(teams[j].get_name());
-<<<<<<< HEAD
 
             refitText(allTeamsTxt[j],35,(int)screenWidth/2);
-=======
-            refitText(allTeamsTxt[j],35);
->>>>>>> alex
             allTeamsTxt[j].setVisibility(View.VISIBLE);
 
             for (int i = 0; i < 6; i++) {
@@ -172,25 +146,16 @@ public class ContinueScreen extends Activity {
 
         tv1.setText("Συγχαρητήρια!");
         tv2.setText(""+teams[current_team].get_name());
-<<<<<<< HEAD
             refitText(tv2,45,(int)screenWidth);
-=======
-            refitText(tv2,45);
->>>>>>> alex
         tv3.setText("Ξαναπαίζεις");
         }else{
             tv1.setText("Απαντήσατε Λάθος!");
             tv3.setText(""+teams[current_team].get_name());
-<<<<<<< HEAD
             refitText(tv3,45,(int)screenWidth);
-=======
-            refitText(tv3,45);
->>>>>>> alex
             tv2.setText("Επόμενη Ομάδα:");
         }
 
 
-<<<<<<< HEAD
         //SAVE STATE SE PERIPTWSI POU VGEI
         String[] FILE = new String[3];
         FILE[0] = "/data/data/vncoop.q02/databases/savegame1";
@@ -219,8 +184,6 @@ public class ContinueScreen extends Activity {
         }
         //WS EDW TO SAVE STATE
 
-=======
->>>>>>> alex
 
     }
 
@@ -272,27 +235,9 @@ public class ContinueScreen extends Activity {
     }
 
 
-<<<<<<< HEAD
     public void refitText(TextView tv, float maxTextSize, int width) {
         tv.measure(0, 0);
         int textWidth = tv.getMeasuredWidth();
-=======
-    public int getDisplaywidth(){
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        int height = size.y;
-        if(height<=width){width=height;}
-        return width;
-    }
-
-
-    public void refitText(TextView tv,float maxTextSize) {
-        tv.measure(0, 0);
-        int width=getDisplaywidth();
-        int textWidth =tv.getMeasuredWidth();
->>>>>>> alex
 
         int availableWidth = width;
         float trySize = maxTextSize;
@@ -301,11 +246,7 @@ public class ContinueScreen extends Activity {
             trySize -= 1;
             tv.setTextSize(trySize);
             tv.measure(0, 0);
-<<<<<<< HEAD
             textWidth = tv.getMeasuredWidth();
-=======
-            textWidth =tv.getMeasuredWidth();
->>>>>>> alex
             Log.d("textwidth " + textWidth, "textsize " + trySize);
             //tv.requestLayout();
         }
@@ -313,11 +254,8 @@ public class ContinueScreen extends Activity {
         tv.setTextSize(trySize);
 
     }
-<<<<<<< HEAD
 
 
 
 
-=======
->>>>>>> alex
 }

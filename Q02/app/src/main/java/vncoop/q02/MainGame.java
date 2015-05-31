@@ -49,10 +49,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     ImageView[] diamond_images;
     boolean[] current_diamonds;
     int teamColor;
-<<<<<<< HEAD
     private int fileIndex;
-=======
->>>>>>> alex
 
     Animation MoveRightFAdeIn;
     Animation MoveLeftFAdeIn;
@@ -91,7 +88,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         teams = new parcTeams[number_of_teams];
         for (int i = 0; i < number_of_teams; i++) {
             teams[i] = intent.getParcelableExtra("team" + i);
-<<<<<<< HEAD
         }
         current_diamonds = teams[current_team].get_diamonds();
         fileIndex =intent.getIntExtra("file_index",0);
@@ -99,34 +95,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
 
 
-=======
-        }
-        current_diamonds = teams[current_team].get_diamonds();
-
-
-        //SAVE STATE SE PERIPTWSI POU VGEI
-        String PATH = "/data/data/vncoop.q02/databases/";
-        String FILE = "poutsa1";
-        File f = new File(PATH + FILE);
-        f.delete();
-        try {
-
-            ObjectOutputStream oOS = new ObjectOutputStream(
-
-                    new FileOutputStream(PATH + FILE));
-            oOS.writeInt(number_of_teams);
-            for (int i = 0; i < number_of_teams; i++) {
-                oOS.writeObject(teams[i]);
-            }
-
-            oOS.writeInt(current_team);
-            oOS.flush();
-            oOS.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //WS EDW TO SAVE STATE
->>>>>>> alex
 
 
 
@@ -158,13 +126,9 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         OmadaTxt.setText(teams[current_team].get_name());
         Top = (0.035* screenHeight);
         setMargins(OmadaTxt,0,(int) Top,0,0);
-<<<<<<< HEAD
         OmadaTxt.setTextSize((float) ((0.09 / screenDensity) * screenHeight));
         refitText(OmadaTxt,45,(int)screenWidth);
 
-=======
-        OmadaTxt.setTextSize((float) ((0.09/screenDensity)*screenHeight));
->>>>>>> alex
 
         //Setting instructions\\
         Odigies.setTypeface(font);
@@ -211,7 +175,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         //Τυχαία επιλογή κατηγοριών ή διαμαντιών\\
         randGen rg = new randGen();
         epiloges = rg.getRandomCategories(current_diamonds);
-<<<<<<< HEAD
 
 
         teamColor = teams[current_team].get_color();
@@ -228,24 +191,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
 
 
-=======
-
-
-        teamColor = teams[current_team].get_color();
-
-
-        int backId = getResources().getIdentifier(intColorToString(teamColor) + "_back", "drawable", getPackageName());
-        RelativeLayout Layoutc = (RelativeLayout) findViewById(R.id.something);
-        Layoutc.setBackgroundResource(backId);
-        for (int i = 0; i < 6; i++) {
-            if (current_diamonds[i]) {
-                diamond_images[i].setVisibility(View.VISIBLE);
-            }
-        }
-
-
-
->>>>>>> alex
 
         //telos
 
@@ -293,11 +238,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         }else{
             didd = getResources().getIdentifier(epiloges[0], "drawable", getPackageName());
         }
-<<<<<<< HEAD
         frameAnimation.addFrame(getResources().getDrawable(didd), 50);
-=======
-        frameAnimation.addFrame(getResources().getDrawable(didd),50);
->>>>>>> alex
         frameAnimation.start();
         //
 
@@ -492,7 +433,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         // TODO Auto-generated method stub
 
     }
-<<<<<<< HEAD
 
     @Override
     public void onAnimationStart(Animation animation) {
@@ -569,52 +509,11 @@ public class MainGame extends Activity implements Animation.AnimationListener {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
             p.setMargins(l, t, r, b);
             v.requestLayout();
-=======
-
-    @Override
-    public void onAnimationStart(Animation animation) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public String intColorToString(int col) {
-        if (col == 1) {
-            return "yellow";
-        } else if (col == 2) {
-            return "blue";
-        } else if (col == 3) {
-            return "green";
-        } else if (col == 4) {
-            return "pink";
-        } else if (col == 5) {
-            return "purple";
-        } else {
-            return "red";
-        }
-    }
-
-    public String catToText(String cat) {
-
-        switch (cat) {
-            case "geo_b":
-                return "Γεωγραφία";
-            case "cim_b":
-                return "Ψυχαγωγία";
-            case "his_b":
-                return "Ιστορία";
-            case "art_b":
-                return "Τέχνες";
-            case "sci_b":
-                return "Επιστήμη";
-            default:
-                return "Χόμπυ";
->>>>>>> alex
         }
     }
 
 
 
-<<<<<<< HEAD
 
     public void refitText(TextView tv, float maxTextSize, int width) {
         tv.measure(0, 0);
@@ -630,46 +529,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
             textWidth = tv.getMeasuredWidth();
             Log.d("textwidth " + textWidth, "textsize " + trySize);
             //tv.requestLayout();
-=======
-    }
-
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Σταμάτημα Παιχνιδιού")
-                .setMessage("Είστε σίγουροι ότι θέλετε να επιστρέψετε στην αρχική οθόνη;")
-                .setPositiveButton("Ναι", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        finish();
-                    }
-
-                })
-                .setNegativeButton("Όχι", null)
-                .show();
-    }
-
-
-    public int getStatusBarHeight() {
-        int result = 0;
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = getResources().getDimensionPixelSize(resourceId);
->>>>>>> alex
         }
-        return result;
-    }
-    public static void setMargins(View v, int l, int t, int r, int b) {
-
-        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-
-            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            p.setMargins(l, t, r, b);
-            v.requestLayout();
-        }
-    }
 
         tv.setTextSize(trySize);
 

@@ -15,9 +15,9 @@ public class SavedGames extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_games);
 
-        TextView dateFile1Text = (TextView) findViewById(R.id.dateFile1textId);
+        //TextView dateFile1Text = (TextView) findViewById(R.id.dateFile1textId);
 
-        dateFile1Text.setText("");
+        //dateFile1Text.setText("");
 
 
 
