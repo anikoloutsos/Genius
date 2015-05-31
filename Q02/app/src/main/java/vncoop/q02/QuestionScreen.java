@@ -47,7 +47,6 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
     parcTeams[] teams;
     boolean isDiamond;
     int category;
-    private int fileIndex;
 
     CardFrontFragment cardfrontfragment= new CardFrontFragment();
     CardBackFragment cardbackfragment= new CardBackFragment();
@@ -81,7 +80,6 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         }
         isDiamond = intent.getBooleanExtra("isDiamond",false);
         category = intent.getIntExtra("categoryNum",0);
-        fileIndex = intent.getIntExtra("file_index", 0);
 
        
 
@@ -240,7 +238,6 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
                 }
                 intent1.putExtra("current_message",current_team);
                 intent1.putExtra("number_of_teams",number_of_teams);
-                intent1.putExtra("file_index",fileIndex);
                 WeDontHaveAWinner = false;
             }
         }
@@ -256,7 +253,6 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
-        intent.putExtra("file_index",fileIndex);
         if (WeDontHaveAWinner){
             startActivity(intent);
         }
@@ -284,7 +280,7 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
-        intent.putExtra("file_index",fileIndex);
+
         startActivity(intent);
         finish();
     }

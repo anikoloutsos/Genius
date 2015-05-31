@@ -13,11 +13,8 @@ import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.File;
-
 
 public class Winner extends Activity {
-    private int fileIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +31,6 @@ public class Winner extends Activity {
         for (int i=0;i<number_of_teams;i++) {
             teams[i] = intent.getParcelableExtra("team"+i);
         }
-        fileIndex = intent.getIntExtra("file_index", 0);
 
 
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
@@ -131,17 +127,8 @@ public class Winner extends Activity {
                                 + "\nΧόμπυ: " + + (int)percentStats[5] +"% (" + stats_corr[5] +"/" + stats_all[5] + ")");
             }
         }
-        //delete save file
-        String[] FILE = new String[3];
-        FILE[0] = "/data/data/vncoop.q02/databases/savegame1";
-        FILE[1] = "/data/data/vncoop.q02/databases/savegame2";
-        FILE[2]= "/data/data/vncoop.q02/databases/savegame3";
 
 
-
-        File f = new File(FILE[fileIndex]);
-        f.delete();
-        //ews edw
 
     }
 
