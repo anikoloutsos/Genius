@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vncoop.q02.QuestionScreen"
+    android:background="#00FFFFFF"
+    android:visibility="visible"
+    android:id="@+id/layout">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitCenter"
+        android:id="@+id/card"
+        android:src="@drawable/art_que"
+        android:visibility="visible"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+
+    <RelativeLayout
+        android:layout_width="3000dp"
+        android:layout_height="3000dp"
+        android:id="@+id/rlt"
+        >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="50dp"
+            android:text="kategoria"
+            android:id="@+id/categoryTitle"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            />
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:id="@+id/diamond"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignTop="@id/questionId"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:alpha="0.3"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="askdjnaskjndkjasndknaksndkjansjkdkajsndjdnkjsdngkjsndkjnan"
+            android:id="@+id/questionId"
+            android:autoText="false"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            />
+
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
+            android:id="@+id/reportBtnId"
+            android:onClick="reportBtn"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/report_selector"
+            android:alpha="0.5"
+            android:background="#00ffffff" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

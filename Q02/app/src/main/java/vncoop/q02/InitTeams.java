@@ -1,16 +1,24 @@
 package vncoop.q02;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Point;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.text.InputType;
+import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -19,11 +27,10 @@ import android.widget.Toast;
 
 public class InitTeams extends ActionBarActivity {
     private int number_of_players;
-    private RadioGroup radioGroup;
 
 
-    EditText[] b = new EditText[6];
-    parcTeams[] teams = new parcTeams[6];
+    EditText[] b;
+    parcTeams[] teams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,25 +38,51 @@ public class InitTeams extends ActionBarActivity {
         setContentView(R.layout.activity_init_teams);
         getSupportActionBar().hide();
 
-        //GIA NA MIN VGAZEI KATEFTHIAN TO PLIKTROLOGIO NA GRAPSEIS ONOMA
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-
         /////////DECLARATIONS////////////
         Intent intent = getIntent();
 
         number_of_players = intent.getIntExtra("n_team_message", 1);
-
+        b = new EditText[number_of_players];
+        teams = new parcTeams[number_of_players];
         final int[] lastChecked = new int[number_of_players];
 
         for (int i = 0; i < number_of_players; i++) {
             lastChecked[i] = 0;
             teams[i] = new parcTeams();
-            //Log.d("----------------",teams[0].name);
         }
 
 
         ////////////////////////////////
+
+        TextView RithmiseisTxt = (TextView)findViewById(R.id.textView);
+        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+        RithmiseisTxt.setTypeface(font);
+        ImageButton homeButton = (ImageButton) findViewById(R.id.homeButtonId);
+        ImageButton nextButton = (ImageButton) findViewById(R.id.nextButtonId);
+        double screenWidth, screenHeight,statusBarHeight,Top,screenDensity,Left,Right,Bottom;
+        //Screen characteristics
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        screenWidth = (double) dm.widthPixels;
+        screenHeight = (double) dm.heightPixels;
+        screenDensity = (double) dm.density;
+
+        statusBarHeight = (double) getStatusBarHeight();
+        screenHeight -= statusBarHeight;
+
+        //Setting Title size and margins
+        Top = (0.035* screenHeight);
+        setMargins(RithmiseisTxt,0,(int) Top,0,0);
+        RithmiseisTxt.setTextSize((float) ((0.088/screenDensity)*screenHeight));
+
+        //Setting home and Next buttons margins
+        Left = 0.063668224 * screenWidth;
+        Top = (0.80218068+0.015) * screenHeight;
+        Right = 0.702102803738*screenWidth;
+        Bottom = 0.04088785 * screenHeight;
+        setMargins(homeButton, (int) Left, (int) Top, (int) Right, (int) Bottom);
+        setMargins(nextButton, (int) Right, (int) Top, (int) Left, (int) Bottom);
+
 
 
         //////////////SET EDIT TEXT VISIBLE//////////////
@@ -58,7 +91,10 @@ public class InitTeams extends ActionBarActivity {
             int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
             b[i - 1] = (EditText) findViewById(resID);
             b[i - 1].setVisibility(View.VISIBLE);
+            b[i-1].setTypeface(font);
             teams[i - 1].set_name(b[i - 1].getHint().toString());
+            b[i-1].setFocusable(false);
+            b[i-1].setClickable(true);
             //Log.d("----------------",b.getHint().toString());
         }
 
@@ -80,7 +116,7 @@ public class InitTeams extends ActionBarActivity {
             int RGID = getResources().getIdentifier(radioGroups, "id", getPackageName());
 
             /* Initialize Radio Group and attach click handler */
-            radioGroup = (RadioGroup) findViewById(RGID);
+            RadioGroup radioGroup = (RadioGroup) findViewById(RGID);
 
             radioGroup.clearCheck();
             /* Attach CheckedChangeListener to radio group */
@@ -103,12 +139,28 @@ public class InitTeams extends ActionBarActivity {
                         if (lastChecked[team_int - 1] != 0) {
 
                             for (int i = 1; i <= number_of_players; i++) {
-
-                                String aa = "color" + i + "_" + lastChecked[team_int - 1];
+                                int ls = lastChecked[team_int - 1];
+                                String aa = "color" + i + "_" + ls;
                                 int ID = getResources().getIdentifier(aa, "id", getPackageName());
                                 View btn = findViewById(ID);
                                 btn.setEnabled(true);
-
+                                int Last_ID = getResources().getIdentifier(aa, "id", getPackageName());
+                                RadioButton last_btn = (RadioButton) findViewById(Last_ID);
+                                last_btn.setEnabled(true);
+                                last_btn.setButtonDrawable(R.drawable.yellow_selector);
+                                if (ls == 1) {
+                                    last_btn.setButtonDrawable(R.drawable.yellow_selector);
+                                } else if (ls == 2) {
+                                    last_btn.setButtonDrawable(R.drawable.blue_selector);
+                                } else if (ls == 3) {
+                                    last_btn.setButtonDrawable(R.drawable.green_selector);
+                                } else if (ls == 4) {
+                                    last_btn.setButtonDrawable(R.drawable.pink_selector);
+                                } else if (ls == 5) {
+                                    last_btn.setButtonDrawable(R.drawable.purple_selector);
+                                } else {
+                                    last_btn.setButtonDrawable(R.drawable.red_selector);
+                                }
                             }
                         }
 
@@ -116,10 +168,26 @@ public class InitTeams extends ActionBarActivity {
 
                             String num_of_color = "color" + i + "_" + color_string;
                             int colorID = getResources().getIdentifier(num_of_color, "id", getPackageName());
-                            View btn = findViewById(colorID);
+                            RadioButton btn = (RadioButton) findViewById(colorID);
                             btn.setEnabled(false);
+                            if (!btn.equals(rb)) {
+                                if (color_int == 1) {
+                                    btn.setButtonDrawable(R.drawable.yellow3);
+                                } else if (color_int == 2) {
+                                    btn.setButtonDrawable(R.drawable.blue3);
+                                } else if (color_int == 3) {
+                                    btn.setButtonDrawable(R.drawable.green3);
+                                } else if (color_int == 4) {
+                                    btn.setButtonDrawable(R.drawable.pink3);
+                                } else if (color_int == 5) {
+                                    btn.setButtonDrawable(R.drawable.purple3);
+                                } else {
+                                    btn.setButtonDrawable(R.drawable.red3);
+                                }
 
+                            }
                         }
+
 
                         lastChecked[team_int - 1] = color_int;
                         teams[team_int - 1].set_color(lastChecked[team_int - 1]);
@@ -140,16 +208,11 @@ public class InitTeams extends ActionBarActivity {
 
 
     public void back_click(View view) {
-
         finish();
     }
 
 
     public void next_click(View view) {
-
-
-
-
         int counter=0;
         for (int i = 0; i < number_of_players; i++) {           //Για κάθε ομάδα
             teams[i].set_name(b[i].getText().toString());       //θέτει στην team[i] το όνομα που εισήγαγε
@@ -158,8 +221,6 @@ public class InitTeams extends ActionBarActivity {
             if(teams[i].get_name().matches("")){                //αν δεν έγραψε τίποτα
                 teams[i].set_name(b[i].getHint().toString());   //πάρε το hint (Ομάδα i) για όνομα ομάδας
             }
-
-
             if(teams[i].get_color()!=0) {
                 counter++;                                       //για έλεγχο αν κάποιος δεν διάλεξε χρώμα
             }
@@ -175,7 +236,7 @@ public class InitTeams extends ActionBarActivity {
         nextClick.putExtra("number_of_teams",number_of_players);
         nextClick.putExtra("current_message", current_team);
         for (int i = 0;i<number_of_players;i++) {
-            nextClick.putExtra("team"+i,teams[i]);
+            nextClick.putExtra("team" + i, (android.os.Parcelable) teams[i]);
         }
 
 
@@ -189,29 +250,74 @@ public class InitTeams extends ActionBarActivity {
 
     }
 
+    public void throwPopup(View view){
+
+        Context context = this;
+        final int id1 = view.getId();
+        final int  tv1 = R.id.textView1;
+        final int  tv2 = R.id.textView2;
+        final int  tv3 = R.id.textView3;
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+
+        View promptView = layoutInflater.inflate(R.layout.popup_insert_name, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(promptView);
+        final EditText input = (EditText) promptView.findViewById(R.id.userInput);
+
+        // setup a dialog window
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        if (id1 == tv1) {
+                            b[0].setText(input.getText());
+                        }
+                        else if (id1 == tv2) {
+                            b[1].setText(input.getText());
+                        }
+                        else if (id1 == tv3) {
+                            b[2].setText(input.getText());
+                        }
+                        else {
+                             b[3].setText(input.getText());
+                        }
+
+                    }
+
+                })
+                .setNegativeButton("Ακύρωση",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        // create an alert dialog
+        AlertDialog alertD = alertDialogBuilder.create();
+        alertD.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
+        alertD.show();
 
 
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_init_teams, menu);
-        return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
         }
-
-        return super.onOptionsItemSelected(item);
+        return result;
     }
+    public static void setMargins(View v, int l, int t, int r, int b) {
+
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
+    }
+
 }

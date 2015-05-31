@@ -10,47 +10,185 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Funiculi Funicula "
-        android:id="@+id/textView8"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:text="Συγχαρητήρια"
+        android:id="@+id/congrats"
+        android:layout_below="@+id/imageView3"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"
+        android:textSize="40sp"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="Omada tade"
         android:id="@+id/winningTeamTextId"
-        android:layout_below="@+id/textView8"
+        android:layout_below="@+id/congrats"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="95dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Πίσω στην κεντρική οθόνη"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="68dp"
-        android:onClick="telos"/>
+        android:textColor="#ffffffff"
+        android:textSize="30sp"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/statsT1id"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Είσαι η Νικήτρια Ομάδα!"
+        android:id="@+id/youwin"
+        android:layout_below="@+id/winningTeamTextId"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"
+        android:textSize="30sp"
+        android:gravity="center" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Στατιστικά"
+        android:id="@+id/statistika"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"
+        android:layout_below="@id/seperator"
+        android:textSize="30sp"/>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/winningTeamTextId"
-        android:layout_alignEnd="@+id/winningTeamTextId" />
+        android:id="@+id/scrollView3"
+        android:layout_above="@+id/imageView4"
+        android:layout_below="@+id/imageView5">
 
-    <TextView
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignTop="@+id/scrollView3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/Team1"
+                android:text = "Omada1"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffffff" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/Team1Stats"
+                android:text = "stats"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/Team1"
+                android:textColor="#ffffffff" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/Team2"
+                android:text = "Omada1"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/Team1Stats"
+                android:textColor="#ffffffff" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/Team2Stats"
+                android:text = "stats"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/Team2"
+                android:textColor="#ffffffff" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/Team3"
+                android:text = ""
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/Team2Stats"
+                android:textColor="#ffffffff" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/Team3Stats"
+                android:text = ""
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/Team3"
+                android:textColor="#ffffffff" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/Team4"
+                android:text = ""
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/Team3Stats"
+                android:textColor="#ffffffff" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/Team4Stats"
+                android:text = ""
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/Team4"
+                android:textColor="#ffffffff" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/button7"
+        android:layout_alignParentBottom="true"
+        android:onClick="telos"
+        android:src="@drawable/home_selector"
+        android:background="#00ffffff"
+        android:scaleType="fitCenter"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/statsT2id"
-        android:layout_below="@+id/statsT1id"
-        android:layout_alignRight="@+id/winningTeamTextId"
-        android:layout_alignEnd="@+id/winningTeamTextId" />
+        android:id="@+id/imageView3"
+        android:src="@drawable/win_symbol"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seperator"
+        android:layout_below="@+id/youwin"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/seperator" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:src="@drawable/seperator"
+        android:layout_above="@+id/button7"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView5"
+        android:src="@drawable/seperator"
+        android:layout_below="@+id/statistika"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

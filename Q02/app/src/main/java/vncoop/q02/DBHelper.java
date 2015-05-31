@@ -80,11 +80,8 @@ public class DBHelper extends SQLiteOpenHelper{
     private void copyDB() throws IOException{
 
         //Χρήση Input Stream. Του βάζουμε τη βάση
-        Log.d("copyDataBase Function","1");
 
         InputStream myInput = con.getAssets().open(db_name);
-
-        Log.d("copyDataBase Function","2");
 
         // Path της φρέσκιας βάσης εντος Android συσκευής
         String outFileName = db_path+db_name;

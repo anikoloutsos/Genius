@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vncoop.q02.QuestionScreen"
+    android:background="#00FFFFFF"
+    android:visibility="visible"
+    android:id="@+id/layout">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitCenter"
+        android:id="@+id/card"
+        android:src="@drawable/art_que"
+        android:visibility="visible"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RelativeLayout
+
+        android:layout_width="3000dp"
+        android:layout_height="3000dp"
+        android:id="@+id/rlt"
+        >
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="50dp"
+            android:text="kategoria"
+            android:id="@+id/categoryTitle"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:text="Large Text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:id="@+id/questionId"
+            android:autoText="false"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Η απάντηση ήταν σωστή ή λάθος;"
+            android:id="@+id/hintId"
+            style="@style/Artstyle"
+            android:gravity="center"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:layout_width="3000dp"
+            android:layout_height="3000dp"
+            android:scaleType="fitCenter"
+            android:text="Σωστά"
+            android:id="@+id/correctbtnid"
+            android:onClick = "onCorrect"
+            android:visibility="visible"
+            android:src="@drawable/right_selector"
+            android:background="#00ffffff" />
+
+        <ImageButton
+            android:layout_width="3000dp"
+            android:layout_height="3000dp"
+            android:scaleType="fitCenter"
+            android:text="Λάθος"
+            android:id="@+id/wrongbtnid"
+            android:onClick = "onWrong"
+            android:src="@drawable/wrong_selector"
+            android:background="#00ffffff"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

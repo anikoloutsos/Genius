@@ -1,68 +1,189 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".generator"
-    android:background="@drawable/background"
+    android:layout_height="match_parent" tools:context=".generator"
+    android:background="@drawable/green_back"
     android:id="@+id/something">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textViewOmada"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="false"
+        android:textColor="#ffffffff"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:text="testText" />
 
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seperator"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/seperator"
+        android:layout_below="@+id/textViewOmada"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ρίξτε το ζάρι"
+        android:gravity="center"
+        android:id="@+id/instructions"
+        android:textColor="#ffffffff"
+        android:layout_centerHorizontal="true"/>
 
     <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="3000dp"
+        android:layout_height="3000dp"
         android:id="@+id/btnSpin"
         android:background="#00000000"
         android:onClick = "getCatOrD"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="154dp"
-        android:src="@drawable/spo_b"
+        android:src="@drawable/zari_selector"
         android:scaleType="fitCenter"
-        android:visibility="visible" />
+/>
 
     <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="3000dp"
+        android:layout_height="3000dp"
         android:id="@+id/btnCat1Id"
         android:background="#00000000"
         android:visibility="gone"
         android:onClick="choicebtn1"
-        android:layout_marginTop="131dp"
-        android:layout_below="@+id/textViewOmada"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp" />
+        android:scaleType="fitCenter"
+        />
     <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="3000dp"
+        android:layout_height="3000dp"
         android:id="@+id/btnCat2Id"
         android:background="#00000000"
         android:visibility="gone"
         android:onClick="choicebtn2"
-        android:layout_alignTop="@+id/btnCat1Id"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="34dp"
-        android:layout_marginEnd="34dp" />
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:id="@+id/textCat1"
+        android:visibility="gone"
+        android:textColor="#ffffffff"
+
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:id="@+id/textCat2"
+        android:visibility="gone"
+        android:textColor="#ffffffff"
+        android:gravity="center"/>
 
     <ImageButton
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:id="@+id/btnDiaId"
         android:background="#00000000"
-        android:visibility="gone"
+        android:visibility="invisible"
         android:onClick="diamondbtn"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textDiam"
+        android:visibility="gone"
+        android:textColor="#ffffffff"
+        android:gravity="center"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TableId"
+        android:src="@drawable/diam_table"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="130dp"/>
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/blueDiamId"
+        android:src="@drawable/blue_diam"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/redDiamId"
+        android:src="@drawable/red_diam"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/yellowDiamId"
+        android:src="@drawable/yellow_diam"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/purpleDiamId"
+        android:src="@drawable/purple_diam"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pinkDiamId"
+        android:src="@drawable/pink_diam"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/greenDiamId"
+        android:src="@drawable/green_diam"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seperator2"
+        android:layout_above="@+id/TableId"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/seperator" />
+
 
 </RelativeLayout>
