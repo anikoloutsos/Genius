@@ -60,18 +60,6 @@
             />
 
 
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:scaleType="fitXY"
-            android:id="@+id/reportBtnId"
-            android:onClick="reportBtn"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/report_selector"
-            android:alpha="0.5"
-            android:background="#00ffffff" />
-
     </RelativeLayout>
 
 </RelativeLayout>

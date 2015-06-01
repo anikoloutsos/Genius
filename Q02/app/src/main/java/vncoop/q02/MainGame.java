@@ -123,11 +123,11 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
         //Setting Team name\\
         OmadaTxt.setTypeface(font);
-        OmadaTxt.setText(teams[current_team].get_name());
+        OmadaTxt.setText(""+teams[current_team].get_name());
         Top = (0.035* screenHeight);
-        setMargins(OmadaTxt,0,(int) Top,0,0);
-        OmadaTxt.setTextSize((float) ((0.09 / screenDensity) * screenHeight));
-        refitText(OmadaTxt,45,(int)screenWidth);
+        Left = 0.05*screenWidth;
+        setMargins(OmadaTxt,(int) Left,(int) Top,(int) Left,0);
+        refitText(OmadaTxt,(float) ((0.09 / screenDensity) * screenHeight),(int)(0.9*screenWidth));
 
 
         //Setting instructions\\
@@ -518,7 +518,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     public void refitText(TextView tv, float maxTextSize, int width) {
         tv.measure(0, 0);
         int textWidth = tv.getMeasuredWidth();
-
         int availableWidth = width;
         float trySize = maxTextSize;
 
@@ -527,8 +526,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
             tv.setTextSize(trySize);
             tv.measure(0, 0);
             textWidth = tv.getMeasuredWidth();
-            Log.d("textwidth " + textWidth, "textsize " + trySize);
-            //tv.requestLayout();
         }
 
         tv.setTextSize(trySize);

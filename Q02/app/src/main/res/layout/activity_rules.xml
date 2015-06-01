@@ -21,8 +21,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/therules"
-                android:id="@+id/textView2"
-                android:layout_below="@+id/textView3"
+                android:id="@+id/teamId"
+                android:layout_below="@+id/replayId"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="59dp" />
 
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/rules"
-                android:id="@+id/textView3"
+                android:id="@+id/replayId"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>

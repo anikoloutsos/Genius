@@ -257,6 +257,7 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
         intent.putExtra("file_index",fileIndex);
+        intent.putExtra("Question",questionAndAnswer[0]);
         if (WeDontHaveAWinner){
             startActivity(intent);
         }
@@ -285,14 +286,11 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
         intent.putExtra("file_index",fileIndex);
+        intent.putExtra("Question",questionAndAnswer[0]);
         startActivity(intent);
         finish();
     }
-    public void reportBtn(View view){
-        Intent goReport = new Intent(this, report.class);
-        goReport.putExtra("Question",questionAndAnswer[0]);
-        startActivity(goReport);
-    }
+
 
 
     public String intCatToString(int col){

@@ -4,18 +4,18 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Point;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewTreeObserver;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.io.File;
@@ -32,17 +32,13 @@ public class ContinueScreen extends Activity {
     boolean[] current_diamonds;
     boolean sameTeam;
     private int fileIndex;
+    String Question = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_continue_screen);
 
-        //get metrics
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        double screenWidth = (double) dm.widthPixels;
-        //
 
         //INTENTS FROM question
         Intent intent = getIntent();
@@ -56,21 +52,53 @@ public class ContinueScreen extends Activity {
         }
         current_diamonds = teams[current_team].get_diamonds();
         fileIndex = intent.getIntExtra("file_index", 0);
+        Question = intent.getStringExtra("Question");
 
-    ///set text
-        TextView tv1 =(TextView)findViewById(R.id.textView1);
-        TextView tv2 =(TextView)findViewById(R.id.textView2);
-        TextView tv3 =(TextView)findViewById(R.id.textView3);
-        Button btn1 = (Button)findViewById(R.id.button);
+        double screenWidth,screenHeight,statusBarHeight,Left,Top,Right,Bottom,screenDensity;
 
+
+        //Screen characteristics
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        screenWidth = (double) dm.widthPixels;
+        screenHeight = (double) dm.heightPixels;
+        screenDensity = (double) dm.density;
+
+        statusBarHeight = (double) getStatusBarHeight();
+        screenHeight -= statusBarHeight;
+
+        ///set text
+        //TextView congratulationsText =(TextView)findViewById(R.id.congratulationsId);
+        TextView teamText =(TextView)findViewById(R.id.teamId);
+        TextView replayText =(TextView)findViewById(R.id.replayId);
+        ImageView separator = (ImageView) findViewById(R.id.seperator);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
-        tv1.setTypeface(font);
-        tv2.setTypeface(font);
-        tv3.setTypeface(font);
-        btn1.setTypeface(font);
+        RelativeLayout basicRelativeL = (RelativeLayout) findViewById(R.id.basicRelativeLayout);
+        Button continueButton = (Button)findViewById(R.id.continueButtonId);
+        Button reportButton = (Button)findViewById(R.id.reportButtonId);
+        ImageView separator2 = (ImageView) findViewById(R.id.seperator2);
 
-        //Εμφάνιση Διαμαντιων ομάδας\\
+        ImageView[] allTeamsDiamondTables = new ImageView[4];
+        allTeamsDiamondTables[0] = (ImageView) findViewById(R.id.team1DiamId);
+        allTeamsDiamondTables[1] = (ImageView) findViewById(R.id.team2DiamId);
+        allTeamsDiamondTables[2] = (ImageView) findViewById(R.id.team3DiamId);
+        allTeamsDiamondTables[3] = (ImageView) findViewById(R.id.team4DiamId);
+
+        RelativeLayout[] rl = new RelativeLayout[4];
+        rl[0]= (RelativeLayout) findViewById(R.id.rl1);
+        rl[1]= (RelativeLayout) findViewById(R.id.rl2);
+        rl[2]= (RelativeLayout) findViewById(R.id.rl3);
+        rl[3]= (RelativeLayout) findViewById(R.id.rl4);
+
+        TextView[] allTeamsTxt = new TextView[4];
+        allTeamsTxt[0] = (TextView) findViewById(R.id.team1NameId);
+        allTeamsTxt[1] = (TextView) findViewById(R.id.team2NameId);
+        allTeamsTxt[2] = (TextView) findViewById(R.id.team3NameId);
+        allTeamsTxt[3] = (TextView) findViewById(R.id.team4NameId);
+
+
         ImageView[] diamond_images;
+
         diamond_images = new ImageView[24];
 
         diamond_images[0] = (ImageView) findViewById(R.id.team1blueDiamId);
@@ -98,65 +126,115 @@ public class ContinueScreen extends Activity {
         diamond_images[22] = (ImageView) findViewById(R.id.team4greenDiamId);
         diamond_images[23] = (ImageView) findViewById(R.id.team4yellowDiamId);
 
-
-
-
-
-        ImageView[] allTeamsDiamondTables = new ImageView[4];
-        allTeamsDiamondTables[0] = (ImageView) findViewById(R.id.team1DiamId);
-        allTeamsDiamondTables[1] = (ImageView) findViewById(R.id.team2DiamId);
-        allTeamsDiamondTables[2] = (ImageView) findViewById(R.id.team3DiamId);
-        allTeamsDiamondTables[3] = (ImageView) findViewById(R.id.team4DiamId);
-
-        RelativeLayout[] rl = new RelativeLayout[4];
-        rl[0]= (RelativeLayout) findViewById(R.id.rl1);
-        rl[1]= (RelativeLayout) findViewById(R.id.rl2);
-        rl[2]= (RelativeLayout) findViewById(R.id.rl3);
-        rl[3]= (RelativeLayout) findViewById(R.id.rl4);
-
-        TextView[] allTeamsTxt = new TextView[4];
-        allTeamsTxt[0] = (TextView) findViewById(R.id.team1NameId);
-        allTeamsTxt[1] = (TextView) findViewById(R.id.team2NameId);
-        allTeamsTxt[2] = (TextView) findViewById(R.id.team3NameId);
-        allTeamsTxt[3] = (TextView) findViewById(R.id.team4NameId);
-
-
-        for (int j =0; j<number_of_teams; j++) {
-            allTeamsDiamondTables[j].setVisibility(View.VISIBLE);
-            int backId = getResources().getIdentifier(intColorToString(teams[j].get_color()) + "_color", "drawable", getPackageName());
-            rl[j].setBackgroundResource(backId);
-
-            allTeamsTxt[j].setTypeface(font);
-            allTeamsTxt[j].setText(teams[j].get_name());
-
-            refitText(allTeamsTxt[j],35,(int)screenWidth/2);
-            allTeamsTxt[j].setVisibility(View.VISIBLE);
-
-            for (int i = 0; i < 6; i++) {
-                if (teams[j].get_diamonds()[i]) {
-                    diamond_images[i+6*j].setVisibility(View.VISIBLE);
-                }
-            }
-        }
-
-
-
+        //Setting team Text and replay text size (no need for margins it's below)
+        teamText.setTypeface(font);
+        teamText.setTextSize((float) ((0.07 / screenDensity) * screenHeight));
+        //Top = (0.015* screenHeight);
+        //setMargins(teamText, 0, (int) Top, 0, 0);
+        replayText.setTypeface(font);
+        replayText.setTextSize((float) ((0.07 / screenDensity) * screenHeight));
+        Left = 0.05*screenWidth;
+        Top = ((0.035-0.015)* screenHeight);
+        Bottom = 0.8975*screenHeight;
+        setMargins(teamText,(int) Left,(int) Top,(int) Left,(int) Bottom);
+        Top = 0.1025*screenHeight;
+        Bottom = (0.83-0.015)*screenHeight;
+        setMargins(replayText,(int) Left,(int) Top,(int) Left,(int) Bottom);
 
         if (sameTeam) {
+            //congratulationsText.setText("Συγχαρητήρια!");
+            teamText.setText(""+teams[current_team].get_name());
+            refitText(teamText,(float) ((0.07 / screenDensity) * screenHeight),(int)(0.9*screenWidth));
+            replayText.setTextSize((float) ((0.06 / screenDensity) * screenHeight));
+            replayText.setText("Ξαναπαίζεις");
 
-        tv1.setText("Συγχαρητήρια!");
-        tv2.setText(""+teams[current_team].get_name());
-            refitText(tv2,45,(int)screenWidth);
-        tv3.setText("Ξαναπαίζεις");
-        }else{
-            tv1.setText("Απαντήσατε Λάθος!");
-            tv3.setText(""+teams[current_team].get_name());
-            refitText(tv3,45,(int)screenWidth);
-            tv2.setText("Επόμενη Ομάδα:");
+        }
+        else{
+            //congratulationsText.setText("Απαντήσατε Λάθος!");
+            replayText.setText(""+teams[current_team].get_name());
+            refitText(replayText, (float) ((0.07 / screenDensity) * screenHeight), (int) (0.9 * screenWidth));
+            teamText.setTextSize((float) ((0.06 / screenDensity) * screenHeight));
+            teamText.setText("Επόμενη Ομάδα:");
+        }
+
+        //Separator Margins
+        Top = 0.2*screenHeight;
+        Bottom = 0.78125*screenHeight;
+        setMargins(separator,0,(int) Top,0,(int) Bottom);
+
+
+        //Report Button
+        continueButton.setTypeface(font);
+        Top = 0.85*screenHeight;
+        Bottom = 0.05*screenHeight;
+        Left = 0.05*screenWidth;
+        Right = 0.6*screenWidth;
+        setMargins(reportButton,(int) Left,(int) Top,(int) Right,(int) Bottom);
+
+        //Continue Button
+        reportButton.setTypeface(font);
+        setMargins(continueButton,(int) Right,(int) Top,(int) Left,(int) Bottom);
+
+        //Seperator2 Margins
+        Bottom = 0.165*screenHeight;
+        Top = 0.81625*screenHeight;
+        setMargins(separator2,0,(int) Top,0,(int) Bottom);
+
+        //BasicRelativeLayout Margins
+        Top = 0.21875*screenHeight;
+        Bottom = 0.18375*screenHeight;
+        Left = 0.05*screenWidth;
+        Right = Left;
+        setMargins(basicRelativeL,(int) Left,(int) Top,(int) Right,(int) Bottom);
+
+        double basicRelativeLayoutHeight = screenHeight-Top-Bottom;
+        double basicRelativeLayoutWidth = screenWidth-Left-Right;
+        double rlMarginHeight=0.0;
+        float letterHeight;
+        if (number_of_teams==2){
+            rlMarginHeight=0.08*basicRelativeLayoutHeight;
+            letterHeight =(float) ((0.07 / screenDensity)* screenHeight);
+        }
+        else if (number_of_teams==3){
+            rlMarginHeight=0.05*basicRelativeLayoutHeight;
+
+            letterHeight =(float) ((0.06 / screenDensity)* screenHeight);
+        }
+        else{
+            rlMarginHeight=0.02*basicRelativeLayoutHeight;
+            letterHeight =(float) ((0.05 / screenDensity)* screenHeight);
+        }
+        double num_of_teams;
+        num_of_teams = (double) number_of_teams;
+        //double rlMarginHeight = (( num_of_teams*(0.2/ (num_of_teams-1.0)))/ (num_of_teams+1.0))*basicRelativeLayoutHeight;
+        double rlHeight = ((1.0/ num_of_teams)*basicRelativeLayoutHeight-2.0*rlMarginHeight);
+
+        Left = 0.05*basicRelativeLayoutWidth;
+        Right = Left;
+        for (int i=0;i<number_of_teams;i++){
+            Top = (double) (i)*rlHeight+(2.0*(double)(i)+1.0)*rlMarginHeight;
+            Bottom = (num_of_teams-1.0-(double)i)*rlHeight+(2*(num_of_teams-1.0-(double)i)+1.0)*rlMarginHeight;
+            setMargins(rl[i],0,(int) Top,0,(int) Bottom);
+            setMargins(allTeamsTxt[i],(int) Left,0,(int)Right,(int)(rlHeight/2.0));
+            setMargins(allTeamsDiamondTables[i],(int) Left,(int)(rlHeight/2.0),(int)Right,0);
+            allTeamsDiamondTables[i].setVisibility(View.VISIBLE);
+            int backId = getResources().getIdentifier(intColorToString(teams[i].get_color()) + "_color", "drawable", getPackageName());
+            rl[i].setBackgroundResource(backId);
+            for (int j =0;j<6;j++) {
+                if (teams[i].get_diamonds()[j]) {
+                    diamond_images[j+6* i].setVisibility(View.VISIBLE);
+                    setMargins(diamond_images[j+6*i],(int) Left,(int)(rlHeight/2.0),(int)Right,0);
+                }
+            }
+            allTeamsTxt[i].setTypeface(font);
+            allTeamsTxt[i].setText(teams[i].get_name());
+            allTeamsTxt[i].setTextSize(letterHeight);
+            refitText(allTeamsTxt[i], letterHeight,(int)(0.9*basicRelativeLayoutWidth));
+            allTeamsTxt[i].setVisibility(View.VISIBLE);
         }
 
 
-        //SAVE STATE SE PERIPTWSI POU VGEI
+      //SAVE STATE SE PERIPTWSI POU VGEI
         String[] FILE = new String[3];
         FILE[0] = "/data/data/vncoop.q02/databases/savegame1";
         FILE[1] = "/data/data/vncoop.q02/databases/savegame2";
@@ -216,6 +294,11 @@ public class ContinueScreen extends Activity {
         }
     }
 
+    public void reportBtn(View view){
+        Intent goReport = new Intent(this, report.class);
+        goReport.putExtra("Question",Question);
+        startActivity(goReport);
+    }
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
@@ -233,6 +316,27 @@ public class ContinueScreen extends Activity {
                 .setNegativeButton("Όχι", null)
                 .show();
     }
+
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+    public static void setMargins(View v, int l, int t, int r, int b) {
+
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
+    }
+
+
 
 
     public void refitText(TextView tv, float maxTextSize, int width) {
@@ -254,7 +358,6 @@ public class ContinueScreen extends Activity {
         tv.setTextSize(trySize);
 
     }
-
 
 
 
