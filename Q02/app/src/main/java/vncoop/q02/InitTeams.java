@@ -203,7 +203,7 @@ public class InitTeams extends ActionBarActivity {
 
             if (file.exists()) {
                 Date lastModified = new Date(file.lastModified());
-                SimpleDateFormat date = new SimpleDateFormat("yyyyMMddhhmmss");
+                SimpleDateFormat date = new SimpleDateFormat("yyyyMMddHHmmss");
                 String timeString = date.format(lastModified);
                 timeStamp = Long.parseLong(timeString);
             } else {

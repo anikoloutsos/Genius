@@ -118,54 +118,33 @@ public class mainMenu extends Activity {
     }
 
     public void GoOnClick(View view){
+        boolean notsaved = true;
+        String[] FILE = new String[3];
+        FILE[0] = "/data/data/vncoop.q02/databases/savegame1";
+        FILE[1] = "/data/data/vncoop.q02/databases/savegame2";
+        FILE[2] = "/data/data/vncoop.q02/databases/savegame3";
 
-        Intent goOn = new Intent(this,SavedGameStatus.class);
-        String FILE = "/data/data/vncoop.q02/databases/poutsa1";
-        parcTeams[] teams = new parcTeams[2];
-        int number_of_teams = 2;
-        int current_team = 0;
-        File file = new File(FILE);
-        if (file.exists()) {
-            Date lastModified = new Date(file.lastModified());
-            Log.d("date", String.valueOf(lastModified));
-            SimpleDateFormat date = new SimpleDateFormat("yyyyMMddhhmmss");
-            String dateFile1 = date.format(lastModified);
-            Log.d("date2", dateFile1);
-
-        try {
-            ObjectInputStream oIS = new ObjectInputStream(
-                    new FileInputStream(FILE));
-
-            number_of_teams = oIS.readInt();
-            teams = new parcTeams[number_of_teams];
-            for(int i=0;i<number_of_teams;i++) {
-                teams[i] = (parcTeams) oIS.readObject();
+        for (int i = 0; i < 3; i++) {
+            File file = new File(FILE[i]);
+            if (file.exists()) {
+                notsaved = false;
             }
-            current_team = oIS.readInt();
+        }
 
-            oIS.close();
-        } catch (ClassNotFoundException | IOException e) {
-            e.printStackTrace();
+            if(notsaved){
+                Toast.makeText(mainMenu.this, "Δεν υπάρχουν αποθηκευμένα παιχνίδια", Toast.LENGTH_SHORT).show();
+            }else{
+
+                Intent addque = new Intent(this, SavedGames.class);
+                startActivity(addque);
+                //finish();
+
+            }
+
         }
 
 
-        goOn.putExtra("number_of_teams",number_of_teams);
-        goOn.putExtra("current_message", current_team);
-        for (int i = 0;i<number_of_teams;i++) {
-            goOn.putExtra("team"+i, (java.io.Serializable) teams[i]);
-        }
 
-
-
-
-        startActivity(goOn);
-        }else{
-            Toast.makeText(getApplicationContext(), " Δεν υπάρχουν αποθηκευμένα παιχνίδια", Toast.LENGTH_LONG).show();
-        }
-
-
-        //finish();
-    }
 
     public void rulesClick(View view){
         Intent rules = new Intent(this, Rules.class);
