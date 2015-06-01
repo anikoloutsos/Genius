@@ -135,8 +135,8 @@ public class mainMenu extends Activity {
                 Toast.makeText(mainMenu.this, "Δεν υπάρχουν αποθηκευμένα παιχνίδια", Toast.LENGTH_SHORT).show();
             }else{
 
-                Intent addque = new Intent(this, SavedGames.class);
-                startActivity(addque);
+                Intent savedGames = new Intent(this, SavedGames.class);
+                startActivity(savedGames);
                 //finish();
 
             }

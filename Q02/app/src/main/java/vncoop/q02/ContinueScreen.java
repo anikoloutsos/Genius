@@ -53,12 +53,14 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
         current_diamonds = teams[current_team].get_diamonds();
         fileIndex = intent.getIntExtra("file_index", 0);
 
+        Log.d("FileIndex", String.valueOf(fileIndex));
         animatedDiamond=0;
         animatedDiamond=intent.getIntExtra("Catdiamond",0);
 
 
         Question = intent.getStringExtra("Question");
 
+        ///////////
         double screenWidth,screenHeight,statusBarHeight,Left,Top,Right,Bottom,screenDensity;
 
 
@@ -71,9 +73,6 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
 
         statusBarHeight = (double) getStatusBarHeight();
         screenHeight -= statusBarHeight;
-
-        ///set text
-        //TextView congratulationsText =(TextView)findViewById(R.id.congratulationsId);
         TextView teamText =(TextView)findViewById(R.id.teamId);
         TextView replayText =(TextView)findViewById(R.id.replayId);
         ImageView separator = (ImageView) findViewById(R.id.seperator);
@@ -82,30 +81,23 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
         Button continueButton = (Button)findViewById(R.id.continueButtonId);
         Button reportButton = (Button)findViewById(R.id.reportButtonId);
         ImageView separator2 = (ImageView) findViewById(R.id.seperator2);
-
         ImageView[] allTeamsDiamondTables = new ImageView[4];
         allTeamsDiamondTables[0] = (ImageView) findViewById(R.id.team1DiamId);
         allTeamsDiamondTables[1] = (ImageView) findViewById(R.id.team2DiamId);
         allTeamsDiamondTables[2] = (ImageView) findViewById(R.id.team3DiamId);
         allTeamsDiamondTables[3] = (ImageView) findViewById(R.id.team4DiamId);
-
         RelativeLayout[] rl = new RelativeLayout[4];
         rl[0]= (RelativeLayout) findViewById(R.id.rl1);
         rl[1]= (RelativeLayout) findViewById(R.id.rl2);
         rl[2]= (RelativeLayout) findViewById(R.id.rl3);
         rl[3]= (RelativeLayout) findViewById(R.id.rl4);
-
         TextView[] allTeamsTxt = new TextView[4];
         allTeamsTxt[0] = (TextView) findViewById(R.id.team1NameId);
         allTeamsTxt[1] = (TextView) findViewById(R.id.team2NameId);
         allTeamsTxt[2] = (TextView) findViewById(R.id.team3NameId);
         allTeamsTxt[3] = (TextView) findViewById(R.id.team4NameId);
-
-
         ImageView[] diamond_images;
-
         diamond_images = new ImageView[24];
-
         diamond_images[0] = (ImageView) findViewById(R.id.team1blueDiamId);
         diamond_images[1] = (ImageView) findViewById(R.id.team1pinkDiamId);
         diamond_images[2] = (ImageView) findViewById(R.id.team1redDiamId);
@@ -134,8 +126,6 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
         //Setting team Text and replay text size (no need for margins it's below)
         teamText.setTypeface(font);
         teamText.setTextSize((float) ((0.07 / screenDensity) * screenHeight));
-        //Top = (0.015* screenHeight);
-        //setMargins(teamText, 0, (int) Top, 0, 0);
         replayText.setTypeface(font);
         replayText.setTextSize((float) ((0.07 / screenDensity) * screenHeight));
         Left = 0.05*screenWidth;
@@ -147,7 +137,6 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
         setMargins(replayText,(int) Left,(int) Top,(int) Left,(int) Bottom);
 
         if (sameTeam) {
-            //congratulationsText.setText("Συγχαρητήρια!");
             teamText.setText(""+teams[current_team].get_name());
             refitText(teamText,(float) ((0.07 / screenDensity) * screenHeight),(int)(0.9*screenWidth));
             replayText.setTextSize((float) ((0.06 / screenDensity) * screenHeight));
@@ -155,7 +144,6 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
 
         }
         else{
-            //congratulationsText.setText("Απαντήσατε Λάθος!");
             replayText.setText(""+teams[current_team].get_name());
             refitText(replayText, (float) ((0.07 / screenDensity) * screenHeight), (int) (0.9 * screenWidth));
             teamText.setTextSize((float) ((0.06 / screenDensity) * screenHeight));
@@ -211,7 +199,6 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
         }
         double num_of_teams;
         num_of_teams = (double) number_of_teams;
-        //double rlMarginHeight = (( num_of_teams*(0.2/ (num_of_teams-1.0)))/ (num_of_teams+1.0))*basicRelativeLayoutHeight;
         double rlHeight = ((1.0/ num_of_teams)*basicRelativeLayoutHeight-2.0*rlMarginHeight);
 
         Left = 0.05*basicRelativeLayoutWidth;
@@ -237,6 +224,9 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
             refitText(allTeamsTxt[i], letterHeight,(int)(0.9*basicRelativeLayoutWidth));
             allTeamsTxt[i].setVisibility(View.VISIBLE);
         }
+
+
+
         if(animatedDiamond!=0) {
             //fortwse animation
             fadein = AnimationUtils.loadAnimation(getApplicationContext(),
@@ -244,7 +234,7 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
             fadein.setAnimationListener(this);
             //
             int diamId = getResources().getIdentifier("team" + (current_team + 1) + intCatToColorString(animatedDiamond) + "DiamId", "id", getPackageName());
-            Log.d("sssssssssss", "" + "team" + (current_team + 1) + intCatToColorString(animatedDiamond) + "DiamId");
+
             ImageView animatedImage = (ImageView) findViewById(diamId);
             animatedImage.setVisibility(View.VISIBLE);
             animatedImage.setAnimation(fadein);
@@ -291,7 +281,7 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
-
+        intent.putExtra("file_index",fileIndex);
         startActivity(intent);
         finish();
     }

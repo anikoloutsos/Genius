@@ -41,6 +41,7 @@ public class report extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+
         rec = "geniusquizapp@gmail.com";
 
         sender = "geniusquizhandler@gmail.com";
@@ -49,7 +50,14 @@ public class report extends Activity {
         subject = "";
         context = this;
         Intent i = getIntent();
+
         textMessage = i.getStringExtra("Question");
+
+        if (textMessage==null) {
+            textMessage = "TI MALAKAS!";
+        }
+
+
         writeOther = (EditText) findViewById(R.id.repEditTextId);
         reportRG = (RadioGroup) findViewById(R.id.repRG);
         b1 = (RadioButton) findViewById(R.id.repId1);

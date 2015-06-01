@@ -233,8 +233,10 @@ public class SavedGames extends Activity {
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team" + i, (android.os.Parcelable) teams[i]);
         }
+              Log.d("FileIndex1", String.valueOf(sortedFiles[0]));
         startActivity(intent);
         finish();
+
 
     }
 
@@ -269,6 +271,7 @@ public class SavedGames extends Activity {
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team" + i, (android.os.Parcelable) teams[i]);
         }
+        Log.d("FileIndex2", String.valueOf(sortedFiles[1]));
         startActivity(intent);
         finish();
 
@@ -305,6 +308,7 @@ public class SavedGames extends Activity {
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team" + i, (android.os.Parcelable) teams[i]);
         }
+        Log.d("FileIndex3", String.valueOf(sortedFiles[2]));
         startActivity(intent);
         finish();
 

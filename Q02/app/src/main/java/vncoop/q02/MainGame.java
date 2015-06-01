@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Bundle;
@@ -79,6 +80,7 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         diamond_images[4] = (ImageView) findViewById(R.id.greenDiamId);
         diamond_images[5] = (ImageView) findViewById(R.id.yellowDiamId);
 
+        ImageView diamondsTable = (ImageView) findViewById(R.id.TableId);
 
         //INTENTS FROM INITIALIZE
         Intent intent = getIntent();
@@ -90,11 +92,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         }
         current_diamonds = teams[current_team].get_diamonds();
         fileIndex =intent.getIntExtra("file_index",0);
-
-
-
-
-
 
 
         double screenWidth,screenHeight,statusBarHeight,Left,Top,Right,Bottom,screenDensity;
@@ -109,6 +106,8 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         diamondbtn = (ImageButton) findViewById(R.id.btnDiaId);
         TextView Diatxt = (TextView) findViewById(R.id.textDiam);
         font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+        ImageView separator = (ImageView) findViewById(R.id.seperator);
+        ImageView separator2 = (ImageView) findViewById(R.id.seperator2);
 
         //Screen characteristics
         DisplayMetrics dm = new DisplayMetrics();
@@ -122,12 +121,17 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
         //Setting Team name\\
         OmadaTxt.setTypeface(font);
-        OmadaTxt.setText(""+teams[current_team].get_name());
+        OmadaTxt.setText(teams[current_team].get_name());
         Top = (0.035* screenHeight);
         Left = 0.05*screenWidth;
-        setMargins(OmadaTxt,(int) Left,(int) Top,(int) Left,0);
+        Bottom = (1-0.135)*screenHeight;
+        setMargins(OmadaTxt,(int) Left,(int) Top,(int) Left,(int) Bottom);
         refitText(OmadaTxt,(float) ((0.09 / screenDensity) * screenHeight),(int)(0.9*screenWidth));
 
+        //Separator Margins
+        Top = (0.15)*screenHeight;
+        Bottom = (0.83125)*screenHeight;
+        setMargins(separator,0,(int) Top,0,(int) Bottom);
 
         //Setting instructions\\
         Odigies.setTypeface(font);
@@ -166,8 +170,25 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
         //Setting Diamond Text
         Top = screenHeight-Bottom;
-        setMargins(Diatxt,(int) Left,(int) Top, (int) Right,0);
+        Bottom = 0.23*screenHeight;
+        setMargins(Diatxt,(int) Left,(int) Top, (int) Right,(int) Bottom);
         Diatxt.setTextSize((float) ((0.058/screenDensity)*screenHeight));
+
+        //Setting Bottom Separator
+        Top = 0.85*screenHeight;
+        Bottom = 0.13125*screenHeight;
+        setMargins(separator2,0,(int) Top,0,(int) Bottom);
+
+        //Setting Diamonds
+        Top = (0.86875)*screenHeight;
+        Bottom =(0.015)*screenHeight;
+        Left=0.05*screenWidth;
+        setMargins(diamondsTable,(int) Left,(int) Top,(int) Left,(int) Bottom);
+
+        for (int i=0;i<6;i++){
+            setMargins(diamond_images[i],(int) Left,(int) Top,(int) Left,(int) Bottom);
+        }
+
         //telos
 
 
