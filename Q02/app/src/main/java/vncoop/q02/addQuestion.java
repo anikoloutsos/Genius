@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.Properties;
-
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;

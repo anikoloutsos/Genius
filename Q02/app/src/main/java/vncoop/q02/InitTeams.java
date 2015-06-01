@@ -4,29 +4,25 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Point;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.InputType;
+import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -61,11 +57,50 @@ public class InitTeams extends ActionBarActivity {
 
         ////////////////////////////////
 
-        TextView RithmiseisTxt = (TextView) findViewById(R.id.textView);
-        refitText(RithmiseisTxt, 50);
+        TextView RithmiseisTxt = (TextView)findViewById(R.id.textView);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+        ImageButton homeButton = (ImageButton) findViewById(R.id.homeButtonId);
+        ImageButton nextButton = (ImageButton) findViewById(R.id.nextButtonId);
+        double screenWidth, screenHeight,statusBarHeight,Top,screenDensity,Left,Right,Bottom;
+        ScrollView scrollview = (ScrollView) findViewById(R.id.scrollView);
+
+
+        //Screen characteristics
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        screenWidth = (double) dm.widthPixels;
+        screenHeight = (double) dm.heightPixels;
+        screenDensity = (double) dm.density;
+
+        statusBarHeight = (double) getStatusBarHeight();
+        screenHeight -= statusBarHeight;
+
+        //Setting Title size and margins
+        Top = (0.035* screenHeight);
+        setMargins(RithmiseisTxt,0,(int) Top,0,0);
+        RithmiseisTxt.setTextSize((float) ((0.088/screenDensity)*screenHeight));
         RithmiseisTxt.setTypeface(font);
 
+        //Setting home and Next buttons margins
+        Left = 0.063668224 * screenWidth;
+        Top = (0.80218068+0.015) * screenHeight;
+        Right = 0.702102803738*screenWidth;
+        Bottom = 0.04088785 * screenHeight;
+        setMargins(homeButton, (int) Left, (int) Top, (int) Right, (int) Bottom);
+        setMargins(nextButton, (int) Right, (int) Top, (int) Left, (int) Bottom);
+
+
+        //Setting scrollview margins
+        Top = (0.15+0.03)* screenHeight;
+        Bottom = ((1-0.80018068)*screenHeight);
+        Left = (0.05*screenWidth);
+        Right = Left;
+        setMargins(scrollview,(int) Left,(int) Top,(int) Right,(int) Bottom);
+
+        ImageView Sep2 = (ImageView) findViewById(R.id.separator2Id);
+        Top = ((0.80018068-0.02)*screenHeight);
+        Bottom = (0.983-0.80018068)*screenHeight;
+        setMargins(Sep2,0,(int) Top,0,(int) Bottom);
 
         //////////////SET EDIT TEXT VISIBLE//////////////
         for (int i = 1; i <= number_of_players; i++) {
@@ -340,39 +375,22 @@ public class InitTeams extends ActionBarActivity {
     }
 
 
-    public int getDisplaywidth() {
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        int height = size.y;
-        if (height <= width) {
-            width = height;
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
         }
-        return width;
+        return result;
     }
+    public static void setMargins(View v, int l, int t, int r, int b) {
 
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
 
-    public void refitText(TextView tv, float maxTextSize) {
-        tv.measure(0, 0);
-        int width = getDisplaywidth();
-        int textWidth = tv.getMeasuredWidth();
-
-        int availableWidth = width;
-        float trySize = maxTextSize;
-
-        while (textWidth > availableWidth) {
-            trySize -= 1;
-            tv.setTextSize(trySize);
-            tv.measure(0, 0);
-            textWidth = tv.getMeasuredWidth();
-            Log.d("textwidth " + textWidth, "textsize " + trySize);
-            //tv.requestLayout();
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
         }
-
-        tv.setTextSize(trySize);
-
     }
-
-
 }

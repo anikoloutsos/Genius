@@ -33,6 +33,7 @@ public class SavedGames extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_games);
 
+
         //check saved games to send the oldest
         FILE = new String[3];
         FILE[0] = "/data/data/vncoop.q02/databases/savegame1";
