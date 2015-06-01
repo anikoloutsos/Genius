@@ -13,6 +13,8 @@ import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -24,7 +26,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 
-public class ContinueScreen extends Activity {
+public class ContinueScreen extends Activity implements Animation.AnimationListener {
 
     int current_team;
     int number_of_teams;
@@ -32,6 +34,8 @@ public class ContinueScreen extends Activity {
     boolean[] current_diamonds;
     boolean sameTeam;
     private int fileIndex;
+    Animation fadein;
+    private int animatedDiamond;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,12 @@ public class ContinueScreen extends Activity {
         }
         current_diamonds = teams[current_team].get_diamonds();
         fileIndex = intent.getIntExtra("file_index", 0);
+        animatedDiamond=0;
+        animatedDiamond=intent.getIntExtra("Catdiamond",0);
+        Log.d("afsfafafasfasfasf"," " +animatedDiamond);
+
+
+
 
     ///set text
         TextView tv1 =(TextView)findViewById(R.id.textView1);
@@ -138,6 +148,19 @@ public class ContinueScreen extends Activity {
                 }
             }
         }
+        if(animatedDiamond!=0) {
+            //fortwse animation
+            fadein = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.fadein);
+            fadein.setAnimationListener(this);
+            //
+            int diamId = getResources().getIdentifier("team" + (current_team + 1) + intCatToColorString(animatedDiamond) + "DiamId", "id", getPackageName());
+            Log.d("sssssssssss", "" + "team" + (current_team + 1) + intCatToColorString(animatedDiamond) + "DiamId");
+            ImageView animatedImage = (ImageView) findViewById(diamId);
+            animatedImage.setVisibility(View.VISIBLE);
+            animatedImage.setAnimation(fadein);
+        }
+
 
 
 
@@ -256,6 +279,34 @@ public class ContinueScreen extends Activity {
     }
 
 
+    @Override
+    public void onAnimationStart(Animation animation) {
 
+    }
 
+    @Override
+    public void onAnimationEnd(Animation animation) {
+
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+
+    }
+
+    public String intCatToColorString(int col){
+        if(col==1){
+            return "blue";
+        }else if(col==2){
+            return "pink";
+        }else if(col==3){
+            return "red";
+        }else if(col==4){
+            return "purple";
+        }else if(col==5){
+            return "green";
+        }else{
+            return "yellow";
+        }
+    }
 }

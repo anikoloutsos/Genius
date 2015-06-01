@@ -48,7 +48,7 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
     boolean isDiamond;
     int category;
     private int fileIndex;
-
+    private int diamondNum;
     CardFrontFragment cardfrontfragment= new CardFrontFragment();
     CardBackFragment cardbackfragment= new CardBackFragment();
 
@@ -253,6 +253,11 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
         intent.putExtra("number_of_teams",number_of_teams);
         intent.putExtra("current_message", current_team);
         intent.putExtra("same_team",true);
+        //for animation
+        if(isDiamond) {
+            intent.putExtra("Catdiamond", category);
+        }
+        //
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
@@ -310,6 +315,7 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
             return "spo";
         }
     }
+
 
     public String intCatToText(int col){
         if(col==1){

@@ -54,7 +54,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
     Animation MoveRightFAdeIn;
     Animation MoveLeftFAdeIn;
     Animation ScaleFade;
-
     Typeface font;
     TextView Odigies;
 
