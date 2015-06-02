@@ -19,7 +19,7 @@
 
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/textView1"
                 android:visibility="visible"
@@ -28,19 +28,19 @@
                 android:onClick="throwPopup"
                 android:cursorVisible="false"
                 style="@style/QuestionStyleWhite"
-
-                />
+                android:layout_marginTop="10dp"/>
             <RadioGroup
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:id="@+id/radioGroup1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
                 style="@style/QuestionStyleWhite"
+                android:visibility="visible"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/textView1"
-                android:visibility="visible">
+                android:layout_below="@+id/textView1">
 
                 <RadioButton
                     android:id="@+id/color1_1"
@@ -101,7 +101,7 @@
             </RadioGroup>
 
             <EditText
-                android:layout_marginTop="110dp"
+                android:layout_marginTop="100dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -120,6 +120,7 @@
 
             <RadioGroup
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:id="@+id/radioGroup2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -185,7 +186,7 @@
 
 
             <EditText
-                android:layout_marginTop="110dp"
+                android:layout_marginTop="100dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -203,6 +204,7 @@
                 android:inputType="textPersonName"/>
             <RadioGroup
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:id="@+id/radioGroup3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -274,7 +276,7 @@
                 android:id="@+id/textView4"
                 android:layout_below="@id/textView3"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="110dp"
+                android:layout_marginTop="100dp"
                 android:visibility="gone"
                 android:textSize="30dp"
                 android:onClick="throwPopup"
@@ -285,6 +287,7 @@
                 android:inputType="textPersonName"/>
             <RadioGroup
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:id="@+id/radioGroup4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -372,7 +375,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rithmiseis_omadas"
-        android:id="@+id/textView"
+        android:id="@+id/teamSettingsText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textColor="#ffffff"

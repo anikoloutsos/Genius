@@ -57,13 +57,15 @@ public class InitTeams extends ActionBarActivity {
 
         ////////////////////////////////
 
-        TextView RithmiseisTxt = (TextView)findViewById(R.id.textView);
+        TextView settingsText = (TextView)findViewById(R.id.teamSettingsText);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
         ImageButton homeButton = (ImageButton) findViewById(R.id.homeButtonId);
         ImageButton nextButton = (ImageButton) findViewById(R.id.nextButtonId);
         double screenWidth, screenHeight,statusBarHeight,Top,screenDensity,Left,Right,Bottom;
         ScrollView scrollview = (ScrollView) findViewById(R.id.scrollView);
         ImageView separator = (ImageView) findViewById(R.id.seperator);
+        ImageView separator2 = (ImageView) findViewById(R.id.separator2Id);
+
 
         //Screen characteristics
         DisplayMetrics dm = new DisplayMetrics();
@@ -75,59 +77,55 @@ public class InitTeams extends ActionBarActivity {
         statusBarHeight = (double) getStatusBarHeight();
         screenHeight -= statusBarHeight;
 
-        //Setting savedGameText margins
-        RithmiseisTxt.setTypeface(font);
+        //Setting settings text margins
+        settingsText.setTypeface(font);
         Top = (0.035* screenHeight);
         Left = 0.05*screenWidth;
         Bottom = (1-0.135)*screenHeight;
-        setMargins(RithmiseisTxt,(int) Left,(int) Top,(int) Left,(int) Bottom);
-        RithmiseisTxt.setTextSize((float) ((0.065 / screenDensity) * screenHeight));
+        setMargins(settingsText,(int) Left,(int) Top,(int) Left,(int) Bottom);
+        settingsText.setTextSize((float) ((0.075 / screenDensity) * screenHeight));
 
         //Separator Margins
         Top = (0.15)*screenHeight;
         Bottom = (0.83125)*screenHeight;
         setMargins(separator,0,(int) Top,0,(int) Bottom);
 
+        //Separator2 Margins
+        Top = (0.8*screenHeight);
+        Bottom = 0.18125*screenHeight;
+        setMargins(separator2,0,(int) Top,0,(int) Bottom);
 
         //Setting home and Next buttons margins
-        Left = 0.063668224 * screenWidth;
-        Top = (0.80218068+0.015) * screenHeight;
-        Right = 0.702102803738*screenWidth;
-        Bottom = 0.04088785 * screenHeight;
+        Top = (0.83875) * screenHeight;
+        Bottom = 0.04*screenHeight;
+        Left = 0.05*screenWidth;
+        Right = screenWidth-Left-(screenHeight-Top-Bottom);
         setMargins(homeButton, (int) Left, (int) Top, (int) Right, (int) Bottom);
         setMargins(nextButton, (int) Right, (int) Top, (int) Left, (int) Bottom);
 
 
         //Setting scrollview margins
-        Top = (0.15+0.03)* screenHeight;
-        Bottom = ((1-0.80018068)*screenHeight);
+        Top = (0.16875)* screenHeight;
+        Bottom = (0.16125*screenHeight);
         Left = (0.05*screenWidth);
         Right = Left;
         setMargins(scrollview,(int) Left,(int) Top,(int) Right,(int) Bottom);
 
-        ImageView Sep2 = (ImageView) findViewById(R.id.separator2Id);
-        Top = ((0.80018068-0.02)*screenHeight);
-        Bottom = (0.983-0.80018068)*screenHeight;
-        setMargins(Sep2,0,(int) Top,0,(int) Bottom);
-
         //////////////SET EDIT TEXT VISIBLE//////////////
-        for (int i = 1; i <= number_of_players; i++) {
-            String buttonID = "textView" + i;
+        for (int i = 0; i < number_of_players; i++) {
+            String buttonID = "textView" + (i+1);
             int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
-            b[i - 1] = (EditText) findViewById(resID);
-            b[i - 1].setVisibility(View.VISIBLE);
-            b[i - 1].setTypeface(font);
-            teams[i - 1].set_name(b[i - 1].getHint().toString());
-            b[i - 1].setFocusable(false);
-            b[i - 1].setClickable(true);
-            //Log.d("----------------",b.getHint().toString());
-        }
-
-        for (int i = 1; i <= number_of_players; i++) {
-            String buttonID2 = "radioGroup" + i;
+            b[i] = (EditText) findViewById(resID);
+            b[i].setVisibility(View.VISIBLE);
+            b[i].setTypeface(font);
+            teams[i].set_name(b[i].getHint().toString());
+            b[i].setFocusable(false);
+            b[i].setClickable(true);
+            String buttonID2 = "radioGroup" + (i+1);
             int resID2 = getResources().getIdentifier(buttonID2, "id", getPackageName());
             View b2 = findViewById(resID2);
             b2.setVisibility(View.VISIBLE);
+
         }
         ///////////////////////////////////////////////
 

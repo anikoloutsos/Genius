@@ -4,6 +4,41 @@
     android:background="@drawable/background">
 
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/rl">
+
+        <ImageButton
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/twoplayerid"
+            android:src="@drawable/twoplayerbutton_selec"
+            android:onClick="onTwoClick"
+            android:background="#00ffffff"
+            android:scaleType="fitCenter"
+            />
+
+        <ImageButton
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/threeplayerid"
+            android:src="@drawable/threeplayerbutton"
+            android:onClick="onThreeClick"
+            android:background="#00ffffff"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:onClick="onFourClick"
+            android:id="@+id/fourplayerid"
+            android:src="@drawable/fourplayerbutton"
+            android:background="#00ffffff"
+            android:scaleType="fitCenter"
+            />
+    </RelativeLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,11 +54,10 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/separatorId"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/numberOfTeamsId"
-        android:src="@drawable/seperator" />
+        android:layout_height="fill_parent"
+        android:id="@+id/seperator"
+        android:src="@drawable/seperator"
+        android:scaleType="fitCenter" />
 
 
 
@@ -47,40 +81,10 @@
         style="@style/ButtonStyle"/>
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/separator2Id"
+        android:layout_height="fill_parent"
+        android:id="@+id/seperator2"
         android:src="@drawable/seperator"
         android:scaleType="fitCenter"
-
-        android:visibility="gone" />
-
-    <ImageButton
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:id="@+id/twoplayerid"
-        android:src="@drawable/twoplayerbutton_selec"
-        android:scaleType="fitCenter"
-        android:onClick="onTwoClick"
-        android:background="#00ffffff"
-        />
-
-    <ImageButton
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:id="@+id/threeplayerid"
-        android:src="@drawable/threeplayerbutton"
-        android:onClick="onThreeClick"
-        android:scaleType="fitCenter"
-        android:background="#00ffffff" />
-
-    <ImageButton
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:onClick="onFourClick"
-        android:id="@+id/fourplayerid"
-        android:src="@drawable/fourplayerbutton"
-        android:scaleType="fitCenter"
-        android:background="#00ffffff"
-        />
+ />
 
 </RelativeLayout>

@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -17,9 +20,8 @@ import android.widget.TextView;
 public class ChooseNumOfPlayers extends Activity {
     private RadioGroup radioGroup;
     public int number_of_teams;
-    ImageButton rb1;
-    ImageButton rb2;
-    ImageButton rb3;
+    ImageButton[] rb;
+
 
 
     @Override
@@ -27,18 +29,21 @@ public class ChooseNumOfPlayers extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_num_of_players);
 
-
-        rb1 = (ImageButton) findViewById(R.id.twoplayerid);
-        rb2 = (ImageButton) findViewById(R.id.threeplayerid);
-        rb3 = (ImageButton) findViewById(R.id.fourplayerid);
+        rb = new ImageButton[3];
+        rb[0] = (ImageButton) findViewById(R.id.twoplayerid);
+        rb[1] = (ImageButton) findViewById(R.id.threeplayerid);
+        rb[2] = (ImageButton) findViewById(R.id.fourplayerid);
         number_of_teams = 2;
         double screenWidth, screenHeight, screenDensity, statusBarHeight, Left, Top, Right, Bottom;
 
         TextView NumberOfTeamsText = (TextView) findViewById(R.id.numberOfTeamsId);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
 
+        ImageView separator = (ImageView) findViewById(R.id.seperator);
+        ImageView separator2 = (ImageView) findViewById(R.id.seperator2);
         ImageButton homeButton = (ImageButton) findViewById(R.id.homeButtonId);
         ImageButton nextButton = (ImageButton) findViewById(R.id.nextButtonId);
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl);
 
         //Screen characteristics
         DisplayMetrics dm = new DisplayMetrics();
@@ -49,13 +54,64 @@ public class ChooseNumOfPlayers extends Activity {
         statusBarHeight = (double) getStatusBarHeight();
         screenHeight -= statusBarHeight;
 
-        //Number of teams text Size set
+        //Setting Number of teams text margins
         NumberOfTeamsText.setTypeface(font);
-        NumberOfTeamsText.setTextSize((float) ((0.087 / screenDensity) * screenHeight));
         Top = (0.035* screenHeight);
-        setMargins(NumberOfTeamsText,0,(int) Top,0,0);
-        double buttonsRatio = 51.0 / 80.0;
+        Left = 0.05*screenWidth;
+        Bottom = (1-0.135)*screenHeight;
+        setMargins(NumberOfTeamsText,(int) Left,(int) Top,(int) Left,(int) Bottom);
+        NumberOfTeamsText.setTextSize((float) ((0.075 / screenDensity) * screenHeight));
 
+        //Separator Margins
+        Top = (0.15)*screenHeight;
+        Bottom = (0.83125)*screenHeight;
+        setMargins(separator, 0, (int) Top, 0, (int) Bottom);
+
+        //Separator2 Margins
+        Top = (0.8*screenHeight);
+        Bottom = 0.18125*screenHeight;
+        setMargins(separator2,0,(int) Top,0,(int) Bottom);
+
+        //Setting home and Next buttons margins
+        Top = (0.83875) * screenHeight;
+        Bottom = 0.04*screenHeight;
+        Left = 0.05*screenWidth;
+        Right = screenWidth-Left-(screenHeight-Top-Bottom);
+        setMargins(homeButton, (int) Left, (int) Top, (int) Right, (int) Bottom);
+        setMargins(nextButton, (int) Right, (int) Top, (int) Left, (int) Bottom);
+
+        //Relative Layout Margins
+        Top = (0.16875)* screenHeight;
+        Bottom = (0.2*screenHeight);
+        setMargins(rl,0,(int) Top,0,(int) Bottom);
+        double rlHeight = screenHeight-Top-Bottom;
+        double marginHeight = 0.0498125*screenHeight;
+        double buttonHeight = 0.144*screenHeight;
+
+        Log.d("rlTop", String.valueOf(Top));
+        Log.d("rlBottom", String.valueOf(Bottom));
+        double buttonsRatio = 51.0 / 80.0;
+        Left = 0.33*screenWidth;
+        for (int i=0;i<3;i++){
+            Top = ((double) i*buttonHeight + (double) (i+1)*marginHeight);
+            Bottom = ((double) (2-i)*buttonHeight+(double) (3-i)*marginHeight);
+            setMargins(rb[i], (int) Left, (int) Top, (int) Left, (int) Bottom);
+            Log.d("Top", String.valueOf(Top));
+            Log.d("Bottom", String.valueOf(Bottom));
+        }
+        Top = 0.24 * screenHeight;
+        Bottom = 0.616 * screenHeight;
+        Log.d("b1Top", String.valueOf(Top));
+        Log.d("b1Bottom", String.valueOf(Bottom));
+        Top = 0.428 * screenHeight;
+        Bottom = 0.428 * screenHeight;
+        Log.d("b2Top", String.valueOf(Top));
+        Log.d("b2Bottom", String.valueOf(Bottom));
+        Top = 0.616 * screenHeight;
+        Bottom = 0.24 * screenHeight;
+        Log.d("b3Top", String.valueOf(Top));
+        Log.d("b3Bottom", String.valueOf(Bottom));
+ /*
         //Setting Two player Button
         Left = 0.33 * screenWidth;
         Top = 0.24 * screenHeight;
@@ -72,14 +128,7 @@ public class ChooseNumOfPlayers extends Activity {
         Top = 0.616 * screenHeight;
         Bottom = 0.24 * screenHeight;
         setMargins(rb3, (int) Left, (int) Top, (int) Right, (int) Bottom);
-
-        //Setting home and Next buttons margins
-        Left = 0.063668224 * screenWidth;
-        Top = (0.80218068+0.015) * screenHeight;
-        Right = 0.702102803738*screenWidth;
-        Bottom = 0.04088785 * screenHeight;
-        setMargins(homeButton, (int) Left, (int) Top, (int) Right, (int) Bottom);
-        setMargins(nextButton, (int) Right, (int) Top, (int) Left, (int) Bottom);
+*/
 
     }
 
@@ -104,9 +153,9 @@ public class ChooseNumOfPlayers extends Activity {
         int d2id = getResources().getIdentifier("threeplayerbutton", "drawable", getPackageName());
         int d3id = getResources().getIdentifier("fourplayerbutton", "drawable", getPackageName());
 
-        rb1.setImageResource(d1id);
-        rb2.setImageResource(d2id);
-        rb3.setImageResource(d3id);
+        rb[0].setImageResource(d1id);
+        rb[1].setImageResource(d2id);
+        rb[2].setImageResource(d3id);
         number_of_teams=2;
 
     }
@@ -115,9 +164,9 @@ public class ChooseNumOfPlayers extends Activity {
         int d2id = getResources().getIdentifier("threeplayerbutton_selec", "drawable", getPackageName());
         int d3id = getResources().getIdentifier("fourplayerbutton", "drawable", getPackageName());
 
-        rb1.setImageResource(d1id);
-        rb2.setImageResource(d2id);
-        rb3.setImageResource(d3id);
+        rb[0].setImageResource(d1id);
+        rb[1].setImageResource(d2id);
+        rb[2].setImageResource(d3id);
         number_of_teams=3;
 
     }
@@ -126,9 +175,9 @@ public class ChooseNumOfPlayers extends Activity {
         int d2id = getResources().getIdentifier("threeplayerbutton", "drawable", getPackageName());
         int d3id = getResources().getIdentifier("fourplayerbutton_selec", "drawable", getPackageName());
 
-        rb1.setImageResource(d1id);
-        rb2.setImageResource(d2id);
-        rb3.setImageResource(d3id);
+        rb[0].setImageResource(d1id);
+        rb[1].setImageResource(d2id);
+        rb[2].setImageResource(d3id);
         number_of_teams=4;
 
     }
