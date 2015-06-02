@@ -74,7 +74,7 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
         statusBarHeight = (double) getStatusBarHeight();
         screenHeight -= statusBarHeight;
         TextView teamText =(TextView)findViewById(R.id.teamId);
-        TextView replayText =(TextView)findViewById(R.id.replayId);
+        TextView replayText =(TextView)findViewById(R.id.rulesid);
         ImageView separator = (ImageView) findViewById(R.id.seperator);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
         RelativeLayout basicRelativeL = (RelativeLayout) findViewById(R.id.basicRelativeLayout);

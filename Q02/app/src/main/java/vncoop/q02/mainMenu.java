@@ -46,7 +46,7 @@ public class mainMenu extends Activity {
         AddQuestion.setTypeface(font);
         String[] dblist = this.databaseList();
 
-        if (dblist[0] == null) {
+        //if (dblist[0] == null) {
             //Log.d("i have", dblist[0]);
 
             //this.deleteDatabase("FDB.sqlite");
@@ -57,7 +57,7 @@ public class mainMenu extends Activity {
             } catch (IOException ex) {
                 throw new Error("ImpossibleToCreateDB");
             }
-        }
+        //}
 
 
         //Screen characteristics
