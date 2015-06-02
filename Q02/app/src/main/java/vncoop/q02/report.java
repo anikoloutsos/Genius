@@ -82,8 +82,8 @@ public class report extends Activity {
         Bottom = 0.05*screenHeight;
         Left = 0.05*screenWidth;
         Right = 0.55*screenWidth;
-        setMargins(addq, (int) Left, 0, (int) Right, (int) Bottom);
-        setMargins(back,(int) Right, 0,(int) Left,(int) Bottom);
+        setMargins(addq, (int) Left, (int)Top, (int) Right, (int) Bottom);
+        setMargins(back,(int) Right,(int)Top,(int) Left,(int) Bottom);
 
         //
 
