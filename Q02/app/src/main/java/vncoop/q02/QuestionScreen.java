@@ -233,7 +233,7 @@ public class QuestionScreen extends Activity implements FragmentManager.OnBackSt
                     diamondCounter++;
                 }
             }
-            if (diamondCounter == 6){
+            if (true){//changed diamondCounter == 6 to true to check winning team
 
                 for (int i = 0;i<number_of_teams;i++) {
                     intent1.putExtra("team"+i, (android.os.Parcelable) teams[i]);

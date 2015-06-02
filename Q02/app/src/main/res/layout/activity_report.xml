@@ -1,9 +1,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="vncoop.q02.report" android:background="@drawable/background">
+    android:layout_height="match_parent"
+    tools:context="vncoop.q02.report" android:background="@drawable/background">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo"
+        android:alpha="0.15"/>
 
 
     <TextView
@@ -19,13 +26,12 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/seperator"
-        android:layout_below="@+id/titleId"
+        android:id="@+id/separatorId"
         android:layout_centerHorizontal="true"
         android:src="@drawable/seperator" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Πίσω"
         android:id="@+id/backId"
@@ -37,7 +43,7 @@
         android:textColor="#ffffffff" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Αποστολή"
         android:id="@+id/submitReportId"
@@ -49,117 +55,110 @@
         android:textColor="#ffffffff" />
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_below="@id/seperator"
         android:layout_above="@id/submitReportId"
         android:id="@+id/scrollView4" >
 
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-
-            <RadioGroup
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/repRG">
-
-
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Λάθος Απάντηση"
-                    android:id="@+id/repId1"
-                    android:checked="false"
-                    android:textSize="20sp"
-                    android:textColor="#ffffffff"
-                    android:buttonTint="#ffffffff" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Πολύ δύσκολη ερώτηση"
-                    android:id="@+id/repId2"
-                    android:checked="false"
-                    android:textSize="20sp"
-                    android:textColor="#ffffffff"
-                    android:buttonTint="#ffffffff" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Πολύ εύκολη ερώτηση"
-                    android:id="@+id/repId3"
-                    android:checked="false"
-                    android:textSize="20sp"
-                    android:textColor="#ffffffff"
-                    android:buttonTint="#ffffffff" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ασαφής Ερώτηση"
-                    android:id="@+id/repId4"
-                    android:checked="false"
-                    android:textSize="20sp"
-                    android:textColor="#ffffffff"
-                    android:buttonTint="#ffffffff" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Λάθος Κατηγορία"
-                    android:id="@+id/repId5"
-                    android:checked="false"
-                    android:textSize="20sp"
-                    android:textColor="#ffffffff"
-                    android:buttonTint="#ffffffff" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ορθογραφικό λάθος"
-                    android:id="@+id/repId7"
-                    android:checked="false"
-                    android:textSize="20sp"
-                    android:textColor="#ffffffff"
-                    android:buttonTint="#ffffffff" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Άλλο..."
-                    android:id="@+id/repId6"
-                    android:checked="false"
-                    android:textSize="20sp"
-                    android:textColor="#ffffffff"
-                    android:buttonTint="#ffffffff" />
-
-            </RadioGroup>
-
-            <EditText
-                style="@style/QuestionStyleWhite"
-                android:layout_width="fill_parent"
-                android:layout_height="160dp"
-                android:id="@+id/repEditTextId"
-                android:textSize="30sp"
-                android:gravity="center_horizontal"
-                android:hint="Λόγος"
-                android:inputType="text"
-                android:visibility="gone"
-                android:layout_below="@+id/repRG"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
 
         </RelativeLayout>
     </ScrollView>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/repRG"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Λάθος Απάντηση"
+            android:id="@+id/repId1"
+            android:checked="false"
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:buttonTint="#ffffffff" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Πολύ δύσκολη ερώτηση"
+            android:id="@+id/repId2"
+            android:checked="false"
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:buttonTint="#ffffffff" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Πολύ εύκολη ερώτηση"
+            android:id="@+id/repId3"
+            android:checked="false"
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:buttonTint="#ffffffff" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ασαφής Ερώτηση"
+            android:id="@+id/repId4"
+            android:checked="false"
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:buttonTint="#ffffffff" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Λάθος Κατηγορία"
+            android:id="@+id/repId5"
+            android:checked="false"
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:buttonTint="#ffffffff" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ορθογραφικό λάθος"
+            android:id="@+id/repId7"
+            android:checked="false"
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:buttonTint="#ffffffff" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Άλλο..."
+            android:id="@+id/repId6"
+            android:checked="false"
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:buttonTint="#ffffffff" />
+
+        <EditText
+            style="@style/QuestionStyleWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/repEditTextId"
+            android:textSize="30sp"
+            android:hint="Λόγος"
+            android:inputType="textMultiLine"
+            android:visibility="gone"
+            android:layout_below="@id/repRG" />
+
+    </RadioGroup>
+
 
 </RelativeLayout>

@@ -34,7 +34,7 @@ public class ChooseNumOfPlayers extends Activity {
         number_of_teams = 2;
         double screenWidth, screenHeight, screenDensity, statusBarHeight, Left, Top, Right, Bottom;
 
-        TextView NumberOfTeamsText = (TextView) findViewById(R.id.numberOfTeamsId);
+        TextView NumberOfTeamsText = (TextView) findViewById(R.id.titleId);
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
 
         ImageButton homeButton = (ImageButton) findViewById(R.id.homeButtonId);

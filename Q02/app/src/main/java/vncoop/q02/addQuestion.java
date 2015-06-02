@@ -8,9 +8,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Properties;
@@ -35,6 +39,38 @@ public class addQuestion extends Activity {
         setContentView(R.layout.activity_add_question);
 
 
+        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
+        //Screen characteristics
+        double screenWidth, screenHeight, screenDensity, statusBarHeight, Left, Top, Right, Bottom;
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        screenWidth = (double) dm.widthPixels;
+        screenHeight = (double) dm.heightPixels;
+        screenDensity = (double) dm.density;
+        statusBarHeight = (double) getStatusBarHeight();
+        screenHeight -= statusBarHeight;
+
+        //Number of teams text Size set
+        TextView titleText = (TextView)findViewById(R.id.titleId);
+        EditText que = (EditText)findViewById(R.id.submitQuestion);
+        EditText ans = (EditText)findViewById(R.id.submitAnswer);
+        ImageView separator = (ImageView) findViewById(R.id.separatorId);
+        que.setTypeface(font);
+        ans.setTypeface(font);
+        titleText.setTypeface(font);
+        //Setting savedGameText margins
+        Top = (0.035* screenHeight);
+        Left = 0.05*screenWidth;
+        //Bottom = (1-0.135)*screenHeight;
+        setMargins(titleText,(int) Left,(int) Top,(int) Left,(int) 0);
+        titleText.setTextSize((float) ((0.08 / screenDensity) * screenHeight));
+
+        //Separator Margins
+        Top = (0.15)*screenHeight;
+        setMargins(separator,0,(int) Top,0,0);
+
+
+
         context = this;
         subQue = (EditText) findViewById(R.id.submitQuestion);
         subAns = (EditText) findViewById(R.id.submitAnswer);
@@ -48,11 +84,16 @@ public class addQuestion extends Activity {
 
 
         //style buttons
-        Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
         Button addq = (Button)findViewById(R.id.sendQueId);
         Button back = (Button)findViewById(R.id.backId);
         addq.setTypeface(font);
         back.setTypeface(font);
+        Top = 0.85*screenHeight;
+        Bottom = 0.05*screenHeight;
+        Left = 0.05*screenWidth;
+        Right = 0.55*screenWidth;
+        setMargins(addq, (int) Left, 0, (int) Right, (int) Bottom);
+        setMargins(back,(int) Right, 0,(int) Left,(int) Bottom);
 
         //
 
@@ -133,4 +174,22 @@ public class addQuestion extends Activity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+    public static void setMargins(View v, int l, int t, int r, int b) {
+
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
+    }
 }

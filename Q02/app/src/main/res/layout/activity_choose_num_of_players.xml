@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Αριθμός Ομάδων"
-        android:id="@+id/numberOfTeamsId"
+        android:id="@+id/titleId"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textColor="#ffffff"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/separatorId"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/numberOfTeamsId"
+        android:layout_below="@+id/titleId"
         android:src="@drawable/seperator" />
 
 
