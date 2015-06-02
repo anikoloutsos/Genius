@@ -46,18 +46,14 @@ public class mainMenu extends Activity {
         AddQuestion.setTypeface(font);
         String[] dblist = this.databaseList();
 
-        if (dblist[0] == null) {
-            //Log.d("i have", dblist[0]);
-
             //this.deleteDatabase("FDB.sqlite");
-
             DBHelper dbCreator = new DBHelper(getApplicationContext());
             try {
                 dbCreator.createDB();
             } catch (IOException ex) {
                 throw new Error("ImpossibleToCreateDB");
             }
-        }
+
 
 
         //Screen characteristics
@@ -126,6 +122,7 @@ public class mainMenu extends Activity {
 
         for (int i = 0; i < 3; i++) {
             File file = new File(FILE[i]);
+            //file.delete();
             if (file.exists()) {
                 notsaved = false;
             }

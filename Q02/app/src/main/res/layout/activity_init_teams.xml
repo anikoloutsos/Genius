@@ -382,15 +382,13 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/textView"
+        android:layout_height="fill_parent"
+        android:id="@+id/seperator"
         android:src="@drawable/seperator" />
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:id="@+id/separator2Id"
         android:layout_centerHorizontal="true"
         android:src="@drawable/seperator" />

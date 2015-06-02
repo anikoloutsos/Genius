@@ -63,7 +63,7 @@ public class InitTeams extends ActionBarActivity {
         ImageButton nextButton = (ImageButton) findViewById(R.id.nextButtonId);
         double screenWidth, screenHeight,statusBarHeight,Top,screenDensity,Left,Right,Bottom;
         ScrollView scrollview = (ScrollView) findViewById(R.id.scrollView);
-
+        ImageView separator = (ImageView) findViewById(R.id.seperator);
 
         //Screen characteristics
         DisplayMetrics dm = new DisplayMetrics();
@@ -75,11 +75,19 @@ public class InitTeams extends ActionBarActivity {
         statusBarHeight = (double) getStatusBarHeight();
         screenHeight -= statusBarHeight;
 
-        //Setting Title size and margins
-        Top = (0.035* screenHeight);
-        setMargins(RithmiseisTxt,0,(int) Top,0,0);
-        RithmiseisTxt.setTextSize((float) ((0.088/screenDensity)*screenHeight));
+        //Setting savedGameText margins
         RithmiseisTxt.setTypeface(font);
+        Top = (0.035* screenHeight);
+        Left = 0.05*screenWidth;
+        Bottom = (1-0.135)*screenHeight;
+        setMargins(RithmiseisTxt,(int) Left,(int) Top,(int) Left,(int) Bottom);
+        RithmiseisTxt.setTextSize((float) ((0.065 / screenDensity) * screenHeight));
+
+        //Separator Margins
+        Top = (0.15)*screenHeight;
+        Bottom = (0.83125)*screenHeight;
+        setMargins(separator,0,(int) Top,0,(int) Bottom);
+
 
         //Setting home and Next buttons margins
         Left = 0.063668224 * screenWidth;
