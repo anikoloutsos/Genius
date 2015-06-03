@@ -12,6 +12,7 @@
         android:layout_height="fill_parent"
         android:id="@+id/textViewOmada"
         android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
         android:textColor="#ffffffff"
         android:gravity="center"
         android:textSize="500dp" />

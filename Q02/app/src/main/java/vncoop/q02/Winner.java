@@ -14,6 +14,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -43,8 +44,7 @@ public class Winner extends Activity {
 
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
 
-        TextView winningteam = (TextView) findViewById(R.id.winningTeamTextId);
-        TextView statistics_team1 = (TextView) findViewById(R.id.Team1Stats);
+         TextView statistics_team1 = (TextView) findViewById(R.id.Team1Stats);
         TextView statistics_team2 = (TextView) findViewById(R.id.Team2Stats);
         TextView statistics_team3 = (TextView) findViewById(R.id.Team3Stats);
         TextView statistics_team4 = (TextView) findViewById(R.id.Team4Stats);
@@ -52,12 +52,67 @@ public class Winner extends Activity {
         TextView team2 = (TextView) findViewById(R.id.Team2);
         TextView team3 = (TextView) findViewById(R.id.Team3);
         TextView team4 = (TextView) findViewById(R.id.Team4);
-        TextView congrats = (TextView) findViewById(R.id.congrats);
         //TextView youWin = (TextView) findViewById(R.id.youwin);
         TextView statistics = (TextView) findViewById(R.id.statistika);
+        ImageView prize = (ImageView) findViewById(R.id.prize);
+        TextView winningteam = (TextView) findViewById(R.id.winningTeamTextId);
+        TextView congrats = (TextView) findViewById(R.id.congrats);
+        ImageView separator = (ImageView) findViewById(R.id.seperator);
+        ImageButton homeButton = (ImageButton) findViewById(R.id.homeButton);
+        ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
+
+        //Screen characteristics
+        double screenWidth, screenHeight, screenDensity, statusBarHeight, Left, Top, Right, Bottom;
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        screenWidth = (double) dm.widthPixels;
+        screenHeight = (double) dm.heightPixels;
+        screenDensity = (double) dm.density;
+        statusBarHeight = (double) getStatusBarHeight();
+        screenHeight -= statusBarHeight;
+
+        //Prize Image Margins
+        Top = 0.03*screenHeight;
+        Bottom = 0.8*screenHeight;
+        Left = (((screenHeight-Top-Bottom)*105.0/108.0)/2.0);
+        setMargins(prize,(int) Left, (int) Top,(int) Left,(int) Bottom);
+
+        //Team Name Margins
+        winningteam.setText(teams[current_team].get_name());
+        winningteam.setTypeface(font);
+        statistics.setTextSize((float) ((0.05 / screenDensity) * screenHeight));
+        winningteam.setTextSize((float) ((0.067 / screenDensity) * screenHeight));
+        refitText(winningteam,(float) ((0.067 / screenDensity) * screenHeight),(int)(0.9*screenWidth));
+        Top = 0.2*screenHeight;
+        Bottom = (0.7+0.03)*screenHeight;
+        Left = 0.05*screenWidth;
+        setMargins(winningteam,(int) Left, (int) Top,(int) Left,(int) Bottom);
+
+        //Congratulations Text Margins
+        congrats.setTypeface(font);
+        congrats.setTextSize((float) ((0.067 / screenDensity) * screenHeight));
+        Top = (0.3-0.03)*screenHeight;
+        Bottom = (0.6+0.04)*screenHeight;
+        setMargins(congrats,(int) Left, (int) Top,(int) Left,(int) Bottom);
+
+        //Separator Margins
+        Top = (0.4-0.04)*screenHeight;
+        Bottom =(0.58125+0.04)*screenHeight;
+        setMargins(separator,(int) Left, (int) Top,(int) Left,(int) Bottom);
+
+        //Home Button Margins
+        Top = 0.85*screenHeight;
+        Bottom = 0.03*screenHeight;
+        setMargins(homeButton,(int) Left, (int) Top,(int) Left,(int) Bottom);
+
+
+        //ScrollView Margins
+        Top = (0.41875-0.04)*screenHeight;
+        Bottom = 0.15*screenHeight;
+        setMargins(scrollView,(int) Left, (int) Top,(int) Left,(int) Bottom);
 
         //set font
-        winningteam.setText(teams[current_team].get_name());
+
         team1.setTypeface(font);
         team1.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         team2.setTypeface(font);
@@ -70,25 +125,12 @@ public class Winner extends Activity {
         statistics_team2.setTypeface(font);
         statistics_team3.setTypeface(font);
         statistics_team4.setTypeface(font);
-        winningteam.setTypeface(font);
-        congrats.setTypeface(font);
+
         //youWin.setTypeface(font);
         statistics.setTypeface(font);
 
-        refitText(winningteam, 40);
-        winningteam.requestLayout();
+
         //telos
-
-      /*  ImageButton homeButton = (ImageButton)findViewById(R.id.homeButtonId);
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        double screenWidth = (double) dm.widthPixels;
-        double screenHeight = (double) dm.heightPixels;
-        double statusBarHeight = (double) getStatusBarHeight();
-        screenHeight -= statusBarHeight;
-
-        double Top = (0.815) * screenHeight;
-        setMargins(homeButton, 0, (int) Top, 0, (int)(0.05*screenHeight));*/
 
 
         //Statistics
@@ -101,10 +143,11 @@ public class Winner extends Activity {
                 stats_all[j] = (int) teams[i].get_category_stats(j);
                 stats_corr[j] = (int) teams[i].get_category_stats(6+j);
 
-            } //eikonitsa dipla se kathe statistiko???
+            }
             if(i==0) {
                 team1.setText(teams[i].get_name());
-                refitText(team1, 20);
+                team1.setTextSize((float) ((0.05 / screenDensity) * screenHeight));
+                refitText(team1, (float) ((0.05 / screenDensity) * screenHeight),(int)(0.9*screenWidth));
 
                 statistics_team1.setText("Γεωγραφία: "+ (int)percentStats[0] +"% (" + stats_corr[0] +"/" + stats_all[0] + ")"
                         + "\nΨυχαγωγία: "+ (int)percentStats[1] +"% (" + stats_corr[1] +"/" + stats_all[1] + ")"
@@ -112,10 +155,12 @@ public class Winner extends Activity {
                         + "\nΤέχνες: "+ (int)percentStats[3] +"% (" + stats_corr[3] +"/" + stats_all[3] + ")"
                         + "\nΕπιστήμη: "+ (int)percentStats[4] +"% (" + stats_corr[4] +"/" + stats_all[4] + ")"
                         + "\nΧόμπυ: " + + (int)percentStats[5] +"% (" + stats_corr[5] +"/" + stats_all[5] + ")");
+                statistics_team1.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
             }
             else if(i==1){
                 team2.setText(teams[i].get_name());
-                refitText(team2, 25);
+                team2.setTextSize((float) ((0.05 / screenDensity) * screenHeight));
+                refitText(team2, (float) ((0.05 / screenDensity) * screenHeight),(int)(0.9*screenWidth));
 
                 statistics_team2.setText(
                         "Γεωγραφία: "+ (int)percentStats[0] +"% (" + stats_corr[0] +"/" + stats_all[0] + ")"
@@ -124,9 +169,11 @@ public class Winner extends Activity {
                                 + "\nΤέχνες: "+ (int)percentStats[3] +"% (" + stats_corr[3] +"/" + stats_all[3] + ")"
                                 + "\nΕπιστήμη: "+ (int)percentStats[4] +"% (" + stats_corr[4] +"/" + stats_all[4] + ")"
                                 + "\nΧόμπυ: " + + (int)percentStats[5] +"% (" + stats_corr[5] +"/" + stats_all[5] + ")");
+                statistics_team2.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
             }else if(i==2){
                 team3.setText(teams[i].get_name());
-                refitText(team3, 25);
+                team3.setTextSize((float) ((0.05 / screenDensity) * screenHeight));
+                refitText(team3, (float) ((0.05 / screenDensity) * screenHeight),(int)(0.9*screenWidth));
                 statistics_team3.setText(
                         "Γεωγραφία: "+ (int)percentStats[0] +"% (" + stats_corr[0] +"/" + stats_all[0] + ")"
                                 + "\nΨυχαγωγία: "+ (int)percentStats[1] +"% (" + stats_corr[1] +"/" + stats_all[1] + ")"
@@ -134,9 +181,13 @@ public class Winner extends Activity {
                                 + "\nΤέχνες: "+ (int)percentStats[3] +"% (" + stats_corr[3] +"/" + stats_all[3] + ")"
                                 + "\nΕπιστήμη: "+ (int)percentStats[4] +"% (" + stats_corr[4] +"/" + stats_all[4] + ")"
                                 + "\nΧόμπυ: " + + (int)percentStats[5] +"% (" + stats_corr[5] +"/" + stats_all[5] + ")");
+                statistics_team3.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
+                team3.setVisibility(View.VISIBLE);
+                statistics_team3.setVisibility(View.VISIBLE);
             }else if(i==3){
                 team4.setText(teams[i].get_name());
-                refitText(team4, 25);
+                team4.setTextSize((float) ((0.05 / screenDensity) * screenHeight));
+                refitText(team4, (float) ((0.05 / screenDensity) * screenHeight),(int)(0.9*screenWidth));
                 statistics_team4.setText(
                         "Γεωγραφία: "+ (int)percentStats[0] +"% (" + stats_corr[0] +"/" + stats_all[0] + ")"
                                 + "\nΨυχαγωγία: "+ (int)percentStats[1] +"% (" + stats_corr[1] +"/" + stats_all[1] + ")"
@@ -144,6 +195,9 @@ public class Winner extends Activity {
                                 + "\nΤέχνες: "+ (int)percentStats[3] +"% (" + stats_corr[3] +"/" + stats_all[3] + ")"
                                 + "\nΕπιστήμη: "+ (int)percentStats[4] +"% (" + stats_corr[4] +"/" + stats_all[4] + ")"
                                 + "\nΧόμπυ: " + + (int)percentStats[5] +"% (" + stats_corr[5] +"/" + stats_all[5] + ")");
+                statistics_team4.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
+                team4.setVisibility(View.VISIBLE);
+                statistics_team4.setVisibility(View.VISIBLE);
             }
         }
         //delete save file
@@ -165,22 +219,10 @@ public class Winner extends Activity {
         finish();
     }
 
-    public int getDisplaywidth(){
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        int height = size.y;
-        if(height<=width){width=height;}
-        return width;
-    }
 
-
-    public void refitText(TextView tv,float maxTextSize) {
+    public void refitText(TextView tv, float maxTextSize, int width) {
         tv.measure(0, 0);
-        int width=getDisplaywidth();
-        int textWidth =tv.getMeasuredWidth();
-
+        int textWidth = tv.getMeasuredWidth();
         int availableWidth = width;
         float trySize = maxTextSize;
 
@@ -188,9 +230,7 @@ public class Winner extends Activity {
             trySize -= 1;
             tv.setTextSize(trySize);
             tv.measure(0, 0);
-            textWidth =tv.getMeasuredWidth();
-            Log.d("textwidth " + textWidth, "textsize " + trySize);
-            //tv.requestLayout();
+            textWidth = tv.getMeasuredWidth();
         }
 
         tv.setTextSize(trySize);

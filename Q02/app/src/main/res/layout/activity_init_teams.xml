@@ -114,8 +114,6 @@
                 android:onClick="throwPopup"
                 android:cursorVisible="false"
                 style="@style/QuestionStyleWhite"
-                android:maxLength="25"
-                android:maxLines="1"
                 />
 
             <RadioGroup
@@ -198,10 +196,7 @@
                 android:textSize="30dp"
                 android:onClick="throwPopup"
                 android:cursorVisible="false"
-                style="@style/QuestionStyleWhite"
-                android:maxLines="1"
-                android:maxLength="25"
-                android:inputType="textPersonName"/>
+                style="@style/QuestionStyleWhite"/>
             <RadioGroup
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -281,10 +276,7 @@
                 android:textSize="30dp"
                 android:onClick="throwPopup"
                 android:cursorVisible="false"
-                style="@style/QuestionStyleWhite"
-                android:maxLength="25"
-                android:maxLines="1"
-                android:inputType="textPersonName"/>
+                style="@style/QuestionStyleWhite"/>
             <RadioGroup
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
