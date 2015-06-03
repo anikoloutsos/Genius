@@ -69,9 +69,11 @@ public class addQuestion extends Activity {
         //Setting savedGameText margins
         Top = (0.035* screenHeight);
         Left = 0.05*screenWidth;
+
         Bottom = (1-0.135)*screenHeight;
         setMargins(titleText,(int) Left,(int) Top,(int) Left,(int) Bottom);
         titleText.setTextSize((float) ((0.07 / screenDensity) * screenHeight));
+
 
         //Separator Margins
         Top = (0.15)*screenHeight;

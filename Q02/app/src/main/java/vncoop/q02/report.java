@@ -61,6 +61,7 @@ public class report extends Activity {
         TextView titleText = (TextView)findViewById(R.id.titleId);
         ImageView separator = (ImageView) findViewById(R.id.separatorId);
         titleText.setTypeface(font);
+
         //Setting savedGameText margins
         Top = (0.035* screenHeight);
         Left = 0.05*screenWidth;
