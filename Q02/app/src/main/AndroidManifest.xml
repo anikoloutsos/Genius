@@ -51,30 +51,30 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".SavedGameStatus"
-            android:label="@string/title_activity_saved_game_status"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name=".addQuestion"
             android:label="@string/title_activity_add_question"
-            android:screenOrientation="portrait">
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".report"
             android:label="@string/title_activity_report"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".SavedGames"
             android:label="@string/title_activity_saved_games"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ContinueScreen"
             android:label="@string/title_activity_continue_screen"
-            android:screenOrientation="portrait">
-
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Terms"
+            android:label="@string/title_activity_terms"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

@@ -3,17 +3,24 @@ package vncoop.q02;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,50 +59,68 @@ public class addQuestion extends Activity {
 
         //Number of teams text Size set
         TextView titleText = (TextView)findViewById(R.id.titleId);
-        EditText que = (EditText)findViewById(R.id.submitQuestion);
-        EditText ans = (EditText)findViewById(R.id.submitAnswer);
+        subQue = (EditText) findViewById(R.id.submitQuestion);
+        subAns = (EditText) findViewById(R.id.submitAnswer);
+        ScrollView sV = (ScrollView) findViewById(R.id.scrollView);
         ImageView separator = (ImageView) findViewById(R.id.separatorId);
-        que.setTypeface(font);
-        ans.setTypeface(font);
+        subQue.setTypeface(font);
+        subAns.setTypeface(font);
         titleText.setTypeface(font);
         //Setting savedGameText margins
         Top = (0.035* screenHeight);
         Left = 0.05*screenWidth;
-        //Bottom = (1-0.135)*screenHeight;
-        setMargins(titleText,(int) Left,(int) Top,(int) Left,(int) 0);
-        titleText.setTextSize((float) ((0.08 / screenDensity) * screenHeight));
+        Bottom = (1-0.135)*screenHeight;
+        setMargins(titleText,(int) Left,(int) Top,(int) Left,(int) Bottom);
+        titleText.setTextSize((float) ((0.07 / screenDensity) * screenHeight));
 
         //Separator Margins
         Top = (0.15)*screenHeight;
-        setMargins(separator,0,(int) Top,0,0);
+        Bottom = (0.83125)*screenHeight;
+        setMargins(separator,0,(int) Top,0,(int) Bottom);
+        RelativeLayout rl0 = (RelativeLayout) findViewById(R.id.rl0);
+        //scrollView Margins
+        Top = (0.16875*screenHeight);
+        Bottom = (0.05*screenHeight);
+        Left = 0.05*screenWidth;
+        setMargins(sV,(int) Left, (int)Top, (int) Left, (int) Bottom);
+        setMargins(rl0,0, 0, 0, (int) Top);
 
 
-
-        context = this;
-        subQue = (EditText) findViewById(R.id.submitQuestion);
-        subAns = (EditText) findViewById(R.id.submitAnswer);
-
-        rec = "geniusquizapp@gmail.com";
-
-        sender = "geniusquizhandler@gmail.com";
-        senderPassword = "funiculifunicula";
-
-        subject = "New Question";
-
+        CheckBox agree = (CheckBox) findViewById(R.id.checkBox);
+        TextView legal = (TextView) findViewById(R.id.legalText);
+        legal.setTypeface(font);
+        legal.setTextSize((float) ((0.053 / screenDensity) * screenHeight));
+        //Agree Text margins
+        legal.setText(Html.fromHtml("<u>Διάβασα και αποδέχομαι τους όρους</u>"));
+        //Top = (0.35+0.05)*;
+        //Bottom = (0.15+0.03)*screenHeight;
+        //setMargins(rl3,0,(int) Top,0,(int)Bottom);
 
         //style buttons
         Button addq = (Button)findViewById(R.id.sendQueId);
         Button back = (Button)findViewById(R.id.backId);
         addq.setTypeface(font);
         back.setTypeface(font);
-        Top = 0.85*screenHeight;
-        Bottom = 0.05*screenHeight;
-        Left = 0.05*screenWidth;
+        //Top = (0.85-0.16875)*screenHeight;
+        Top =0.05*screenHeight;
+        //Bottom = 0.05*screenHeight;
+        Bottom = 0;
+        //Left = 0.05*screenWidth;
+        Left = 0;
         Right = 0.55*screenWidth;
-        setMargins(addq, (int) Left, 0, (int) Right, (int) Bottom);
-        setMargins(back,(int) Right, 0,(int) Left,(int) Bottom);
+        setMargins(back, (int) Left, (int) Top, (int) Right, (int)Bottom);
+        setMargins(addq, (int) Right, (int) Top, (int) Left, (int) Bottom);
+        back.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
+        addq.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
+        subQue.setTextSize((float) ((0.05 / screenDensity) * screenHeight));
+        subAns.setTextSize((float) ((0.05 / screenDensity) * screenHeight));
 
-        //
+
+        context = this;
+        rec = "geniusquizapp@gmail.com";
+        sender = "geniusquizhandler@gmail.com";
+        senderPassword = "funiculifunicula";
+        subject = "New Question";
 
     }
 
@@ -104,34 +129,44 @@ public class addQuestion extends Activity {
     }
 
 
-
+    public void Terms(View view){
+        Intent i = new Intent(this, Terms.class);
+        startActivity(i);
+    }
 
     public void sendQuestion(View view) {
 
-        if (!NetworkIsAvailable()){
+        CheckBox checkBox = (CheckBox)findViewById(R.id.checkBox);
+        if(checkBox.isChecked()) {
 
-            Toast.makeText(getApplicationContext(),"Παρακαλώ ελέγξτε τη σύνδεση σας στο Internet",Toast.LENGTH_LONG).show();
 
+            if (!NetworkIsAvailable()) {
+
+                Toast.makeText(getApplicationContext(), "Παρακαλώ ελέγξτε τη σύνδεση σας στο Internet", Toast.LENGTH_LONG).show();
+
+            } else {
+                textMessage = subQue.getText() + "/n" + subAns.getText();
+
+                Properties props = new Properties();
+                props.put("mail.smtp.host", "smtp.gmail.com");
+                props.put("mail.smtp.socketFactory.port", "465");
+                props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+                props.put("mail.smtp.auth", "true");
+                props.put("mail.smtp.port", "465");
+
+                session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+                    protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                        return new javax.mail.PasswordAuthentication(sender, senderPassword);
+                    }
+                });
+                pdialog = ProgressDialog.show(context, "", "Αποστολή Ερώτησης...", true);
+
+                RetrieveFeedTask task = new RetrieveFeedTask();
+                task.execute();
+            }
         }
         else{
-            textMessage = subQue.getText()+"/n"+subAns.getText();
-
-            Properties props = new Properties();
-            props.put("mail.smtp.host","smtp.gmail.com");
-            props.put("mail.smtp.socketFactory.port","465");
-            props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
-            props.put("mail.smtp.auth","true");
-            props.put("mail.smtp.port","465");
-
-            session = Session.getDefaultInstance(props, new javax.mail.Authenticator(){
-                protected javax.mail.PasswordAuthentication getPasswordAuthentication(){
-                    return new javax.mail.PasswordAuthentication(sender,senderPassword);
-                }
-            });
-            pdialog = ProgressDialog.show(context,"","Αποστολή Ερώτησης...",true);
-
-            RetrieveFeedTask task = new RetrieveFeedTask();
-            task.execute();
+            Toast.makeText(getApplicationContext(),"Δεν έχετε αποδεχθεί τους όρους...",Toast.LENGTH_LONG).show();
         }
 
     }

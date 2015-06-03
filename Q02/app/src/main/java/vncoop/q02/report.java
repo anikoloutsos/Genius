@@ -70,7 +70,8 @@ public class report extends Activity {
 
         //Separator Margins
         Top = (0.15)*screenHeight;
-        setMargins(separator,0,(int) Top,0,0);
+        Bottom = (0.83125)*screenHeight;
+        setMargins(separator,0,(int) Top,0,(int) Bottom);
 
 
         //style buttons
@@ -85,9 +86,9 @@ public class report extends Activity {
         setMargins(addq, (int) Left, (int)Top, (int) Right, (int) Bottom);
         setMargins(back,(int) Right,(int)Top,(int) Left,(int) Bottom);
 
-        //
 
-
+        addq.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
+        back.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
 
 
 
@@ -109,6 +110,7 @@ public class report extends Activity {
 
 
         writeOther = (EditText) findViewById(R.id.repEditTextId);
+        writeOther.setTextSize((float) ((0.04 / screenDensity) * screenHeight));
         reportRG = (RadioGroup) findViewById(R.id.repRG);
         b1 = (RadioButton) findViewById(R.id.repId1);
         b2 = (RadioButton) findViewById(R.id.repId2);

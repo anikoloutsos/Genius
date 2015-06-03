@@ -47,5 +47,6 @@
 
     <string name="title_activity_saved_games">SavedGames</string>
     <string name="title_activity_continue_screen">ContinueScreen</string>
+    <string name="title_activity_terms">Terms</string>
 
 </resources>

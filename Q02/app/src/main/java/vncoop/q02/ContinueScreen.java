@@ -157,15 +157,17 @@ public class ContinueScreen extends Activity implements Animation.AnimationListe
 
 
         //Report Button
-        continueButton.setTypeface(font);
+        reportButton.setTypeface(font);
         Top = 0.85*screenHeight;
         Bottom = 0.05*screenHeight;
         Left = 0.05*screenWidth;
         Right = 0.6*screenWidth;
+        reportButton.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
         setMargins(reportButton,(int) Left,(int) Top,(int) Right,(int) Bottom);
 
         //Continue Button
-        reportButton.setTypeface(font);
+        continueButton.setTypeface(font);
+        continueButton.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
         setMargins(continueButton,(int) Right,(int) Top,(int) Left,(int) Bottom);
 
         //Seperator2 Margins

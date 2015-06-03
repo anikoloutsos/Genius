@@ -40,6 +40,7 @@
         android:text="Αναφορά"
         android:id="@+id/reportButtonId"
         android:onClick="reportBtn"
+        android:gravity="center"
         android:textColor="#ffffffff"
         style="@style/ButtonStyle"/>
 
@@ -49,6 +50,7 @@
         android:layout_height="fill_parent"
         android:text="Συνέχεια"
         android:onClick="onContinue"
+        android:gravity="center"
         android:id="@+id/continueButtonId"
         android:textColor="#ffffffff" />
 
