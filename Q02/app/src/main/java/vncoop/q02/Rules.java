@@ -38,7 +38,8 @@ public class Rules extends ActionBarActivity {
         text5.setTypeface(font);
         text6.setTypeface(font);
         text7.setTypeface(font);
-        //Setting home and Next buttons margins
+
+       //Setting home button margins
 
         ImageButton homeButton = (ImageButton)findViewById(R.id.homeButtonId);
         ScrollView sv = (ScrollView)findViewById(R.id.scrollView);

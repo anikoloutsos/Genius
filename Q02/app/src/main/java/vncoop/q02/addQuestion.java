@@ -63,7 +63,7 @@ public class addQuestion extends Activity {
         Left = 0.05*screenWidth;
         //Bottom = (1-0.135)*screenHeight;
         setMargins(titleText,(int) Left,(int) Top,(int) Left,(int) 0);
-        titleText.setTextSize((float) ((0.08 / screenDensity) * screenHeight));
+        titleText.setTextSize((float) ((0.075 / screenDensity) * screenHeight));
 
         //Separator Margins
         Top = (0.15)*screenHeight;

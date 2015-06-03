@@ -8,9 +8,13 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.io.File;
@@ -49,7 +53,7 @@ public class Winner extends Activity {
         TextView team3 = (TextView) findViewById(R.id.Team3);
         TextView team4 = (TextView) findViewById(R.id.Team4);
         TextView congrats = (TextView) findViewById(R.id.congrats);
-        TextView youWin = (TextView) findViewById(R.id.youwin);
+        //TextView youWin = (TextView) findViewById(R.id.youwin);
         TextView statistics = (TextView) findViewById(R.id.statistika);
 
         //set font
@@ -68,12 +72,23 @@ public class Winner extends Activity {
         statistics_team4.setTypeface(font);
         winningteam.setTypeface(font);
         congrats.setTypeface(font);
-        youWin.setTypeface(font);
+        //youWin.setTypeface(font);
         statistics.setTypeface(font);
 
         refitText(winningteam, 40);
         winningteam.requestLayout();
         //telos
+
+      /*  ImageButton homeButton = (ImageButton)findViewById(R.id.homeButtonId);
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        double screenWidth = (double) dm.widthPixels;
+        double screenHeight = (double) dm.heightPixels;
+        double statusBarHeight = (double) getStatusBarHeight();
+        screenHeight -= statusBarHeight;
+
+        double Top = (0.815) * screenHeight;
+        setMargins(homeButton, 0, (int) Top, 0, (int)(0.05*screenHeight));*/
 
 
         //Statistics
@@ -180,6 +195,26 @@ public class Winner extends Activity {
 
         tv.setTextSize(trySize);
 
+    }
+
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
+    public static void setMargins(View v, int l, int t, int r, int b) {
+
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
     }
 
 }
