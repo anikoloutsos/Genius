@@ -6,13 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -35,6 +33,8 @@ public class MainMenu extends Activity{
 
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
 
+        BasicMethods.setDirectory(getApplicationContext());
+
         newGame.setTypeface(font);
         Continue.setTypeface(font);
         rules.setTypeface(font);
@@ -48,41 +48,39 @@ public class MainMenu extends Activity{
             throw new Error("ImpossibleToCreateDB");
         }
 
-        double buttonsRatio = 105.0/572.0;
-
-        //Logo margins
-        Left = 0.30081775700934*screen[0];
-        Top = 0.0700934579*screen[1];
-        Right = 0.2961448598*screen[0];
-        Bottom =0.64953271*screen[1];
+         //Logo margins
+        Left = 0.30081*screen[0];
+        Top = 0.07009*screen[1];
+        Right = 0.29614*screen[0];
+        Bottom =0.64953*screen[1];
         BasicMethods.setMargins(logo, (int) Left, (int) Top, (int) Right, (int) Bottom);
 
 
         //New game Button margins
 
-        Top = 0.41082555*screen[1];
+        Top = 0.41082*screen[1];
         Left = 0.05*screen[0];
-        Bottom = 0.47858255451*screen[1];
+        Bottom = 0.47858*screen[1];
         Right=Left;
 
         BasicMethods.setMargins(newGame, (int) Left, (int) Top, (int) Right, (int) Bottom);
         newGame.setTextSize((float) (0.057/screen[2]*screen[1]));
 
         //Continue Button margins
-        Top = Top + 0.140576323987*screen[1];
-        Bottom = Bottom -  0.140576323987*screen[1];
+        Top = Top + 0.14057*screen[1];
+        Bottom = Bottom - 0.14057*screen[1];
         BasicMethods.setMargins(Continue, (int) Left, (int) Top, (int) Right, (int) Bottom);
         Continue.setTextSize((float) (0.057/screen[2]*screen[1]));
 
         //Rules Button margins
-        Top = Top + 0.140576323987*screen[1];
-        Bottom = Bottom -  0.140576323987*screen[1];
+        Top = Top + 0.14057*screen[1];
+        Bottom = Bottom -  0.14057*screen[1];
         BasicMethods.setMargins(rules, (int) Left, (int) Top, (int) Right, (int) Bottom);
         rules.setTextSize((float) (0.057/screen[2]*screen[1]));
 
         //Add Questions Button margins
-        Top = Top + 0.140576323987*screen[1];
-        Bottom = Bottom -  0.140576323987*screen[1];
+        Top = Top + 0.14057*screen[1];
+        Bottom = Bottom -  0.14057*screen[1];
         BasicMethods.setMargins(AddQuestion, (int) Left, (int) Top, (int) Right, (int) Bottom);
         AddQuestion.setTextSize((float) (0.057/screen[2]*screen[1]));
     }
@@ -97,21 +95,22 @@ public class MainMenu extends Activity{
     }
 
     public void ContinueGame(View view){
-        boolean notsaved = true;
+
+        boolean notSaved = true;
         String[] FILE = new String[3];
-        FILE[0] = "/data/data/vncoop.genius/databases/savegame1";
-        FILE[1] = "/data/data/vncoop.genius/databases/savegame2";
-        FILE[2] = "/data/data/vncoop.genius/databases/savegame3";
+        FILE[0] = BasicMethods.save1;
+        FILE[1] = BasicMethods.save2;
+        FILE[2] = BasicMethods.save3;
 
         for (int i = 0; i < 3; i++) {
             File file = new File(FILE[i]);
 
             if (file.exists()) {
-                notsaved = false;
+                notSaved = false;
             }
         }
 
-        if(notsaved){
+        if(notSaved){
             Toast.makeText(MainMenu.this, "Δεν υπάρχουν αποθηκευμένα παιχνίδια", Toast.LENGTH_SHORT).show();
         }else{
 

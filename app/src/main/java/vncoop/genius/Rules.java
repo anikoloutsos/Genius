@@ -3,7 +3,6 @@ package vncoop.genius;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
@@ -38,16 +37,11 @@ public class Rules extends Activity {
 
         ImageButton homeButton = (ImageButton)findViewById(R.id.homeButtonId);
         ScrollView sv = (ScrollView)findViewById(R.id.scrollView);
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        double screenWidth = (double) dm.widthPixels;
-        double screenHeight = (double) dm.heightPixels;
-        double statusBarHeight = (double) BasicMethods.getStatusBarHeight(getApplicationContext());
-        screenHeight -= statusBarHeight;
-        double Top = (0.815) * screenHeight;
-        BasicMethods.setMargins(homeButton, 0, (int) Top, 0, (int) (0.05 * screenHeight));
-        double Bottom = 0.185* screenHeight;
-        BasicMethods.setMargins(sv, (int) (0.02 * screenWidth), 0, 0, (int) Bottom);
+        double screen[] = BasicMethods.getScreenChar(this);
+        double Top = (0.815) * screen[1];
+        BasicMethods.setMargins(homeButton, 0, (int) Top, 0, (int) (0.05 * screen[1]));
+        double Bottom = 0.185* screen[1];
+        BasicMethods.setMargins(sv, (int) (0.02 * screen[0]), 0, 0, (int) Bottom);
     }
 
     public void back_click(View view){

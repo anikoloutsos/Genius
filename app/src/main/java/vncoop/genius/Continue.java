@@ -238,12 +238,11 @@ public class Continue extends Activity implements Animation.AnimationListener {
 
         //SAVE STATE SE PERIPTWSI POU VGEI
         String[] FILE = new String[3];
-        //FILE[0] = getApplicationContext().getFilesDir().getPath()"/data/vncoop.genius/databases/savegame1";
-        FILE[0] = "/data/data/vncoop.genius/databases/savegame1";
-        FILE[1] = "/data/data/vncoop.genius/databases/savegame2";
-        FILE[2]= "/data/data/vncoop.genius/databases/savegame3";
+        //String directory = "/data/vncoop.genius/databases/";
 
-
+        FILE[0] = BasicMethods.save1;
+        FILE[1] = BasicMethods.save2;
+        FILE[2] = BasicMethods.save3;
 
         File f = new File(FILE[fileIndex]);
         f.delete();

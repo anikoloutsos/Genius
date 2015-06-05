@@ -10,9 +10,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -47,15 +45,8 @@ public class AddQuestion extends Activity {
 
         Typeface font = Typeface.createFromAsset(getAssets(), "VAG-HandWritten.otf");
         //Screen characteristics
-        double screenWidth, screenHeight, screenDensity, statusBarHeight, Left, Top, Right, Bottom;
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        screenWidth = (double) dm.widthPixels;
-        screenHeight = (double) dm.heightPixels;
-        screenDensity = (double) dm.density;
-        statusBarHeight = (double) BasicMethods.getStatusBarHeight(getApplicationContext());
-        screenHeight -= statusBarHeight;
-
+        double Left, Top, Right, Bottom;
+        double screen[] = BasicMethods.getScreenChar(this);
         //Number of teams text Size set
         TextView titleText = (TextView)findViewById(R.id.titleId);
         subQue = (EditText) findViewById(R.id.submitQuestion);
@@ -66,31 +57,30 @@ public class AddQuestion extends Activity {
         subAns.setTypeface(font);
         titleText.setTypeface(font);
         //Setting savedGameText margins
-        Top = (0.035* screenHeight);
-        Left = 0.05*screenWidth;
+        Top = (0.035* screen[1]);
+        Left = 0.05*screen[0];
 
-        Bottom = (1-0.135)*screenHeight;
+        Bottom = (1-0.135)*screen[1];
         BasicMethods.setMargins(titleText,(int) Left,(int) Top,(int) Left,(int) Bottom);
-        titleText.setTextSize((float) ((0.07 / screenDensity) * screenHeight));
+        titleText.setTextSize((float) ((0.07 / screen[2]) * screen[1]));
 
 
         //Separator Margins
-        Top = (0.15)*screenHeight;
-        Bottom = (0.83125)*screenHeight;
+        Top = (0.15)*screen[1];
+        Bottom = (0.83125)*screen[1];
         BasicMethods.setMargins(separator,0,(int) Top,0,(int) Bottom);
         RelativeLayout rl0 = (RelativeLayout) findViewById(R.id.rl0);
         //scrollView Margins
-        Top = (0.16875*screenHeight);
-        Bottom = (0.05*screenHeight);
-        Left = 0.05*screenWidth;
+        Top = (0.16875*screen[1]);
+        Bottom = (0.05*screen[1]);
+        Left = 0.05*screen[0];
         BasicMethods.setMargins(sV,(int) Left, (int)Top, (int) Left, (int) Bottom);
         BasicMethods.setMargins(rl0,0, 0, 0, (int) Top);
 
 
-        CheckBox agree = (CheckBox) findViewById(R.id.checkBox);
         TextView legal = (TextView) findViewById(R.id.legalText);
         legal.setTypeface(font);
-        legal.setTextSize((float) ((0.053 / screenDensity) * screenHeight));
+        legal.setTextSize((float) ((0.053 / screen[2]) * screen[1]));
         //Agree Text margins
         legal.setText(Html.fromHtml("<u>Διάβασα και αποδέχομαι τους όρους</u>"));
 
@@ -99,16 +89,16 @@ public class AddQuestion extends Activity {
         Button back = (Button)findViewById(R.id.backId);
         addq.setTypeface(font);
         back.setTypeface(font);
-        Top =0.05*screenHeight;
+        Top =0.05*screen[1];
         Bottom = 0;
         Left = 0;
-        Right = 0.55*screenWidth;
+        Right = 0.55*screen[0];
         BasicMethods.setMargins(back, (int) Left, (int) Top, (int) Right, (int)Bottom);
         BasicMethods.setMargins(addq, (int) Right, (int) Top, (int) Left, (int) Bottom);
-        back.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
-        addq.setTextSize((float) ((0.045 / screenDensity) * screenHeight));
-        subQue.setTextSize((float) ((0.05 / screenDensity) * screenHeight));
-        subAns.setTextSize((float) ((0.05 / screenDensity) * screenHeight));
+        back.setTextSize((float) ((0.045 / screen[2]) * screen[1]));
+        addq.setTextSize((float) ((0.045 / screen[2]) * screen[1]));
+        subQue.setTextSize((float) ((0.05 / screen[2]) * screen[1]));
+        subAns.setTextSize((float) ((0.05 / screen[2]) * screen[1]));
 
 
         context = this;

@@ -6,12 +6,10 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -33,17 +31,14 @@ public class SavedGames extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_games);
 
-
         //check saved games to send the oldest
         FILE = new String[3];
-        FILE[0] = "/data/data/vncoop.genius/databases/savegame1";
-        FILE[1] = "/data/data/vncoop.genius/databases/savegame2";
-        FILE[2] = "/data/data/vncoop.genius/databases/savegame3";
+        FILE[0] = BasicMethods.save1;
+        FILE[1] = BasicMethods.save2;
+        FILE[2] = BasicMethods.save3;
 
-
-
-        long timeStamp = 0;
-        long lastIndex = 0;
+        long timeStamp;
+        long lastIndex;
         long[] fileIndex = new long[3];
         sortedFiles = new int[3];
         int newest = 0;
@@ -159,7 +154,7 @@ public class SavedGames extends Activity {
         BasicMethods.setMargins(basicRelativeLayout,(int) Left,(int) Top,(int) Left, (int) Bottom);
         double basicRelativeLayoutHeight = screenHeight-Top-Bottom;
         double basicRelativeLayoutWidth = screenWidth-2*Left;
-        double rlMarginHeight=0.0;
+        double rlMarginHeight;
 
         //Setting total margins for 1, 2 or 3 saved games
         float letterHeight;

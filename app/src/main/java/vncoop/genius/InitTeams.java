@@ -216,9 +216,9 @@ public class InitTeams extends ActionBarActivity {
 
         //check saved games to send the oldest
         String[] FILE = new String[3];
-        FILE[0] = "/data/data/vncoop.genius/databases/savegame1";
-        FILE[1] = "/data/data/vncoop.genius/databases/savegame2";
-        FILE[2]= "/data/data/vncoop.genius/databases/savegame3";
+        FILE[0] = BasicMethods.save1;
+        FILE[1] = BasicMethods.save2;
+        FILE[2] = BasicMethods.save3;
 
         long timeStamp;
         long lastTimeStamp=0;

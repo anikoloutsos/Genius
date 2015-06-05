@@ -10,6 +10,17 @@ import android.widget.TextView;
 
 public class BasicMethods {
 
+    static String directory;
+    static String save1, save2, save3;
+
+    public static void setDirectory(Context context){
+        directory = context.getFilesDir().getPath();
+        save1 = directory + "/saveGame1";
+        save2 = directory + "/saveGame2";
+        save3 = directory + "/saveGame3";
+
+    }
+
     public static int getStatusBarHeight(Context context) {
         int result = 0;
 
