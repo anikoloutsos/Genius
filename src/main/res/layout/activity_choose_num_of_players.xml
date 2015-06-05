@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="vncoop.genius.ChooseNumOfPlayers"
+    android:background="@drawable/background">
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/rl">
+
+        <ImageButton
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/twoplayerid"
+            android:src="@drawable/twoplayerbutton_selec"
+            android:onClick="onTeamClick"
+            android:background="#00ffffff"
+            android:scaleType="fitCenter"
+            />
+
+        <ImageButton
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/threeplayerid"
+            android:src="@drawable/threeplayerbutton"
+            android:onClick="onTeamClick"
+            android:background="#00ffffff"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:onClick="onTeamClick"
+            android:id="@+id/fourplayerid"
+            android:src="@drawable/fourplayerbutton"
+            android:background="#00ffffff"
+            android:scaleType="fitCenter"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/number_of_teams"
+        android:id="@+id/titleId"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+        android:textSize="50sp"
+        android:gravity="center" />
+
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/separator"
+        android:src="@drawable/separator"
+        android:scaleType="fitCenter" />
+
+
+
+
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/nextButtonId"
+        android:onClick="next_click"
+        android:src="@drawable/next_selector"
+        android:scaleType="fitCenter"
+        style="@style/ButtonStyle"/>
+
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/homeButtonId"
+        android:onClick="back_click"
+        android:src="@drawable/home_selector"
+        android:scaleType="fitCenter"
+        style="@style/ButtonStyle"/>
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/separator2"
+        android:src="@drawable/separator"
+        android:scaleType="fitCenter"
+        />
+
+</RelativeLayout>

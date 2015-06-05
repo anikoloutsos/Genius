@@ -1,0 +1,162 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="vncoop.genius.MainGame"
+    android:background="@drawable/green_back"
+    android:id="@+id/something">
+
+
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/textViewOmada"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"
+        android:gravity="center"
+        android:textSize="500dp" />
+
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/seperator"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/separator"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ρίξτε το ζάρι"
+        android:gravity="center"
+        android:id="@+id/instructions"
+        android:textColor="#ffffffff"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/btnSpin"
+        android:background="#00000000"
+        android:onClick = "getCatOrD"
+        android:src="@drawable/zari_selector"
+        android:scaleType="fitCenter"
+        />
+
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/btnCat1Id"
+        android:background="#00000000"
+        android:visibility="gone"
+        android:onClick="choicebtn"
+        android:scaleType="fitCenter"
+        />
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/btnCat2Id"
+        android:background="#00000000"
+        android:visibility="gone"
+        android:onClick="choicebtn"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:id="@+id/textCat1"
+        android:visibility="gone"
+        android:textColor="#ffffffff"
+
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:id="@+id/textCat2"
+        android:visibility="gone"
+        android:textColor="#ffffffff"
+        android:gravity="center"/>
+
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/btnDiaId"
+        android:background="#00000000"
+        android:visibility="invisible"
+        android:onClick="choicebtn"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/textDiam"
+        android:visibility="gone"
+        android:textColor="#ffffffff"
+        android:gravity="center"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/TableId"
+        android:src="@drawable/diam_table"
+        android:scaleType="fitCenter"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/blueDiamId"
+        android:src="@drawable/blue_diam"
+        android:visibility="gone"
+        android:scaleType="fitCenter"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/redDiamId"
+        android:src="@drawable/red_diam"
+        android:visibility="gone"
+        android:scaleType="fitCenter"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/yellowDiamId"
+        android:src="@drawable/yellow_diam"
+        android:visibility="gone"
+        android:scaleType="fitCenter"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/purpleDiamId"
+        android:src="@drawable/purple_diam"
+        android:visibility="gone"
+        android:scaleType="fitCenter"/>
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/pinkDiamId"
+        android:src="@drawable/pink_diam"
+        android:visibility="gone"
+        android:scaleType="fitCenter"/>
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/greenDiamId"
+        android:src="@drawable/green_diam"
+        android:visibility="gone"
+        android:scaleType="fitCenter"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/seperator2"
+        android:src="@drawable/separator" />
+
+
+</RelativeLayout>
