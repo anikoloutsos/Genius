@@ -2,10 +2,12 @@ package vncoop.genius;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -30,12 +32,13 @@ public class Continue extends Activity implements Animation.AnimationListener {
     private int fileIndex;
     Animation fadein;
     String Question = "";
+    int animatedDiamond;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_continue);
-
 
         //INTENTS FROM question
         Intent intent = getIntent();
@@ -50,7 +53,6 @@ public class Continue extends Activity implements Animation.AnimationListener {
         current_diamonds = teams[current_team].get_diamonds();
         fileIndex = intent.getIntExtra("file_index", 0);
 
-        int animatedDiamond;
         animatedDiamond =intent.getIntExtra("Catdiamond",0);
 
 
@@ -275,7 +277,13 @@ public class Continue extends Activity implements Animation.AnimationListener {
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
-        intent.putExtra("file_index",fileIndex);
+        intent.putExtra("file_index", fileIndex);
+        if(!sameTeam){
+            current_team++;
+            current_team = current_team%number_of_teams;
+        }
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        closeQuestion(this);
         startActivity(intent);
         finish();
     }
@@ -303,20 +311,10 @@ public class Continue extends Activity implements Animation.AnimationListener {
     }
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Σταμάτημα Παιχνιδιού")
-                .setMessage("Είστε σίγουροι ότι θέλετε να επιστρέψετε στην αρχική οθόνη;")
-                .setPositiveButton("Ναι", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        finish();
-                    }
-
-                })
-                .setNegativeButton("Όχι", null)
-                .show();
+        if(animatedDiamond!=0) {
+            current_diamonds[animatedDiamond - 1] = false;
+        }
+        finish();
     }
 
 
@@ -334,6 +332,12 @@ public class Continue extends Activity implements Animation.AnimationListener {
     @Override
     public void onAnimationRepeat(Animation animation) {
 
+    }
+
+    public static void closeQuestion(Context context) {
+        Intent intent = new Intent("Question");
+        intent.putExtra("action", "close");
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
 

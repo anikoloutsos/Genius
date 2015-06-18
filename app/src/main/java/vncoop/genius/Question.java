@@ -5,13 +5,17 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,8 +41,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class Question extends Activity implements FragmentManager.OnBackStackChangedListener {
 
+
+public class Question extends Activity implements FragmentManager.OnBackStackChangedListener {
+    public static Question thisAct;
     String[] questionAndAnswer = new String[2];
     int current_team;
     int number_of_teams;
@@ -63,6 +69,8 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, new IntentFilter("Question"));
 
         //
         wrongSound = MediaPlayer.create(this, R.raw.wrong);
@@ -266,7 +274,7 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
         else{
             startActivity(intent1);
         }
-        this.finish();
+       // this.finish();
     }
 
     public void onWrong(View view){
@@ -276,8 +284,9 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
 
         teams[current_team].set_stats_category_wrong(category-1);
 
-        current_team++;
-        current_team = current_team%number_of_teams;
+        if(isDiamond){
+            teams[current_team].set_diamonds(category-1,false);
+        }
 
         Intent intent = new Intent(this, Continue.class);
 
@@ -288,9 +297,9 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
         intent.putExtra("file_index",fileIndex);
-        intent.putExtra("Question",questionAndAnswer[0]);
+        intent.putExtra("Question", questionAndAnswer[0]);
         startActivity(intent);
-        finish();
+        //finish();
     }
 
 
@@ -311,5 +320,44 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
                 .setNegativeButton("Όχι", null)
                 .show();
     }
+
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action= intent.getStringExtra("action");
+            if(action.equals("close")) {
+                Question.this.finish();
+            }
+        }
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_question, menu);
+        return true;
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent goReport = new Intent(this, Report.class);
+            goReport.putExtra("Question",questionAndAnswer[0]);
+            startActivity(goReport);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 
 }

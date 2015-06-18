@@ -37,6 +37,7 @@
     <string name="title_activity_question">Question</string>
     <string name="title_activity_continue">Continue</string>
     <string name="replay">Ξαναπαίζεις</string>
+    <string name="report_question">Αναφορά Ερώτησης</string>
     <string name="title_activity_report">Report</string>
     <string name="title_activity_winner">Winner</string>
 </resources>
