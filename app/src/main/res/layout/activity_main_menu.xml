@@ -56,5 +56,33 @@
         android:textColor="#ffffffff"
         android:gravity="center"/>
 
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/fb_button"
+        android:onClick="onFBClick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/fb_selector"
+        android:background="#00000000" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/contact_button"
+        android:onClick="onAboutUs"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/contact_selector"
+        android:background="#00000000" />
+
 
 </RelativeLayout>

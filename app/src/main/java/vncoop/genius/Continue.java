@@ -68,6 +68,11 @@ public class Continue extends Activity implements Animation.AnimationListener {
         double_number_of_teams = (double) number_of_teams;
         double rlHeight;
 
+        if(!sameTeam){
+            current_team++;
+            current_team = current_team%number_of_teams;
+        }
+
         TextView teamText =(TextView)findViewById(R.id.teamId);
         TextView replayText =(TextView)findViewById(R.id.rulesid);
         ImageView separator = (ImageView) findViewById(R.id.separator);
@@ -273,16 +278,11 @@ public class Continue extends Activity implements Animation.AnimationListener {
         Intent intent = new Intent(this, MainGame.class);
 
         intent.putExtra("number_of_teams",number_of_teams);
-        intent.putExtra("current_message", current_team);
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);
         }
         intent.putExtra("file_index", fileIndex);
-        if(!sameTeam){
-            current_team++;
-            current_team = current_team%number_of_teams;
-        }
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        intent.putExtra("current_message", current_team);
         closeQuestion(this);
         startActivity(intent);
         finish();

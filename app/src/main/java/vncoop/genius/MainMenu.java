@@ -2,10 +2,13 @@ package vncoop.genius;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -136,6 +139,16 @@ public class MainMenu extends Activity{
         startActivity(addQuestion);
 
     }
+    public void  onFBClick(View view){
+        Intent intent = getOpenFacebookIntent(this);
+        startActivity(intent);
+    }
+
+    public void onAboutUs(View view){
+        Intent aboutUs = new Intent(this, AboutUs.class);
+        startActivity(aboutUs);
+
+    }
 
 
 
@@ -158,6 +171,16 @@ public class MainMenu extends Activity{
                 })
                 .setNegativeButton("Όχι", null)
                 .show();
+    }
+
+    public static Intent getOpenFacebookIntent(Context context) {
+
+        try {
+            context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/1002199319791228"));
+        } catch (Exception e) {
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pages/Genius-quiz/1002199319791228"));
+        }
     }
 
 

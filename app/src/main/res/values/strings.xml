@@ -40,4 +40,10 @@
     <string name="report_question">Αναφορά Ερώτησης</string>
     <string name="title_activity_report">Report</string>
     <string name="title_activity_winner">Winner</string>
+    <string name="title_activity_about_us">AboutUs</string>
+    <string name="contact">Σχετικά</string>
+    <string name="aboutUs">Βάσωφ Θάνος\natvasof@gmail.com\n\nΝικολούτσος Αλέξανδρος\nanikoloutsos@gmail.com</string>
+    <string name="aboutUs2">Ζάββου Ινώ\ninozavou@gmail.com\n\nΖάββου Μυρτώ\nmirtwza@gmail.com</string>
+    <string name="aboutGeneral">Επικοινωνήστε μαζί μας στο:\ngeniusquizapp@gmail.com</string>
+
 </resources>

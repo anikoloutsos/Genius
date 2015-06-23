@@ -13,7 +13,7 @@
         <activity
             android:name=".MainMenu"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,58 +23,63 @@
         <activity
             android:name=".AddQuestion"
             android:label="@string/title_activity_add_question"
-            android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name=".Terms"
             android:label="@string/title_activity_terms"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Rules"
             android:label="@string/title_activity_rules"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".SavedGames"
             android:label="@string/title_activity_saved_games"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ChooseNumOfPlayers"
             android:label="@string/title_activity_choose_num_of_players"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".InitTeams"
             android:label="@string/title_activity_init_teams"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".MainGame"
             android:label="@string/title_activity_main_game"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Question"
             android:label="@string/title_activity_question"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Continue"
             android:label="@string/title_activity_continue"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Report"
             android:label="@string/title_activity_report"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Winner"
             android:label="@string/title_activity_winner"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".AboutUs"
+            android:label="@string/title_activity_about_us"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
