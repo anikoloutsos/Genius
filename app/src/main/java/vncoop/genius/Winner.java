@@ -207,6 +207,7 @@ public class Winner extends Activity {
 
 
     public void telos(View view){
+        BasicMethods.closeQuestion(this);
         finish();
     }
 

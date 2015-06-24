@@ -321,6 +321,7 @@ public class SavedGames extends Activity {
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team" + i, (android.os.Parcelable) teams[i]);
         }
+        intent.putExtra("from_saved_game",true);
         startActivity(intent);
         finish();
 

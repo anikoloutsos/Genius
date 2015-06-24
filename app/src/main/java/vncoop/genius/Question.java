@@ -220,7 +220,7 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
     public void onCorrect(View view){
 
 
-        teams[current_team].set_stats_category_correct(category-1);
+
 
 
         Intent intent1 = new Intent(this,Winner.class);
@@ -239,6 +239,8 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
                 }
             }
             if (diamondCounter == 6){
+                //get last statistic
+                teams[current_team].set_stats_category_correct(category-1);
 
                 for (int i = 0;i<number_of_teams;i++) {
                     intent1.putExtra("team"+i, (android.os.Parcelable) teams[i]);
@@ -258,6 +260,7 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
         intent.putExtra("number_of_teams",number_of_teams);
         intent.putExtra("current_message", current_team);
         intent.putExtra("same_team",true);
+        intent.putExtra("previus_category",category);
         //for animation
         if(isDiamond) {
             intent.putExtra("Catdiamond", category);
@@ -281,9 +284,6 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
 
         wrongSound.start();
 
-
-        teams[current_team].set_stats_category_wrong(category-1);
-
         if(isDiamond){
             teams[current_team].set_diamonds(category-1,false);
         }
@@ -292,6 +292,7 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
 
         intent.putExtra("number_of_teams",number_of_teams);
         intent.putExtra("current_message", current_team);
+        intent.putExtra("previus_category",category);
         intent.putExtra("same_team",false);
         for (int i = 0;i<number_of_teams;i++) {
             intent.putExtra("team"+i, (android.os.Parcelable) teams[i]);

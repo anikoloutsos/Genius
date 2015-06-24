@@ -232,11 +232,6 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
         final Handler handler = new Handler();
 
-        //sounds
-        if (epiloges[1].equals("naS")) {
-            s1.start();}else{
-            s2.start();}
-        //
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -289,6 +284,13 @@ public class MainGame extends Activity implements Animation.AnimationListener {
                     Cattxt2.setText(BasicMethods.catToText(epiloges[1]));
                     Cattxt2.setVisibility(View.VISIBLE);
                 }
+
+
+                //sounds
+                if (epiloges[1].equals("naS")) {
+                    s1.start();}else{
+                    s2.start();}
+                //
 
             }
         }, 1100);

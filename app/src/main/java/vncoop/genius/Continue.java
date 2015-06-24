@@ -26,6 +26,8 @@ public class Continue extends Activity implements Animation.AnimationListener {
 
     int current_team;
     int number_of_teams;
+    int prev_category;
+    boolean from_saved_game;
     Teams[] teams;
     boolean[] current_diamonds;
     boolean sameTeam;
@@ -45,6 +47,8 @@ public class Continue extends Activity implements Animation.AnimationListener {
         current_team = intent.getIntExtra("current_message", 1);
         number_of_teams = intent.getIntExtra("number_of_teams", 1);
         sameTeam = intent.getBooleanExtra("same_team", true);
+        prev_category=intent.getIntExtra("previus_category",0);
+        from_saved_game=intent.getBooleanExtra("from_saved_game",false);
 
         teams = new Teams[number_of_teams];
         for (int i = 0; i < number_of_teams; i++) {
@@ -71,6 +75,7 @@ public class Continue extends Activity implements Animation.AnimationListener {
         if(!sameTeam){
             current_team++;
             current_team = current_team%number_of_teams;
+            //change stats
         }
 
         TextView teamText =(TextView)findViewById(R.id.teamId);
@@ -283,7 +288,17 @@ public class Continue extends Activity implements Animation.AnimationListener {
         }
         intent.putExtra("file_index", fileIndex);
         intent.putExtra("current_message", current_team);
-        closeQuestion(this);
+
+        //change stats
+        if(!from_saved_game) {
+            if (sameTeam) {
+                teams[current_team].set_stats_category_correct(prev_category - 1);
+            } else {
+                teams[current_team].set_stats_category_wrong(prev_category - 1);
+            }
+
+            BasicMethods.closeQuestion(this);
+        }
         startActivity(intent);
         finish();
     }
@@ -314,6 +329,11 @@ public class Continue extends Activity implements Animation.AnimationListener {
         if(animatedDiamond!=0) {
             current_diamonds[animatedDiamond - 1] = false;
         }
+        if(!sameTeam){
+            current_team--;
+            current_team = current_team%number_of_teams;
+            //change stats
+        }
         finish();
     }
 
@@ -334,11 +354,6 @@ public class Continue extends Activity implements Animation.AnimationListener {
 
     }
 
-    public static void closeQuestion(Context context) {
-        Intent intent = new Intent("Question");
-        intent.putExtra("action", "close");
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
-    }
 
 
 
