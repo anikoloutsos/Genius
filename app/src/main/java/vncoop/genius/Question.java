@@ -253,6 +253,14 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
         }
         //hxos
         correctsound.start();
+        correctsound.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+
+            }
+
+            ;
+        });
         //telos
 
         Intent intent = new Intent(this, Continue.class);
@@ -283,6 +291,12 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
     public void onWrong(View view){
 
         wrongSound.start();
+        wrongSound.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+
+            };
+        });
 
         if(isDiamond){
             teams[current_team].set_diamonds(category-1,false);
@@ -334,7 +348,7 @@ public class Question extends Activity implements FragmentManager.OnBackStackCha
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds items to code the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_question, menu);
         return true;
 

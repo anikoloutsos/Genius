@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,6 +30,8 @@ public class MainMenu extends Activity{
         double[] screen = BasicMethods.getScreenChar(this);
         double Left,Top,Right,Bottom;
         ImageView logo = (ImageView) findViewById(R.id.logo);
+        ImageButton facebook = (ImageButton) findViewById(R.id.fb_button);
+        ImageButton aboutUs = (ImageButton) findViewById(R.id.contact_button);
         Button newGame = (Button) findViewById(R.id.newGame);
         Button Continue = (Button) findViewById(R.id.continueGame);
         Button rules = (Button) findViewById(R.id.rules);
@@ -44,6 +47,7 @@ public class MainMenu extends Activity{
         AddQuestion.setTypeface(font);
 
         //DB creation
+        //this.deleteDatabase("FDB.sqlite");
         DBHelper dbCreator = new DBHelper(getApplicationContext());
         try {
             dbCreator.createDB();
@@ -57,6 +61,20 @@ public class MainMenu extends Activity{
         Right = 0.29614*screen[0];
         Bottom =0.64953*screen[1];
         BasicMethods.setMargins(logo, (int) Left, (int) Top, (int) Right, (int) Bottom);
+
+        //Facebook margins
+        Left = 0.8*screen[0];
+        Top = 0.0*screen[1];
+        Right = 0.05*screen[0];
+        Bottom =0.85*screen[1];
+        BasicMethods.setMargins(facebook, (int) Left, (int) Top, (int) Right, (int) Bottom);
+
+        //info margins
+        Left = 0.05*screen[0];
+        Top = 0.0*screen[1];
+        Right = 0.8*screen[0];
+        Bottom =0.85*screen[1];
+        BasicMethods.setMargins(aboutUs, (int) Left, (int) Top, (int) Right, (int) Bottom);
 
 
         //New game Button margins

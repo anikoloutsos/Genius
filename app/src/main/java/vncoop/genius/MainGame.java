@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -288,21 +289,26 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
                 //sounds
                 if (epiloges[1].equals("naS")) {
-                    s1.start();}else{
-                    s2.start();}
+                    s1.start();
+                } else {
+                    s2.start();
+                }
                 //
 
             }
         }, 1100);
 
-
     }
 
    public void choicebtn(View view) {
 
+       s1.release();
+       s2.release();
        int id = view.getId();
        int c1 = R.id.btnCat1Id;
+       findViewById(c1).setEnabled(false);
        int c2 = R.id.btnCat2Id;
+       findViewById(c2).setEnabled(false);
        int categoryNum;
        String cat;
        Boolean isDiamond=false;

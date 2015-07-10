@@ -202,7 +202,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         closeDB();      //κλείσε τη βάση
         cRandFromCat.close();
-        return QnA;     //String QnA[0]=ερώτηση QnA[1] = απάντηση
+        return QnA;     //String QnA[0]=εσρώτηση QnA[1] = απάντηση
     }
 
     //Default συναρτήσεις\\
@@ -213,8 +213,19 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if (newVersion > oldVersion){
+            Log.v("Database Upgrade", "Database version higher than old.");
+            con.deleteDatabase(db_name);
+        }
+        try {
+            copyDB();
+        } catch (IOException e){
+            throw new Error("Could not copy Database");
+        }
+
 
     }
+
 
     public static String decrypt(String encryptedData) throws Exception {
         Key key = generateKey();
@@ -232,7 +243,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String ALGO = "AES";
     private static final byte[] keyValue =
-            new byte[] { 'T', 'h', 'e', 'B', 'e', 's', 't',
-                    'S', 'e', 'c', 'r','e', 't', 'K', 'e', 'y' };
+            new byte[] { 'B', 'r', 'a', 'v', 'o', 'K', 'a',
+                    'm', 'e', 'n', 'e','g', '9', '%', 'J', '3' };
 
 }
