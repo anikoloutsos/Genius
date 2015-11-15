@@ -209,10 +209,18 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
 
     public void getCatOrD(View view) {
+
         firstbtn = (ImageButton) findViewById(R.id.btnCat1Id);
         secondbtn = (ImageButton) findViewById(R.id.btnCat2Id);
         diamondbtn = (ImageButton) findViewById(R.id.btnDiaId);
         spinbtn = (ImageButton) findViewById(R.id.btnSpin);
+
+        //Make buttons not clickable until the animation is over
+        firstbtn.setClickable(false);
+        secondbtn.setClickable(false);
+        diamondbtn.setClickable(false);
+        spinbtn.setClickable(false);
+
 
         //test
         Odigies.setVisibility(View.INVISIBLE);
@@ -300,7 +308,8 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
     }
 
-   public void choicebtn(View view) {
+    public void choicebtn(View view) {
+
 
        s1.release();
        s2.release();
@@ -352,19 +361,21 @@ public class MainGame extends Activity implements Animation.AnimationListener {
         }
         intent.putExtra("categoryNum", categoryNum);
         intent.putExtra("isDiamond", isDiamond);
-        intent.putExtra("file_index",fileIndex);
+       intent.putExtra("file_index", fileIndex);
 
-        startActivity(intent);
+
+       startActivity(intent);
+
         finish();
     }
 
-
-
     @Override
     public void onAnimationEnd(Animation animation) {
-        // Take any action after completing the animation
-
-
+        //Make buttons clickable again
+        firstbtn.setClickable(true);
+        secondbtn.setClickable(true);
+        diamondbtn.setClickable(true);
+        spinbtn.setClickable(true);
     }
 
     @Override
@@ -375,7 +386,11 @@ public class MainGame extends Activity implements Animation.AnimationListener {
 
     @Override
     public void onAnimationStart(Animation animation) {
-        // TODO Auto-generated method stub
+        //Make buttons not clickable until animation ends
+        firstbtn.setClickable(false);
+        secondbtn.setClickable(false);
+        diamondbtn.setClickable(false);
+        spinbtn.setClickable(false);
 
     }
 
