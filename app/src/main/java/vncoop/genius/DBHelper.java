@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Base64;
-import android.util.Log;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -56,7 +55,11 @@ public class DBHelper extends SQLiteOpenHelper {
         //try -> δοκίμασε να την ανοίξεις
         try{
             String myPath = db_path + db_name;
-            checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+            checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
+            if (checkDB.getVersion() != db_version){
+                onUpgrade(checkDB,checkDB.getVersion(),db_version);
+            }
+
             //catch -> δεν υπάρχει
         } catch(SQLiteException e){
             //database does't exist yet.
@@ -64,7 +67,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //αν υπάρχει
         if(checkDB != null){
-
             checkDB.close(); //κλείσε την βάση checkDB
             return true;
         }
@@ -112,9 +114,12 @@ public class DBHelper extends SQLiteOpenHelper {
             //Αντιγραφή Δεδομένων
             try {
                 copyDB();
+                String myPath=db_path+db_name;
+                SQLiteDatabase.openDatabase(myPath,null,SQLiteDatabase.OPEN_READWRITE).setVersion(db_version);
             } catch (IOException e){
                 throw new Error("Could not copy Database");
             }
+
 
         }
     }
@@ -214,11 +219,12 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (newVersion > oldVersion){
-            Log.v("Database Upgrade", "Database version higher than old.");
             con.deleteDatabase(db_name);
         }
         try {
             copyDB();
+            String myPath=db_path+db_name;
+            SQLiteDatabase.openDatabase(myPath,null,SQLiteDatabase.OPEN_READWRITE).setVersion(db_version);
         } catch (IOException e){
             throw new Error("Could not copy Database");
         }
